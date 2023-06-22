@@ -5,7 +5,7 @@ export interface Props {
   enableInspectVSCode?: boolean;
 }
 
-export default function GetStarted({ enableInspectVSCode }: Props) {
+export default function Home({ enableInspectVSCode }: Props) {
   return (
     <section class="pt-20 pb-32">
       <div class="container mx-auto px-4">
