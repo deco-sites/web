@@ -10,7 +10,7 @@ export default function Home({ enableInspectVSCode }: Props) {
     <section>
       {enableInspectVSCode && !context.deploymentId && (
         <div class="flex items-center justify-between flex-col">
-          <Main />
+          <Main firstImage="" secondImage="" />
         </div>
       )}
     </section>

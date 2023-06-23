@@ -8,10 +8,12 @@ import * as $0 from "./functions/LoadGitHubRaw.ts";
 import * as $$$$0 from "./routes/styles.css.ts";
 import * as $$$$1 from "./routes/_app.tsx";
 import * as $$$$$0 from "./islands/Main.tsx";
+import * as $$$$$1 from "./islands/Nav.tsx";
 import * as $$$$$$$$0 from "./sections/DesignSystem.tsx";
 import * as $$$$$$$$1 from "./sections/Head.tsx";
 import * as $$$$$$$$2 from "./sections/Home.tsx";
 import * as $$$$$$$$3 from "./sections/Main.tsx";
+import * as $$$$$$$$4 from "./sections/Nav.tsx";
 import * as $live_middleware from "$live/routes/_middleware.ts";
 import * as $live_workbench from "$live/routes/live/workbench.ts";
 import * as $live_invoke from "$live/routes/live/invoke/index.ts";
@@ -177,6 +179,7 @@ const manifest = {
   },
   "islands": {
     "./islands/Main.tsx": $$$$$0,
+    "./islands/Nav.tsx": $$$$$1,
   },
   "sections": {
     "$live/sections/Conditional_Beta.tsx": i1$$$$0,
@@ -199,6 +202,7 @@ const manifest = {
     "deco-sites/web/sections/Head.tsx": $$$$$$$$1,
     "deco-sites/web/sections/Home.tsx": $$$$$$$$2,
     "deco-sites/web/sections/Main.tsx": $$$$$$$$3,
+    "deco-sites/web/sections/Nav.tsx": $$$$$$$$4,
   },
   "loaders": {
     "$live/loaders/state.ts": i2$$$0,
