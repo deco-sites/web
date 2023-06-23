@@ -12,7 +12,7 @@ const Window: FunctionalComponent<WindowProps> = (
 ) => {
   return (
     <div class="flex flex-col items-center relative w-full">
-      <div class="bg-white rounded-lg shadow-lg relative bottom-[100px] w-full max-w-[500px]">
+      <div class="bg-white rounded-lg shadow-lg relative bottom-[170px] w-full max-w-[500px]">
         <div class="flex items-center flex-row-reverse gap-[10px] mt-2 pb-2 px-4 border-b shadow-md">
           <span class="bg-red-500 w-3 h-3 rounded-full"></span>
           <span class="bg-yellow-500 w-3 h-3 rounded-full"></span>
@@ -29,7 +29,7 @@ const Window: FunctionalComponent<WindowProps> = (
           />
         </div>
       </div>
-      <div class="bg-white rounded-lg shadow-[3px_1px_19px_9px_#00000024] absolute top-[35%] left-[3%] max-w-[500px] w-full">
+      <div class="bg-white rounded-lg shadow-[3px_1px_19px_9px_#00000024] absolute top-[20%] left-[3%] max-w-[500px] w-full">
         <div class="flex items-center flex-row-reverse gap-[10px] mt-2 pb-2 px-4 border-b shadow-md">
           <span class="bg-red-500 w-3 h-3 rounded-full"></span>
           <span class="bg-yellow-500 w-3 h-3 rounded-full"></span>
