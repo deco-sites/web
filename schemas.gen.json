@@ -7311,21 +7311,13 @@
           "description": "Color of the link",
           "title": "Color"
         },
-        "fontSizeDesktop": {
+        "fontSize": {
           "type": [
             "string",
             "null"
           ],
           "description": "Font size of the link in desktop view",
-          "title": "Font Size Desktop"
-        },
-        "fontSizeMobile": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "description": "Font size of the link in mobile view",
-          "title": "Font Size Mobile"
+          "title": "Font Size"
         },
         "fontWeight": {
           "anyOf": [
