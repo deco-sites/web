@@ -12,11 +12,7 @@ export interface Link {
   /**
    * @description Font size of the link in desktop view
    */
-  fontSizeDesktop?: string;
-  /**
-   * @description Font size of the link in mobile view
-   */
-  fontSizeMobile?: string;
+  fontSize?: string;
   /**
    * @description Font weight of the link
    */
@@ -116,29 +112,13 @@ export default function Nav(props: Props) {
     navHeight,
   } = props;
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    addEventListener("resize", handleResize);
-
-    return () => {
-      removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   const linkElements = links?.map((link) => (
     <li>
       <a
         href={link.url}
         style={{
           color: link.color || "#000000",
-          fontSize: isMobile
-            ? link.fontSizeMobile
-            : link.fontSizeDesktop || "inherit",
+          fontSize: link.fontSize,
           fontWeight: link.fontWeight || "normal",
           textAlign: link.textAlign || "left",
         }}

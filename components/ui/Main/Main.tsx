@@ -36,8 +36,6 @@ export interface Props {
   /**
    * @description Font size of the title
    */
-  // fontSizeDesktop?: string;
-  // fontSizeMobile?: string;
   fontSize?: string;
   /**
    * @description Font weight of the title
@@ -93,7 +91,6 @@ export default function Main(props: Props) {
     alignItems,
     backgroundRightHeight,
   } = props;
-
 
   const titleStyle = {
     color: colorTitle || "#000000",
