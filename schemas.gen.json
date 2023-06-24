@@ -7027,10 +7027,10 @@
       ],
       "title": "deco-sites/std/packs/vtex/loaders/wishlist.ts@Props"
     },
-    "ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image": {
+    "ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video": {
       "type": "string",
-      "format": "image-uri",
-      "title": "Image"
+      "format": "video-uri",
+      "title": "Video"
     },
     "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Props": {
       "type": "object",
@@ -7288,20 +7288,25 @@
           "description": "Height of the backgroundColorRight",
           "title": "Background Right Height"
         },
-        "firstImage": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
-          "title": "First Image"
+        "firstVideo": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video",
+          "title": "First Video"
         },
-        "secondImage": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
-          "title": "Second Image"
+        "secondVideo": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video",
+          "title": "Second Video"
         }
       },
       "required": [
-        "firstImage",
-        "secondImage"
+        "firstVideo",
+        "secondVideo"
       ],
       "title": "deco-sites/web/components/ui/Main/Main.tsx@Props"
+    },
+    "ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image": {
+      "type": "string",
+      "format": "image-uri",
+      "title": "Image"
     },
     "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL05hdi50c3g=@Link": {
       "type": "object",
