@@ -7104,20 +7104,13 @@
           ],
           "title": "Title Second Color"
         },
-        "fontSizeDesktop": {
+        "fontSize": {
           "type": [
             "string",
             "null"
           ],
           "description": "Font size of the title",
-          "title": "Font Size Desktop"
-        },
-        "fontSizeMobile": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "Font Size Mobile"
+          "title": "Font Size"
         },
         "fontWeight": {
           "anyOf": [

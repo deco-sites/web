@@ -1,4 +1,3 @@
-import { useEffect, useState } from "preact/hooks";
 import Window from "deco-sites/web/components/ui/Main/Window.tsx";
 import type { Video as LiveImage } from "deco-sites/std/components/types.ts";
 
@@ -37,8 +36,9 @@ export interface Props {
   /**
    * @description Font size of the title
    */
-  fontSizeDesktop?: string;
-  fontSizeMobile?: string;
+  // fontSizeDesktop?: string;
+  // fontSizeMobile?: string;
+  fontSize?: string;
   /**
    * @description Font weight of the title
    */
@@ -87,31 +87,17 @@ export default function Main(props: Props) {
     secondColorTitle,
     titleSecondColor,
     title,
-    fontSizeDesktop,
-    fontSizeMobile,
+    fontSize,
     fontWeight,
     textAlign,
     alignItems,
     backgroundRightHeight,
   } = props;
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    addEventListener("resize", handleResize);
-
-    return () => {
-      removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const titleStyle = {
     color: colorTitle || "#000000",
-    fontSize: isMobile ? fontSizeMobile : fontSizeDesktop || "inherit",
+    fontSize: fontSize,
     fontWeight: fontWeight || "normal",
     textAlign: textAlign || "left",
   };

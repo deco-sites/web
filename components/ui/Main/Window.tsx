@@ -19,19 +19,19 @@ const Window: FunctionalComponent<WindowProps> = (
         </div>
         <div class="aspect-w-16 aspect-h-9 w-full">
           <video
-              src={firstVideo}
-              alt={firstVideo}
-              autoPlay
-              muted
-              loop
-              preload="auto"
-              webkit-playsinline
-              x5-playsinline
-              playsInline
-              class="w-full h-full rounded-b-lg"
-            >
-              Video não suportado!
-            </video>
+            src={firstVideo}
+            alt={firstVideo}
+            autoPlay
+            muted
+            loop
+            preload="auto"
+            webkit-playsinline
+            x5-playsinline
+            playsInline
+            class="w-full h-full rounded-b-lg"
+          >
+            Video não suportado!
+          </video>
         </div>
       </div>
       <div class="bg-white rounded-lg shadow-[3px_1px_19px_9px_#00000024] absolute top-[5%] left-[3%] max-w-[500px] w-full">
@@ -41,20 +41,20 @@ const Window: FunctionalComponent<WindowProps> = (
           <span class="bg-green-500 w-3 h-3 rounded-full"></span>
         </div>
         <div class="aspect-w-16 aspect-h-9 w-full">
-           <video
-              src={secondVideo}
-              alt={secondVideo}
-              autoPlay
-              muted
-              loop
-              preload="auto"
-              webkit-playsinline
-              x5-playsinline
-              playsInline
-              class="w-full h-full rounded-b-lg"
-            >
-              Video não suportado!
-            </video>
+          <video
+            src={secondVideo}
+            alt={secondVideo}
+            autoPlay
+            muted
+            loop
+            preload="auto"
+            webkit-playsinline
+            x5-playsinline
+            playsInline
+            class="w-full h-full rounded-b-lg"
+          >
+            Video não suportado!
+          </video>
         </div>
       </div>
     </div>
