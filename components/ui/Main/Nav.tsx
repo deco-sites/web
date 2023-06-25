@@ -1,6 +1,6 @@
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 import Image from "deco-sites/std/components/Image.tsx";
-import { useEffect, useState } from "preact/hooks";
+import { useState } from "preact/hooks";
 
 export interface Link {
   /**
@@ -149,14 +149,14 @@ export default function Nav(props: Props) {
 
   return (
     <nav
-      class="grid grid-cols-2 absolute w-full items-center relative z-10 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
+      class="grid grid-cols-2 absolute w-full items-center relative z-10 shadow-[rgba(0,_0,_0,_0.24)_0px_1px_1px]"
       style={alignItemsStyle}
     >
       <div class="col-span-1 flex" style={leftDivStyle}>
         <Image
           src={props.logo}
           alt="Logo"
-          className="h-[50px]"
+          className="w-[100px] h-[50px]"
           width={100}
           height={50}
         />

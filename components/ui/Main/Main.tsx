@@ -3,6 +3,22 @@ import type { Video as LiveImage } from "deco-sites/std/components/types.ts";
 
 export interface Props {
   /**
+   * @description Main color of the screen
+   * @default #ffffff
+   * @format color
+   */
+  mainColor?: string;
+  /**
+   * @description Border radius of the screen
+   * @default 0px
+   */
+  borderLeftRadius?: string;
+  /**
+   * @description Border radius of the screen
+   * @default 0px
+   */
+  borderRightRadius?: string;
+  /**
    * @format color
    * @default #ffffff
    * @description Color of the Background Right of the screen
@@ -71,12 +87,52 @@ export interface Props {
    * @description Height of the backgroundColorRight
    */
   backgroundRightHeight?: string;
+  /**
+   * @description First video
+   */
   firstVideo: LiveImage;
+  /**
+   * @description Second video
+   */
   secondVideo: LiveImage;
+  /**
+   * @description Estilo do parágrafo
+   */
+  paragraphStyle?: {
+    paragraphy?: string;
+    /**
+     * @description Cor do paragraphy
+     * @format color
+     */
+    color?: string;
+    fontSize?: string;
+    fontWeight?:
+      | "100"
+      | "200"
+      | "300"
+      | "400"
+      | "500"
+      | "600"
+      | "700"
+      | "800"
+      | "900"
+      | "bold"
+      | "bolder"
+      | "inherit"
+      | "initial"
+      | "lighter"
+      | "normal"
+      | "revert"
+      | "unset";
+    textAlign?: "left" | "center" | "right" | "justify" | "initial" | "inherit";
+  };
 }
 
 export default function Main(props: Props) {
   const {
+    mainColor,
+    borderLeftRadius,
+    borderRightRadius,
     backgroundColorRight,
     backgroundColorLeft,
     paddingLeft,
@@ -90,7 +146,16 @@ export default function Main(props: Props) {
     textAlign,
     alignItems,
     backgroundRightHeight,
+    paragraphStyle,
   } = props;
+
+  const {
+    paragraphy,
+  } = paragraphStyle || {};
+
+  const mainColorStyle = {
+    backgroundColor: mainColor || "#ffffff",
+  };
 
   const titleStyle = {
     color: colorTitle || "#000000",
@@ -108,6 +173,7 @@ export default function Main(props: Props) {
     padding: paddingLeft || "0px",
     height: backgroundRightHeight,
     alignItems: alignItems || "flex-start",
+    borderRadius: borderLeftRadius || "0",
   };
 
   const rightDivStyle = {
@@ -115,19 +181,51 @@ export default function Main(props: Props) {
     padding: paddingRight || "0px",
     height: backgroundRightHeight,
     alignItems: alignItems || "flex-start",
+    borderRadius: borderRightRadius || "0",
+  };
+
+  const scrollbarStyle = `
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: ${props.backgroundColorRight || "#a0a0a0"};
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: ${props.backgroundColorLeft || "#ffffff"};
+  }
+`;
+
+  const paragraphyStyle = {
+    color: paragraphStyle?.color || colorTitle || "#000000",
+    fontSize: paragraphStyle?.fontSize || fontSize,
+    fontWeight: paragraphStyle?.fontWeight || fontWeight || "normal",
+    textAlign: paragraphStyle?.textAlign || textAlign || "left",
   };
 
   return (
-    <main className="grid lg:grid-cols-2 grid-cols-1 w-full h-screen items-center">
-      <div className="col-span-2 md:col-span-1 flex" style={leftDivStyle}>
+    <main
+      class="grid lg:grid-cols-2 grid-cols-1 w-full h-full md:h-screen items-center"
+      style={mainColorStyle}
+    >
+      <style>{scrollbarStyle}</style>
+      <div
+        class="col-span-2 md:col-span-1 flex flex-col justify-center gap-[10px]"
+        style={leftDivStyle}
+      >
         <h1 style={titleStyle}>
           {title}
           {titleSecondColor && (
             <span style={spanTitleStyle}>{titleSecondColor}</span>
           )}
         </h1>
+        <p style={paragraphyStyle}>
+          {paragraphy}
+        </p>
       </div>
-      <div className="col-span-2 md:col-span-1 flex" style={rightDivStyle}>
+      <div class="col-span-2 md:col-span-1 flex" style={rightDivStyle}>
         <Window firstVideo={props.firstVideo} secondVideo={props.secondVideo} />
       </div>
     </main>
