@@ -7634,9 +7634,9 @@
           "description": "Text alignment of the link",
           "title": "Text Align"
         },
-        "name": {
+        "label": {
           "type": "string",
-          "title": "Name"
+          "title": "Label"
         },
         "url": {
           "type": "string",
@@ -7645,7 +7645,7 @@
       },
       "required": [
         "color",
-        "name",
+        "label",
         "url"
       ],
       "title": "Link"

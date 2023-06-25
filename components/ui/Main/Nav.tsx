@@ -38,7 +38,7 @@ export interface Link {
    * @description Text alignment of the link
    */
   textAlign?: "left" | "center" | "right" | "justify" | "initial" | "inherit";
-  name: string;
+  label: string;
   url: string;
 }
 
@@ -116,6 +116,7 @@ export default function Nav(props: Props) {
     <li>
       <a
         href={link.url}
+        class="whitespace-nowrap"
         style={{
           color: link.color || "#000000",
           fontSize: link.fontSize,
@@ -123,7 +124,7 @@ export default function Nav(props: Props) {
           textAlign: link.textAlign || "left",
         }}
       >
-        {link.name || ""}
+        {link.label || ""}
       </a>
     </li>
   ));
