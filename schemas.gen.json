@@ -7035,6 +7035,34 @@
     "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Props": {
       "type": "object",
       "properties": {
+        "mainColor": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Main color of the screen",
+          "default": "#ffffff",
+          "format": "color",
+          "title": "Main Color"
+        },
+        "borderLeftRadius": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Border radius of the screen",
+          "default": "0px",
+          "title": "Border Left Radius"
+        },
+        "borderRightRadius": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Border radius of the screen",
+          "default": "0px",
+          "title": "Border Right Radius"
+        },
         "backgroundColorLeft": {
           "type": [
             "string",
@@ -7283,11 +7311,169 @@
         },
         "firstVideo": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video",
+          "description": "First video",
           "title": "First Video"
         },
         "secondVideo": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video",
+          "description": "Second video",
           "title": "Second Video"
+        },
+        "paragraphStyle": {
+          "type": "object",
+          "properties": {
+            "paragraphy": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "Paragraphy"
+            },
+            "color": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "Color"
+            },
+            "fontSize": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "Font Size"
+            },
+            "fontWeight": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "const": "100",
+                  "default": "100"
+                },
+                {
+                  "type": "string",
+                  "const": "200",
+                  "default": "200"
+                },
+                {
+                  "type": "string",
+                  "const": "300",
+                  "default": "300"
+                },
+                {
+                  "type": "string",
+                  "const": "400",
+                  "default": "400"
+                },
+                {
+                  "type": "string",
+                  "const": "500",
+                  "default": "500"
+                },
+                {
+                  "type": "string",
+                  "const": "600",
+                  "default": "600"
+                },
+                {
+                  "type": "string",
+                  "const": "700",
+                  "default": "700"
+                },
+                {
+                  "type": "string",
+                  "const": "800",
+                  "default": "800"
+                },
+                {
+                  "type": "string",
+                  "const": "900",
+                  "default": "900"
+                },
+                {
+                  "type": "string",
+                  "const": "bold",
+                  "default": "bold"
+                },
+                {
+                  "type": "string",
+                  "const": "bolder",
+                  "default": "bolder"
+                },
+                {
+                  "type": "string",
+                  "const": "inherit",
+                  "default": "inherit"
+                },
+                {
+                  "type": "string",
+                  "const": "initial",
+                  "default": "initial"
+                },
+                {
+                  "type": "string",
+                  "const": "lighter",
+                  "default": "lighter"
+                },
+                {
+                  "type": "string",
+                  "const": "normal",
+                  "default": "normal"
+                },
+                {
+                  "type": "string",
+                  "const": "revert",
+                  "default": "revert"
+                },
+                {
+                  "type": "string",
+                  "const": "unset",
+                  "default": "unset"
+                }
+              ],
+              "type": "string",
+              "title": "Font Weight"
+            },
+            "textAlign": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "const": "left",
+                  "default": "left"
+                },
+                {
+                  "type": "string",
+                  "const": "center",
+                  "default": "center"
+                },
+                {
+                  "type": "string",
+                  "const": "right",
+                  "default": "right"
+                },
+                {
+                  "type": "string",
+                  "const": "justify",
+                  "default": "justify"
+                },
+                {
+                  "type": "string",
+                  "const": "initial",
+                  "default": "initial"
+                },
+                {
+                  "type": "string",
+                  "const": "inherit",
+                  "default": "inherit"
+                }
+              ],
+              "type": "string",
+              "title": "Text Align"
+            }
+          },
+          "required": [],
+          "title": "Paragraph Style",
+          "description": "Estilo do parágrafo"
         }
       },
       "required": [
