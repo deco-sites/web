@@ -47,6 +47,43 @@ export interface Props {
   links?: Link[];
   gap?: string;
   /**
+   * @description Main color of the screen
+   * @default #ffffff
+   * @format color
+   */
+  navColor?: string;
+  /**
+   * @color color
+   * @default #000000
+   * @description Color of the shadow
+   */
+  boxShadowColor?: string;
+  /**
+   * @description Height of the right background
+   */
+  navHeight?: string;
+  iconOpenButton: LiveImage;
+  iconCloseButton: LiveImage;
+  /**
+   * @format color
+   * @description Background of the button open/close menu
+   */
+  backgroundButton?: string;
+  /**
+   * @description Border Top of the nav
+   */
+  borderTop?: string;
+  /**
+   * @description Border Bottom of the nav
+   */
+  borderBottom?: string;
+  /**
+   * @format color
+   * @default #000000
+   * @description Color of the border
+   */
+  borderColor?: string;
+  /**
    * @format color
    * @default #ffffff
    * @description Color of the Background Left of the screen
@@ -58,6 +95,10 @@ export interface Props {
    * @description Color of the Background Right of the screen
    */
   backgroundColorRight?: string;
+  /**
+   * @description Padding of the Nav Mobile
+   */
+  padding?: string;
   /**
    * @description Padding of the left side of the logo
    */
@@ -90,18 +131,22 @@ export interface Props {
     | "space-around"
     | "initial"
     | "inherit";
-  /**
-   * @description Height of the right background
-   */
-  navHeight?: string;
 }
 
 export default function Nav(props: Props) {
-  const [links] = useState<Array<Link>>(
+  const [links] = useState<Link[]>(
     Array.isArray(props.links) ? props.links : [],
   );
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const {
+    navColor,
+    boxShadowColor,
+    backgroundButton,
+    borderTop,
+    borderBottom,
+    borderColor,
+    padding,
     backgroundColorLeft,
     backgroundColorRight,
     paddingLeft,
@@ -112,7 +157,7 @@ export default function Nav(props: Props) {
     navHeight,
   } = props;
 
-  const linkElements = links?.map((link) => (
+  const linkElements = links.map((link) => (
     <li>
       <a
         href={link.url}
@@ -129,8 +174,24 @@ export default function Nav(props: Props) {
     </li>
   ));
 
-  const alignItemsStyle = {
+  const navItemsStyle = {
+    backgroundColor: navColor || "#ffffff",
+    boxShadow: boxShadowColor || "none",
     alignItems: alignItems || "center",
+  };
+
+  const navItemsMobileStyle = {
+    backgroundColor: navColor || "#ffffff",
+    alignItems: alignItems || "center",
+    borderTop: borderTop || "none",
+    borderBottom: borderBottom || "none",
+    borderColor: borderColor || "transparent",
+    padding: padding || "0px",
+    transform: "translateY(0%)"
+  };
+
+  const buttonStyle = {
+    backgroundColor: backgroundButton || "#ffffff",
   };
 
   const leftDivStyle = {
@@ -148,23 +209,74 @@ export default function Nav(props: Props) {
     justifyContent: justifyContentRight || "flex-start",
   };
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <nav
-      class="grid grid-cols-2 absolute w-full items-center relative z-10 shadow-[rgba(0,_0,_0,_0.24)_0px_1px_1px]"
-      style={alignItemsStyle}
+      class="grid grid-cols-2 absolute w-full items-center relative z-10"
+      style={navItemsStyle}
     >
-      <div class="col-span-1 flex" style={leftDivStyle}>
-        <Image
-          src={props.logo}
-          alt="Logo"
-          className="w-[100px] h-[50px]"
-          width={100}
-          height={50}
-        />
+      <div
+        class={`col-span-1 flex`}
+        style={leftDivStyle}
+      >
+        <figure>
+          <Image
+            src={props.logo}
+            alt="Logo"
+            class="min-w-[100px] h-[50px]"
+            width={100}
+            height={50}
+          />
+        </figure>
       </div>
-      <ul class="col-span-1 flex h-full items-center" style={rightDivStyle}>
-        {linkElements}
-      </ul>
+
+      {menuOpen && (
+        <div class="fixed inset-0 z-10 bg-opacity-75 backdrop-filter backdrop-blur">
+          <div
+            class="fixed inset-x-0 top-0 max-h-screen overflow-auto transition-transform duration-300"
+            style={navItemsMobileStyle}
+          >
+            <ul
+              class={`col-span-1 flex md:flex-row flex-col h-full md:items-center`}
+              style={rightDivStyle}
+            >
+              {linkElements}
+            </ul>
+          </div>
+        </div>
+      )}
+      <button
+        class="absolute top-0 right-0 h-full p-2 flex items-center z-20"
+        style={buttonStyle}
+        onClick={toggleMenu}
+      >
+        {menuOpen
+          ? (
+            <figure>
+              <Image
+                src={props.iconCloseButton}
+                alt="icon close menu"
+                class="w-8 h-8"
+                width={32}
+                height={32}
+              />
+            </figure>
+          )
+          : (
+            <figure>
+              <Image
+                src={props.iconOpenButton}
+                alt="icon open menu"
+                class="w-8 h-8"
+                width={32}
+                height={32}
+              />
+            </figure>
+          )}
+      </button>
     </nav>
   );
 }
