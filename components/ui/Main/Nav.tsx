@@ -1,6 +1,6 @@
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 import Image from "deco-sites/std/components/Image.tsx";
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
 export interface Link {
   /**
@@ -139,6 +139,19 @@ export default function Nav(props: Props) {
   );
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    const body = document.body;
+    if (menuOpen) {
+      body.style.overflow = "hidden";
+    } else {
+      body.style.overflow = "";
+    }
+
+    return () => {
+      body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   const {
     navColor,
     boxShadowColor,
@@ -187,7 +200,7 @@ export default function Nav(props: Props) {
     borderBottom: borderBottom || "none",
     borderColor: borderColor || "transparent",
     padding: padding || "0px",
-    transform: "translateY(0%)"
+    transform: "translateY(0%)",
   };
 
   const buttonStyle = {
@@ -252,6 +265,7 @@ export default function Nav(props: Props) {
         class="absolute top-0 right-0 h-full p-2 flex items-center z-20"
         style={buttonStyle}
         onClick={toggleMenu}
+        aria-label="Close/Open Menu"
       >
         {menuOpen
           ? (
