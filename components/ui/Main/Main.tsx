@@ -271,7 +271,7 @@ export default function Main(props: Props) {
           </div>
         )}
       </div>
-      <div class="col-auto flex md:px-[10%] px-[5%]" style={rightDivStyle}>
+      <div class="col-auto flex" style={rightDivStyle}>
         <Window firstVideo={props.firstVideo} secondVideo={props.secondVideo} />
         <span style={curveStyle}></span>
       </div>
