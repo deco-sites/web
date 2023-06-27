@@ -10,7 +10,7 @@ const Window: FunctionalComponent<WindowProps> = (
   { firstVideo, secondVideo },
 ) => {
   return (
-    <div class="flex flex-col items-center relative w-full px-[15%]">
+    <div class="flex flex-col items-center relative w-full px-[10%]">
       <div class="bg-white rounded-lg shadow-lg relative w-full max-w-[500px]">
         <div class="flex items-center flex-row-reverse gap-[10px] mt-2 pb-2 px-4 border-b shadow-md">
           <span class="bg-red-500 w-3 h-3 rounded-full"></span>
