@@ -55,11 +55,11 @@ export interface Props {
   /**
    * @color color
    * @default #000000
-   * @description Color of the shadow
+   * @description Color of the shadow nav
    */
   boxShadowColor?: string;
   /**
-   * @description Height of the right background
+   * @description Height of nav
    */
   navHeight?: string;
   iconOpenButton: LiveImage;
@@ -83,18 +83,6 @@ export interface Props {
    * @description Color of the border
    */
   borderColor?: string;
-  /**
-   * @format color
-   * @default #ffffff
-   * @description Color of the Background Left of the screen
-   */
-  backgroundColorLeft?: string;
-  /**
-   * @format color
-   * @default #a0a0a0
-   * @description Color of the Background Right of the screen
-   */
-  backgroundColorRight?: string;
   /**
    * @description Padding of the Nav Mobile
    */
@@ -160,8 +148,6 @@ export default function Nav(props: Props) {
     borderBottom,
     borderColor,
     padding,
-    backgroundColorLeft,
-    backgroundColorRight,
     paddingLeft,
     paddingRight,
     alignItems,
@@ -208,14 +194,12 @@ export default function Nav(props: Props) {
   };
 
   const leftDivStyle = {
-    backgroundColor: backgroundColorLeft,
     padding: paddingLeft || "0px",
     height: navHeight,
     justifyContent: justifyContentLeft || "flex-start",
   };
 
   const rightDivStyle = {
-    backgroundColor: backgroundColorRight,
     padding: paddingRight || "0px",
     height: navHeight,
     gap: props.gap || "0px",
@@ -235,15 +219,17 @@ export default function Nav(props: Props) {
         class={`col-span-1 flex`}
         style={leftDivStyle}
       >
-        <figure>
-          <Image
-            src={props.logo}
-            alt="Logo"
-            class="min-w-[100px] h-[50px]"
-            width={100}
-            height={50}
-          />
-        </figure>
+        <a href={links[0].url}>
+          <figure>
+            <Image
+              src={props.logo}
+              alt="Logo"
+              class="min-w-[100px] h-[50px]"
+              width={100}
+              height={50}
+            />
+          </figure>
+        </a>
       </div>
 
       {menuOpen && (

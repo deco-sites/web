@@ -1,54 +1,53 @@
 import Window from "deco-sites/web/components/ui/Main/Window.tsx";
 import type { Video as LiveImage } from "deco-sites/std/components/types.ts";
 
+export interface Paragraph {
+  /**
+   * @description Paragraph Text
+   */
+  paragraph?: string;
+  /**
+   * @format color
+   * @description Paragraphy color
+   */
+  color?: string;
+  fontSize?: string;
+  fontWeight?:
+    | "100"
+    | "200"
+    | "300"
+    | "400"
+    | "500"
+    | "600"
+    | "700"
+    | "800"
+    | "900"
+    | "bold"
+    | "bolder"
+    | "inherit"
+    | "initial"
+    | "lighter"
+    | "normal"
+    | "revert"
+    | "unset";
+  textAlign?: "left" | "center" | "right" | "justify" | "initial" | "inherit";
+}
+
 export interface Props {
-  /**
-   * @description Main color of the screen
-   * @default #ffffff
-   * @format color
-   */
-  mainColor?: string;
-  /**
-   * @description Border radius of the screen
-   * @default 0px
-   */
-  borderLeftRadius?: string;
-  /**
-   * @description Border radius of the screen
-   * @default 0px
-   */
-  borderRightRadius?: string;
-  /**
-   * @format color
-   * @default #ffffff
-   * @description Color of the Background Right of the screen
-   */
-  backgroundColorLeft?: string;
-  /**
-   * @format color
-   * @default #a0a0a0
-   * @description Color of the Background Left of the screen
-   */
-  backgroundColorRight?: string;
-  /**
-   * @description Padding of the title
-   */
-  paddingLeft?: string;
-  paddingRight?: string;
-  /**
-   * @format color
-   * @default #000000
-   * @description Color of the title
-   */
-  colorTitle?: string;
   title?: string;
   /**
    * @format color
    * @default #000000
-   * @description Second Color of the title
+   * @description First color of the title
    */
-  secondColorTitle?: string;
-  titleSecondColor?: string;
+  colorTitle?: string;
+  secondTitle?: string;
+  /**
+   * @format color
+   * @default #000000
+   * @description Second color of the title
+   */
+  secondTitleColor?: string;
   /**
    * @description Font size of the title
    */
@@ -83,6 +82,40 @@ export interface Props {
    * @description Flex direction of the title
    */
   alignItems?: "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
+  paragraphBlock?: Paragraph;
+  /**
+   * @description Main color of the screen
+   * @default #ffffff
+   * @format color
+   */
+  mainColor?: string;
+  /**
+   * @description Border radius of the screen
+   * @default 0px
+   */
+  borderLeftRadius?: string;
+  /**
+   * @description Border radius of the screen
+   * @default 0px
+   */
+  borderRightRadius?: string;
+  /**
+   * @format color
+   * @default #ffffff
+   * @description Color of the Background Right of the screen
+   */
+  backgroundColorLeft?: string;
+  /**
+   * @format color
+   * @default #a0a0a0
+   * @description Color of the Background Left of the screen
+   */
+  backgroundColorRight?: string;
+  /**
+   * @description Padding of the title
+   */
+  paddingLeft?: string;
+  paddingRight?: string;
   /**
    * @description Height of the backgroundColorRight
    */
@@ -95,37 +128,6 @@ export interface Props {
    * @description Second video
    */
   secondVideo: LiveImage;
-  /**
-   * @description Estilo do parágrafo
-   */
-  paragraphStyle?: {
-    paragraphy?: string;
-    /**
-     * @description Cor do paragraphy
-     * @format color
-     */
-    color?: string;
-    fontSize?: string;
-    fontWeight?:
-      | "100"
-      | "200"
-      | "300"
-      | "400"
-      | "500"
-      | "600"
-      | "700"
-      | "800"
-      | "900"
-      | "bold"
-      | "bolder"
-      | "inherit"
-      | "initial"
-      | "lighter"
-      | "normal"
-      | "revert"
-      | "unset";
-    textAlign?: "left" | "center" | "right" | "justify" | "initial" | "inherit";
-  };
 }
 
 export default function Main(props: Props) {
@@ -138,20 +140,23 @@ export default function Main(props: Props) {
     paddingLeft,
     paddingRight,
     colorTitle,
-    secondColorTitle,
-    titleSecondColor,
+    secondTitleColor,
+    secondTitle,
     title,
-    fontSize,
-    fontWeight,
-    textAlign,
+    fontSize: propsFontSize,
+    fontWeight: propsFontWeight,
+    textAlign: propsTextAlign,
     alignItems,
     backgroundRightHeight,
-    paragraphStyle,
   } = props;
 
   const {
-    paragraphy,
-  } = paragraphStyle || {};
+    paragraph,
+    color,
+    fontSize,
+    fontWeight,
+    textAlign,
+  } = props.paragraphBlock || {};
 
   const mainColorStyle = {
     backgroundColor: mainColor || "#ffffff",
@@ -159,13 +164,13 @@ export default function Main(props: Props) {
 
   const titleStyle = {
     color: colorTitle || "#000000",
-    fontSize: fontSize,
-    fontWeight: fontWeight || "normal",
-    textAlign: textAlign || "left",
+    fontSize: propsFontSize,
+    fontWeight: propsFontWeight || "normal",
+    textAlign: propsTextAlign || "left",
   };
 
   const spanTitleStyle = {
-    color: secondColorTitle || "#000000",
+    color: secondTitleColor || "#000000",
   };
 
   const leftDivStyle = {
@@ -199,10 +204,11 @@ export default function Main(props: Props) {
 `;
 
   const paragraphyStyle = {
-    color: paragraphStyle?.color || colorTitle || "#000000",
-    fontSize: paragraphStyle?.fontSize || fontSize,
-    fontWeight: paragraphStyle?.fontWeight || fontWeight || "normal",
-    textAlign: paragraphStyle?.textAlign || textAlign || "left",
+    paragraph: props.paragraphBlock?.paragraph || "",
+    color: props.paragraphBlock?.color || color || "#000000",
+    fontSize: props.paragraphBlock?.fontSize || fontSize,
+    fontWeight: props.paragraphBlock?.fontWeight || fontWeight || "normal",
+    textAlign: props.paragraphBlock?.textAlign || textAlign || "left",
   };
 
   return (
@@ -217,12 +223,10 @@ export default function Main(props: Props) {
       >
         <h1 style={titleStyle}>
           {title}
-          {titleSecondColor && (
-            <span style={spanTitleStyle}>{titleSecondColor}</span>
-          )}
+          {secondTitle && <span style={spanTitleStyle}>{secondTitle}</span>}
         </h1>
         <p style={paragraphyStyle}>
-          {paragraphy}
+          {paragraph}
         </p>
       </div>
       <div class="col-span-2 md:col-span-1 flex" style={rightDivStyle}>
