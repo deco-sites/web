@@ -104,6 +104,7 @@
               "$live/matchers/MatchUserAgent.ts",
               "$live/flags/audience.ts",
               "$live/flags/everyone.ts",
+              "$live/flags/flag.ts",
               "$live/actions/workflows/cancel.ts",
               "$live/actions/workflows/run.ts",
               "$live/actions/workflows/signal.ts",
@@ -3951,6 +3952,50 @@
               "default": "deco-sites/std/loaders/vtex/proxy.ts"
             }
           }
+        },
+        {
+          "title": "Audience",
+          "description": "Select routes based on the matched audience.",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Audience"
+            }
+          ],
+          "required": [
+            "__resolveType"
+          ],
+          "properties": {
+            "__resolveType": {
+              "type": "string",
+              "enum": [
+                "$live/flags/audience.ts"
+              ],
+              "default": "$live/flags/audience.ts"
+            }
+          }
+        },
+        {
+          "title": "Audience Everyone",
+          "description": "Always match regardless of the current user",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2V2ZXJ5b25lLnRz@EveryoneConfig"
+            }
+          ],
+          "required": [
+            "__resolveType"
+          ],
+          "properties": {
+            "__resolveType": {
+              "type": "string",
+              "enum": [
+                "$live/flags/everyone.ts"
+              ],
+              "default": "$live/flags/everyone.ts"
+            }
+          }
         }
       ]
     },
@@ -7077,170 +7122,7 @@
       ],
       "title": "deco-sites/std/packs/vtex/loaders/wishlist.ts@Props"
     },
-    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Paragraph": {
-      "type": "object",
-      "properties": {
-        "paragraph": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "description": "Paragraph Text",
-          "title": "Paragraph"
-        },
-        "color": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Paragraphy color",
-          "title": "Color"
-        },
-        "fontSize": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "Font Size"
-        },
-        "fontWeight": {
-          "anyOf": [
-            {
-              "type": "string",
-              "const": "100",
-              "default": "100"
-            },
-            {
-              "type": "string",
-              "const": "200",
-              "default": "200"
-            },
-            {
-              "type": "string",
-              "const": "300",
-              "default": "300"
-            },
-            {
-              "type": "string",
-              "const": "400",
-              "default": "400"
-            },
-            {
-              "type": "string",
-              "const": "500",
-              "default": "500"
-            },
-            {
-              "type": "string",
-              "const": "600",
-              "default": "600"
-            },
-            {
-              "type": "string",
-              "const": "700",
-              "default": "700"
-            },
-            {
-              "type": "string",
-              "const": "800",
-              "default": "800"
-            },
-            {
-              "type": "string",
-              "const": "900",
-              "default": "900"
-            },
-            {
-              "type": "string",
-              "const": "bold",
-              "default": "bold"
-            },
-            {
-              "type": "string",
-              "const": "bolder",
-              "default": "bolder"
-            },
-            {
-              "type": "string",
-              "const": "inherit",
-              "default": "inherit"
-            },
-            {
-              "type": "string",
-              "const": "initial",
-              "default": "initial"
-            },
-            {
-              "type": "string",
-              "const": "lighter",
-              "default": "lighter"
-            },
-            {
-              "type": "string",
-              "const": "normal",
-              "default": "normal"
-            },
-            {
-              "type": "string",
-              "const": "revert",
-              "default": "revert"
-            },
-            {
-              "type": "string",
-              "const": "unset",
-              "default": "unset"
-            }
-          ],
-          "type": "string",
-          "title": "Font Weight"
-        },
-        "textAlign": {
-          "anyOf": [
-            {
-              "type": "string",
-              "const": "left",
-              "default": "left"
-            },
-            {
-              "type": "string",
-              "const": "center",
-              "default": "center"
-            },
-            {
-              "type": "string",
-              "const": "right",
-              "default": "right"
-            },
-            {
-              "type": "string",
-              "const": "justify",
-              "default": "justify"
-            },
-            {
-              "type": "string",
-              "const": "initial",
-              "default": "initial"
-            },
-            {
-              "type": "string",
-              "const": "inherit",
-              "default": "inherit"
-            }
-          ],
-          "type": "string",
-          "title": "Text Align"
-        }
-      },
-      "required": [],
-      "title": "Paragraph"
-    },
-    "ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video": {
-      "type": "string",
-      "format": "video-uri",
-      "title": "Video"
-    },
-    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Props": {
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Text": {
       "type": "object",
       "properties": {
         "title": {
@@ -7413,6 +7295,180 @@
           "type": "string",
           "description": "Text alignment of the title",
           "title": "Text Align"
+        }
+      },
+      "required": [],
+      "title": "Text"
+    },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Paragraph": {
+      "type": "object",
+      "properties": {
+        "paragraph": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Paragraph Text",
+          "title": "Paragraph"
+        },
+        "color": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "color",
+          "description": "Paragraphy color",
+          "title": "Color"
+        },
+        "fontSize": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Font Size"
+        },
+        "fontWeight": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "100",
+              "default": "100"
+            },
+            {
+              "type": "string",
+              "const": "200",
+              "default": "200"
+            },
+            {
+              "type": "string",
+              "const": "300",
+              "default": "300"
+            },
+            {
+              "type": "string",
+              "const": "400",
+              "default": "400"
+            },
+            {
+              "type": "string",
+              "const": "500",
+              "default": "500"
+            },
+            {
+              "type": "string",
+              "const": "600",
+              "default": "600"
+            },
+            {
+              "type": "string",
+              "const": "700",
+              "default": "700"
+            },
+            {
+              "type": "string",
+              "const": "800",
+              "default": "800"
+            },
+            {
+              "type": "string",
+              "const": "900",
+              "default": "900"
+            },
+            {
+              "type": "string",
+              "const": "bold",
+              "default": "bold"
+            },
+            {
+              "type": "string",
+              "const": "bolder",
+              "default": "bolder"
+            },
+            {
+              "type": "string",
+              "const": "inherit",
+              "default": "inherit"
+            },
+            {
+              "type": "string",
+              "const": "initial",
+              "default": "initial"
+            },
+            {
+              "type": "string",
+              "const": "lighter",
+              "default": "lighter"
+            },
+            {
+              "type": "string",
+              "const": "normal",
+              "default": "normal"
+            },
+            {
+              "type": "string",
+              "const": "revert",
+              "default": "revert"
+            },
+            {
+              "type": "string",
+              "const": "unset",
+              "default": "unset"
+            }
+          ],
+          "type": "string",
+          "title": "Font Weight"
+        },
+        "textAlign": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "left",
+              "default": "left"
+            },
+            {
+              "type": "string",
+              "const": "center",
+              "default": "center"
+            },
+            {
+              "type": "string",
+              "const": "right",
+              "default": "right"
+            },
+            {
+              "type": "string",
+              "const": "justify",
+              "default": "justify"
+            },
+            {
+              "type": "string",
+              "const": "initial",
+              "default": "initial"
+            },
+            {
+              "type": "string",
+              "const": "inherit",
+              "default": "inherit"
+            }
+          ],
+          "type": "string",
+          "title": "Text Align"
+        }
+      },
+      "required": [],
+      "title": "Paragraph"
+    },
+    "ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video": {
+      "type": "string",
+      "format": "video-uri",
+      "title": "Video"
+    },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Props": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Text",
+          "title": "Text"
         },
         "alignItems": {
           "anyOf": [
@@ -7498,20 +7554,28 @@
           "description": "Color of the Background Left of the screen",
           "title": "Background Color Right"
         },
-        "paddingLeft": {
+        "paddingMain": {
           "type": [
             "string",
             "null"
           ],
-          "description": "Padding of the title",
-          "title": "Padding Left"
+          "description": "Padding of the main",
+          "title": "Padding Main"
         },
-        "paddingRight": {
+        "paddingScreenLeft": {
           "type": [
             "string",
             "null"
           ],
-          "title": "Padding Right"
+          "description": "Padding of each screen",
+          "title": "Padding Screen Left"
+        },
+        "paddingScreenRight": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Padding Screen Right"
         },
         "backgroundRightHeight": {
           "type": [
@@ -7758,6 +7822,22 @@
           ],
           "description": "Height of nav",
           "title": "Nav Height"
+        },
+        "navPosition": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "fixed",
+              "default": "fixed"
+            },
+            {
+              "type": "string",
+              "const": "relative",
+              "default": "relative"
+            }
+          ],
+          "type": "string",
+          "title": "Nav Position"
         },
         "iconOpenButton": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
@@ -8055,32 +8135,18 @@
       ],
       "title": "deco-cx/live/handlers/router.ts@RouterConfig"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@15b1ddc7b4bb6e032bd22948a3dc02c4|9cc5443ad72a10e9797a691a19b4ce81|Flag": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@Flag"
-        },
-        {
-          "$ref": "#/definitions/JGxpdmUvZmxhZ3MvYXVkaWVuY2UudHM="
-        },
-        {
-          "$ref": "#/definitions/JGxpdmUvZmxhZ3MvZXZlcnlvbmUudHM="
-        }
-      ],
-      "title": "Audiences"
-    },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@15b1ddc7b4bb6e032bd22948a3dc02c4|9cc5443ad72a10e9797a691a19b4ce81|Flag[]": {
+    "ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route[][]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@15b1ddc7b4bb6e032bd22948a3dc02c4|9cc5443ad72a10e9797a691a19b4ce81|Flag"
+        "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route[]"
       },
-      "title": "15b1ddc7b4bb6e032bd22948a3dc02c4|9cc5443ad72a10e9797a691a19b4ce81|Flag[]"
+      "title": "Route[][]"
     },
     "ZGVjby1jeC9saXZlL2hhbmRsZXJzL3JvdXRlc1NlbGVjdGlvbi50cw==@SelectionConfig": {
       "type": "object",
       "properties": {
         "audiences": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@15b1ddc7b4bb6e032bd22948a3dc02c4|9cc5443ad72a10e9797a691a19b4ce81|Flag[]",
+          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route[][]",
           "title": "Audiences"
         }
       },
@@ -9183,31 +9249,6 @@
       "required": [],
       "title": "deco-cx/live/matchers/MatchUserAgent.ts@Props"
     },
-    "ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Override": {
-      "type": "object",
-      "properties": {
-        "use": {
-          "type": "string",
-          "title": "Use"
-        },
-        "insteadOf": {
-          "type": "string",
-          "title": "Instead Of"
-        }
-      },
-      "required": [
-        "use",
-        "insteadOf"
-      ],
-      "title": "Override"
-    },
-    "ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Override[]": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Override"
-      },
-      "title": "Override[]"
-    },
     "ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Audience": {
       "type": "object",
       "properties": {
@@ -9225,10 +9266,6 @@
         "routes": {
           "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route[]",
           "title": "Routes"
-        },
-        "overrides": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Override[]",
-          "title": "Overrides"
         }
       },
       "required": [
@@ -9244,14 +9281,36 @@
         "routes": {
           "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route[]",
           "title": "Routes"
-        },
-        "overrides": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Override[]",
-          "title": "Overrides"
         }
       },
       "required": [],
       "title": "deco-cx/live/flags/everyone.ts@EveryoneConfig"
+    },
+    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@FlagObj": {
+      "type": "object",
+      "properties": {
+        "matcher": {
+          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher",
+          "title": "Matcher"
+        },
+        "name": {
+          "type": "string",
+          "title": "Name"
+        },
+        "true": {
+          "title": "True"
+        },
+        "false": {
+          "title": "False"
+        }
+      },
+      "required": [
+        "matcher",
+        "name",
+        "true",
+        "false"
+      ],
+      "title": "deco-cx/live/blocks/flag.ts@FlagObj"
     },
     "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL2NhbmNlbC50cw==@Props": {
       "type": "object",
@@ -9273,7 +9332,7 @@
       ],
       "title": "deco-cx/live/actions/workflows/cancel.ts@Props"
     },
-    "ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@4cd00909f6158d7c3dfdd2c93f3e2f32&Metadata": {
+    "ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@63e0dc8518b7b95dcee9d0a023130ccd&Metadata": {
       "allOf": [
         {
           "type": "object",
@@ -9291,9 +9350,9 @@
           "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@Metadata"
         }
       ],
-      "title": "4cd00909f6158d7c3dfdd2c93f3e2f32&Metadata"
+      "title": "63e0dc8518b7b95dcee9d0a023130ccd&Metadata"
     },
-    "ZGVjby1jeC9kdXJhYmxlL2hhbmRsZXIudHM=@RunRequest+Arg+4cd00909f6158d7c3dfdd2c93f3e2f32&Metadata": {
+    "ZGVjby1jeC9kdXJhYmxlL2hhbmRsZXIudHM=@RunRequest+Arg+63e0dc8518b7b95dcee9d0a023130ccd&Metadata": {
       "type": "object",
       "properties": {
         "results": {
@@ -9304,7 +9363,7 @@
           "title": "Execution Id"
         },
         "metadata": {
-          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@4cd00909f6158d7c3dfdd2c93f3e2f32&Metadata",
+          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@63e0dc8518b7b95dcee9d0a023130ccd&Metadata",
           "title": "Metadata"
         }
       },
@@ -9313,7 +9372,7 @@
         "executionId",
         "metadata"
       ],
-      "title": "deco-cx/durable/handler.ts@RunRequest+Arg+4cd00909f6158d7c3dfdd2c93f3e2f32&Metadata"
+      "title": "deco-cx/durable/handler.ts@RunRequest+Arg+63e0dc8518b7b95dcee9d0a023130ccd&Metadata"
     },
     "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3NpZ25hbC50cw==@Props": {
       "type": "object",
@@ -11768,6 +11827,27 @@
         }
       }
     },
+    "JGxpdmUvZmxhZ3MvZmxhZy50cw==": {
+      "title": "Flag",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@FlagObj"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "$live/flags/flag.ts"
+          ],
+          "default": "$live/flags/flag.ts"
+        }
+      }
+    },
     "JGxpdmUvYWN0aW9ucy93b3JrZmxvd3MvY2FuY2VsLnRz": {
       "title": "$live/actions/workflows/cancel.ts",
       "description": "Cancels the workflow execution, you can, optionally, add a reason of the cancellation.",
@@ -11796,7 +11876,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2hhbmRsZXIudHM=@RunRequest+Arg+4cd00909f6158d7c3dfdd2c93f3e2f32&Metadata"
+          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2hhbmRsZXIudHM=@RunRequest+Arg+63e0dc8518b7b95dcee9d0a023130ccd&Metadata"
         }
       ],
       "required": [
@@ -12544,6 +12624,9 @@
         },
         {
           "$ref": "#/definitions/JGxpdmUvZmxhZ3MvZXZlcnlvbmUudHM="
+        },
+        {
+          "$ref": "#/definitions/JGxpdmUvZmxhZ3MvZmxhZy50cw=="
         }
       ]
     },
