@@ -33,6 +33,11 @@ export interface Paragraph {
   textAlign?: "left" | "center" | "right" | "justify" | "initial" | "inherit";
 }
 
+export interface Link {
+  label?: string;
+  url?: string;
+}
+
 export interface Text {
   title?: string;
   /**
@@ -86,6 +91,7 @@ export interface Props {
    */
   alignItems?: "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
   paragraphBlock?: Paragraph;
+  link?: Link;
   /**
    * @description Main color of the screen
    * @default #ffffff
@@ -115,15 +121,6 @@ export interface Props {
    */
   backgroundColorRight?: string;
   /**
-   * @description Padding of the main
-   */
-  paddingMain?: string;
-  /**
-   * @description Padding of each screen
-   */
-  paddingScreenLeft?: string;
-  paddingScreenRight?: string;
-  /**
    * @description Height of the backgroundColorRight
    */
   backgroundRightHeight?: string;
@@ -144,9 +141,6 @@ export default function Main(props: Props) {
     borderRightRadius,
     backgroundColorRight,
     backgroundColorLeft,
-    paddingMain,
-    paddingScreenLeft,
-    paddingScreenRight,
     alignItems,
     backgroundRightHeight,
   } = props;
@@ -169,9 +163,12 @@ export default function Main(props: Props) {
     textAlign,
   } = props.paragraphBlock || {};
 
+  const {
+    url,
+  } = props.link || {};
+
   const mainStyle = {
     backgroundColor: mainColor || "#ffffff",
-    padding: paddingMain || "0px",
   };
 
   const titleStyle = {
@@ -187,7 +184,6 @@ export default function Main(props: Props) {
 
   const leftDivStyle = {
     backgroundColor: backgroundColorLeft,
-    padding: paddingScreenLeft || "0px",
     height: backgroundRightHeight,
     alignItems: alignItems || "flex-start",
     borderRadius: borderLeftRadius || "0",
@@ -195,7 +191,6 @@ export default function Main(props: Props) {
 
   const rightDivStyle = {
     backgroundColor: backgroundColorRight,
-    padding: paddingScreenRight || "0px",
     height: backgroundRightHeight,
     alignItems: alignItems || "flex-start",
     borderRadius: borderRightRadius || "0",
@@ -239,25 +234,44 @@ export default function Main(props: Props) {
     textAlign: props.paragraphBlock?.textAlign || textAlign || "left",
   };
 
+  const linkStyle = {
+    backgroundColor: secondTitleColor || "#000000",
+    color: "#000000",
+    fontSize: props.paragraphBlock?.fontSize || fontSize,
+    fontWeight: props.paragraphBlock?.fontWeight || fontWeight || "normal",
+    url: props.link?.url || url,
+  };
+
   return (
     <main
-      class="grid lg:grid-cols-2 grid-cols-1 w-full h-full md:h-screen items-center"
+      class="grid lg:grid-cols-2 grid-cols-1 w-full h-full md:h-screen items-center lg:p-0 md:pt-[50px] pt-[100px]"
       style={mainStyle}
     >
       <style>{scrollbarStyle}</style>
       <div
-        class="col-auto flex flex-col justify-center gap-[10px]"
+        class="col-auto flex flex-col justify-center gap-[10px] p-[10%]"
         style={leftDivStyle}
       >
         <h1 style={titleStyle}>
           {title}
           {secondTitle && <span style={spanTitleStyle}>{secondTitle}</span>}
         </h1>
-        <p style={paragraphyStyle}>
+        <p style={paragraphyStyle} class="mt-[10px]">
           {paragraph}
         </p>
+        {props.link?.label && (
+          <div class="flex items-start w-full">
+            <a
+              href={`mailto:${props.link.url}`}
+              class="p-4 lg:w-[50%] w-full mt-[20px] text-center rounded-full"
+              style={linkStyle}
+            >
+              {props.link.label}
+            </a>
+          </div>
+        )}
       </div>
-      <div class="col-auto flex" style={rightDivStyle}>
+      <div class="col-auto flex md:px-[10%] px-[5%]" style={rightDivStyle}>
         <Window firstVideo={props.firstVideo} secondVideo={props.secondVideo} />
         <span style={curveStyle}></span>
       </div>

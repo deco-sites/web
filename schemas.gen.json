@@ -7458,6 +7458,27 @@
       "required": [],
       "title": "Paragraph"
     },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Link": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Label"
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Url"
+        }
+      },
+      "required": [],
+      "title": "Link"
+    },
     "ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video": {
       "type": "string",
       "format": "video-uri",
@@ -7506,6 +7527,10 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Paragraph",
           "title": "Paragraph Block"
         },
+        "link": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Link",
+          "title": "Link"
+        },
         "mainColor": {
           "type": [
             "string",
@@ -7553,29 +7578,6 @@
           "default": "#a0a0a0",
           "description": "Color of the Background Left of the screen",
           "title": "Background Color Right"
-        },
-        "paddingMain": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "description": "Padding of the main",
-          "title": "Padding Main"
-        },
-        "paddingScreenLeft": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "description": "Padding of each screen",
-          "title": "Padding Screen Left"
-        },
-        "paddingScreenRight": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "Padding Screen Right"
         },
         "backgroundRightHeight": {
           "type": [
