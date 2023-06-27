@@ -187,6 +187,21 @@ export default function Main(props: Props) {
     height: backgroundRightHeight,
     alignItems: alignItems || "flex-start",
     borderRadius: borderRightRadius || "0",
+    backgroundImage: `
+      linear-gradient(to right, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 1px, transparent 1px)
+    `,
+    backgroundSize: "30px 30px",
+    position: "relative",
+  };
+  
+  const curveStyle = {
+    position: "absolute",
+    top: "0",
+    left: "0",
+    width: "100%",
+    height: "100%",
+    background: "radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.5) 10%, transparent 40%)",
   };
 
   const scrollbarStyle = `
@@ -231,6 +246,7 @@ export default function Main(props: Props) {
       </div>
       <div class="col-span-2 md:col-span-1 flex" style={rightDivStyle}>
         <Window firstVideo={props.firstVideo} secondVideo={props.secondVideo} />
+        <span style={curveStyle}></span>
       </div>
     </main>
   );
