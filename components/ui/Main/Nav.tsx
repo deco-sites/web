@@ -62,6 +62,7 @@ export interface Props {
    * @description Height of nav
    */
   navHeight?: string;
+  navPosition?: "fixed" | "relative";
   iconOpenButton: LiveImage;
   iconCloseButton: LiveImage;
   /**
@@ -154,6 +155,7 @@ export default function Nav(props: Props) {
     justifyContentLeft,
     justifyContentRight,
     navHeight,
+    navPosition,
   } = props;
 
   const linkElements = links.map((link) => (
@@ -177,6 +179,7 @@ export default function Nav(props: Props) {
     backgroundColor: navColor || "#ffffff",
     boxShadow: boxShadowColor || "none",
     alignItems: alignItems || "center",
+    position: navPosition || "relative",
   };
 
   const navItemsMobileStyle = {

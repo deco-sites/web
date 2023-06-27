@@ -33,7 +33,7 @@ export interface Paragraph {
   textAlign?: "left" | "center" | "right" | "justify" | "initial" | "inherit";
 }
 
-export interface Props {
+export interface Text {
   title?: string;
   /**
    * @format color
@@ -77,7 +77,10 @@ export interface Props {
    * @description Text alignment of the title
    */
   textAlign?: "left" | "center" | "right" | "justify" | "initial" | "inherit";
+}
 
+export interface Props {
+  text?: Text;
   /**
    * @description Flex direction of the title
    */
@@ -112,10 +115,14 @@ export interface Props {
    */
   backgroundColorRight?: string;
   /**
-   * @description Padding of the title
+   * @description Padding of the main
    */
-  paddingLeft?: string;
-  paddingRight?: string;
+  paddingMain?: string;
+  /**
+   * @description Padding of each screen
+   */
+  paddingScreenLeft?: string;
+  paddingScreenRight?: string;
   /**
    * @description Height of the backgroundColorRight
    */
@@ -137,8 +144,14 @@ export default function Main(props: Props) {
     borderRightRadius,
     backgroundColorRight,
     backgroundColorLeft,
-    paddingLeft,
-    paddingRight,
+    paddingMain,
+    paddingScreenLeft,
+    paddingScreenRight,
+    alignItems,
+    backgroundRightHeight,
+  } = props;
+
+  const {
     colorTitle,
     secondTitleColor,
     secondTitle,
@@ -146,9 +159,7 @@ export default function Main(props: Props) {
     fontSize: propsFontSize,
     fontWeight: propsFontWeight,
     textAlign: propsTextAlign,
-    alignItems,
-    backgroundRightHeight,
-  } = props;
+  } = props.text || {};
 
   const {
     paragraph,
@@ -158,8 +169,9 @@ export default function Main(props: Props) {
     textAlign,
   } = props.paragraphBlock || {};
 
-  const mainColorStyle = {
+  const mainStyle = {
     backgroundColor: mainColor || "#ffffff",
+    padding: paddingMain || "0px",
   };
 
   const titleStyle = {
@@ -175,7 +187,7 @@ export default function Main(props: Props) {
 
   const leftDivStyle = {
     backgroundColor: backgroundColorLeft,
-    padding: paddingLeft || "0px",
+    padding: paddingScreenLeft || "0px",
     height: backgroundRightHeight,
     alignItems: alignItems || "flex-start",
     borderRadius: borderLeftRadius || "0",
@@ -183,7 +195,7 @@ export default function Main(props: Props) {
 
   const rightDivStyle = {
     backgroundColor: backgroundColorRight,
-    padding: paddingRight || "0px",
+    padding: paddingScreenRight || "0px",
     height: backgroundRightHeight,
     alignItems: alignItems || "flex-start",
     borderRadius: borderRightRadius || "0",
@@ -194,14 +206,15 @@ export default function Main(props: Props) {
     backgroundSize: "30px 30px",
     position: "relative",
   };
-  
+
   const curveStyle = {
     position: "absolute",
     top: "0",
     left: "0",
     width: "100%",
     height: "100%",
-    background: "radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.5) 10%, transparent 40%)",
+    background:
+      "radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.5) 10%, transparent 40%)",
   };
 
   const scrollbarStyle = `
@@ -229,11 +242,11 @@ export default function Main(props: Props) {
   return (
     <main
       class="grid lg:grid-cols-2 grid-cols-1 w-full h-full md:h-screen items-center"
-      style={mainColorStyle}
+      style={mainStyle}
     >
       <style>{scrollbarStyle}</style>
       <div
-        class="col-span-2 md:col-span-1 flex flex-col justify-center gap-[10px]"
+        class="col-auto flex flex-col justify-center gap-[10px]"
         style={leftDivStyle}
       >
         <h1 style={titleStyle}>
@@ -244,7 +257,7 @@ export default function Main(props: Props) {
           {paragraph}
         </p>
       </div>
-      <div class="col-span-2 md:col-span-1 flex" style={rightDivStyle}>
+      <div class="col-auto flex" style={rightDivStyle}>
         <Window firstVideo={props.firstVideo} secondVideo={props.secondVideo} />
         <span style={curveStyle}></span>
       </div>
