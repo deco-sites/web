@@ -262,7 +262,7 @@ export default function Main(props: Props) {
     >
       <style>{scrollbarStyle}</style>
       <div
-        class="col-auto flex flex-col justify-center gap-[10px] py-[10%] pl-[10%] lg:pr-[20%] pr-[10%]"
+        class="col-auto flex flex-col justify-center gap-[10px] md:pb-0 py-[10%] pl-[10%] lg:pr-[20%] pr-[10%] md:bottom-[100px] relative"
         style={leftDivStyle}
       >
         <h1 style={titleStyle}>
@@ -291,7 +291,7 @@ export default function Main(props: Props) {
           </div>
         )}
       </div>
-      <div class="col-auto flex lg:pt-[100px] pb-[15%]" style={rightDivStyle}>
+      <div class="col-auto flex pb-[10%]" style={rightDivStyle}>
         <Window firstVideo={props.firstVideo} secondVideo={props.secondVideo} />
         <span style={curveStyle}></span>
       </div>
