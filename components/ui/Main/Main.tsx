@@ -36,6 +36,7 @@ export interface Paragraph {
 export interface Link {
   label?: string;
   url?: string;
+  text?: string;
 }
 
 export interface Text {
@@ -169,6 +170,7 @@ export default function Main(props: Props) {
 
   const {
     url,
+    text,
   } = props.button || {};
 
   const mainStyle = {
@@ -244,6 +246,13 @@ export default function Main(props: Props) {
     fontSize: props.paragraph?.fontSize || fontSize,
     fontWeight: props.paragraph?.fontWeight || fontWeight || "normal",
     url: props.button?.url || url,
+    text: props.button?.text || text,
+  };
+
+  const textBeforeButton = {
+    fontSize: props.paragraph?.fontSize || fontSize,
+    fontWeight: props.paragraph?.fontWeight || fontWeight || "normal",
+    color: backgroundColorRight || "#ffffff",
   };
 
   return (
@@ -253,7 +262,7 @@ export default function Main(props: Props) {
     >
       <style>{scrollbarStyle}</style>
       <div
-        class="col-auto flex flex-col justify-center gap-[10px] py-[10%] pl-[10%] pr-[20%]"
+        class="col-auto flex flex-col justify-center gap-[10px] py-[10%] pl-[10%] lg:pr-[20%] pr-[10%]"
         style={leftDivStyle}
       >
         <h1 style={titleStyle}>
@@ -264,10 +273,17 @@ export default function Main(props: Props) {
           {paragraph}
         </p>
         {props.button?.label && (
-          <div class="flex items-start w-full">
+          <div class="grid md:grid-cols-2 grid-cols-1 items-center w-full mt-[20px] gap-[20px]">
+            {props.button.text && (
+              <>
+                <p style={textBeforeButton}>
+                  {props.button.text}
+                </p>
+              </>
+            )}
             <a
-              href={`mailto:${props.button.url}`}
-              class="p-4 lg:w-[50%] w-full mt-[20px] text-center rounded-md"
+              href={`${props.button.url}`}
+              class="p-4 text-center rounded-md"
               style={linkStyle}
             >
               {props.button.label}
@@ -275,7 +291,7 @@ export default function Main(props: Props) {
           </div>
         )}
       </div>
-      <div class="col-auto flex lg:pt-[100px]" style={rightDivStyle}>
+      <div class="col-auto flex lg:pt-[100px] pb-[15%]" style={rightDivStyle}>
         <Window firstVideo={props.firstVideo} secondVideo={props.secondVideo} />
         <span style={curveStyle}></span>
       </div>
