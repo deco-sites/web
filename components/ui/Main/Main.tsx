@@ -125,9 +125,9 @@ export interface Props {
   title?: Text;
   /**
    * @description Flex direction of the title
-  */
- paragraph?: Paragraph;
- button?: Link;
+   */
+  paragraph?: Paragraph;
+  button?: Link;
   /**
    * @description First video
    */
