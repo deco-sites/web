@@ -248,12 +248,12 @@ export default function Main(props: Props) {
 
   return (
     <main
-      class="grid lg:grid-cols-2 grid-cols-1 w-full h-full md:h-screen items-center lg:p-0 md:pt-[50px] pt-[100px]"
+      class="grid lg:grid-cols-2 grid-cols-1 w-full h-full md:h-screen items-center lg:pt-[100px] md:pt-[50px] pt-[100px]"
       style={mainStyle}
     >
       <style>{scrollbarStyle}</style>
       <div
-        class="col-auto flex flex-col justify-center gap-[10px] p-[10%]"
+        class="col-auto flex flex-col justify-center gap-[10px] py-[10%] pl-[10%] pr-[20%]"
         style={leftDivStyle}
       >
         <h1 style={titleStyle}>
@@ -267,7 +267,7 @@ export default function Main(props: Props) {
           <div class="flex items-start w-full">
             <a
               href={`mailto:${props.button.url}`}
-              class="p-4 lg:w-[50%] w-full mt-[20px] text-center rounded-full"
+              class="p-4 lg:w-[50%] w-full mt-[20px] text-center rounded-md"
               style={linkStyle}
             >
               {props.button.label}
