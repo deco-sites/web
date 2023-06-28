@@ -84,14 +84,8 @@ export interface Text {
   textAlign?: "left" | "center" | "right" | "justify" | "initial" | "inherit";
 }
 
-export interface Props {
-  text?: Text;
-  /**
-   * @description Flex direction of the title
-   */
+export interface Main {
   alignItems?: "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
-  paragraphBlock?: Paragraph;
-  link?: Link;
   /**
    * @description Main color of the screen
    * @default #ffffff
@@ -124,6 +118,16 @@ export interface Props {
    * @description Height of the backgroundColorRight
    */
   backgroundRightHeight?: string;
+}
+
+export interface Props {
+  main?: Main;
+  title?: Text;
+  /**
+   * @description Flex direction of the title
+   */
+  paragraph?: Paragraph;
+  button?: Link;
   /**
    * @description First video
    */
@@ -143,7 +147,7 @@ export default function Main(props: Props) {
     backgroundColorLeft,
     alignItems,
     backgroundRightHeight,
-  } = props;
+  } = props.main || {};
 
   const {
     colorTitle,
@@ -153,7 +157,7 @@ export default function Main(props: Props) {
     fontSize: propsFontSize,
     fontWeight: propsFontWeight,
     textAlign: propsTextAlign,
-  } = props.text || {};
+  } = props.title || {};
 
   const {
     paragraph,
@@ -161,11 +165,11 @@ export default function Main(props: Props) {
     fontSize,
     fontWeight,
     textAlign,
-  } = props.paragraphBlock || {};
+  } = props.paragraph || {};
 
   const {
     url,
-  } = props.link || {};
+  } = props.button || {};
 
   const mainStyle = {
     backgroundColor: mainColor || "#ffffff",
@@ -218,28 +222,28 @@ export default function Main(props: Props) {
   }
 
   ::-webkit-scrollbar-track {
-    background-color: ${props.backgroundColorRight || "#a0a0a0"};
+    background-color: ${props.main?.backgroundColorRight || "#a0a0a0"};
   }
   
   ::-webkit-scrollbar-thumb {
-    background-color: ${props.backgroundColorLeft || "#ffffff"};
+    background-color: ${props.main?.backgroundColorLeft || "#ffffff"};
   }
 `;
 
   const paragraphyStyle = {
-    paragraph: props.paragraphBlock?.paragraph || "",
-    color: props.paragraphBlock?.color || color || "#000000",
-    fontSize: props.paragraphBlock?.fontSize || fontSize,
-    fontWeight: props.paragraphBlock?.fontWeight || fontWeight || "normal",
-    textAlign: props.paragraphBlock?.textAlign || textAlign || "left",
+    paragraph: props.paragraph?.paragraph || "",
+    color: props.paragraph?.color || color || "#000000",
+    fontSize: props.paragraph?.fontSize || fontSize,
+    fontWeight: props.paragraph?.fontWeight || fontWeight || "normal",
+    textAlign: props.paragraph?.textAlign || textAlign || "left",
   };
 
   const linkStyle = {
     backgroundColor: secondTitleColor || "#000000",
     color: "#000000",
-    fontSize: props.paragraphBlock?.fontSize || fontSize,
-    fontWeight: props.paragraphBlock?.fontWeight || fontWeight || "normal",
-    url: props.link?.url || url,
+    fontSize: props.paragraph?.fontSize || fontSize,
+    fontWeight: props.paragraph?.fontWeight || fontWeight || "normal",
+    url: props.button?.url || url,
   };
 
   return (
@@ -259,14 +263,14 @@ export default function Main(props: Props) {
         <p style={paragraphyStyle} class="mt-[10px]">
           {paragraph}
         </p>
-        {props.link?.label && (
+        {props.button?.label && (
           <div class="flex items-start w-full">
             <a
-              href={`mailto:${props.link.url}`}
+              href={`mailto:${props.button.url}`}
               class="p-4 lg:w-[50%] w-full mt-[20px] text-center rounded-full"
               style={linkStyle}
             >
-              {props.link.label}
+              {props.button.label}
             </a>
           </div>
         )}
