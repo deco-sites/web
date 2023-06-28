@@ -71,6 +71,7 @@
               "$live/handlers/router.ts",
               "$live/handlers/routesSelection.ts",
               "$live/handlers/workflowRunner.ts",
+              "deco-sites/std/handlers/vtex/sitemap.ts",
               "$live/pages/LivePage.tsx",
               "$live/sections/Conditional_Beta.tsx",
               "$live/sections/EmptySection.tsx",
@@ -7122,6 +7123,100 @@
       ],
       "title": "deco-sites/std/packs/vtex/loaders/wishlist.ts@Props"
     },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Main": {
+      "type": "object",
+      "properties": {
+        "alignItems": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "flex-start",
+              "default": "flex-start"
+            },
+            {
+              "type": "string",
+              "const": "flex-end",
+              "default": "flex-end"
+            },
+            {
+              "type": "string",
+              "const": "center",
+              "default": "center"
+            },
+            {
+              "type": "string",
+              "const": "baseline",
+              "default": "baseline"
+            },
+            {
+              "type": "string",
+              "const": "stretch",
+              "default": "stretch"
+            }
+          ],
+          "type": "string",
+          "title": "Align Items"
+        },
+        "mainColor": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Main color of the screen",
+          "default": "#ffffff",
+          "format": "color",
+          "title": "Main Color"
+        },
+        "borderLeftRadius": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Border radius of the screen",
+          "default": "0px",
+          "title": "Border Left Radius"
+        },
+        "borderRightRadius": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Border radius of the screen",
+          "default": "0px",
+          "title": "Border Right Radius"
+        },
+        "backgroundColorLeft": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "color",
+          "default": "#ffffff",
+          "description": "Color of the Background Right of the screen",
+          "title": "Background Color Left"
+        },
+        "backgroundColorRight": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "color",
+          "default": "#a0a0a0",
+          "description": "Color of the Background Left of the screen",
+          "title": "Background Color Right"
+        },
+        "backgroundRightHeight": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Height of the backgroundColorRight",
+          "title": "Background Right Height"
+        }
+      },
+      "required": [],
+      "title": "Main"
+    },
     "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Text": {
       "type": "object",
       "properties": {
@@ -7487,105 +7582,22 @@
     "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Props": {
       "type": "object",
       "properties": {
-        "text": {
+        "main": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Main",
+          "title": "Main"
+        },
+        "title": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Text",
-          "title": "Text"
+          "title": "Title"
         },
-        "alignItems": {
-          "anyOf": [
-            {
-              "type": "string",
-              "const": "flex-start",
-              "default": "flex-start"
-            },
-            {
-              "type": "string",
-              "const": "flex-end",
-              "default": "flex-end"
-            },
-            {
-              "type": "string",
-              "const": "center",
-              "default": "center"
-            },
-            {
-              "type": "string",
-              "const": "baseline",
-              "default": "baseline"
-            },
-            {
-              "type": "string",
-              "const": "stretch",
-              "default": "stretch"
-            }
-          ],
-          "type": "string",
-          "description": "Flex direction of the title",
-          "title": "Align Items"
-        },
-        "paragraphBlock": {
+        "paragraph": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Paragraph",
-          "title": "Paragraph Block"
+          "description": "Flex direction of the title",
+          "title": "Paragraph"
         },
-        "link": {
+        "button": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Link",
-          "title": "Link"
-        },
-        "mainColor": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "description": "Main color of the screen",
-          "default": "#ffffff",
-          "format": "color",
-          "title": "Main Color"
-        },
-        "borderLeftRadius": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "description": "Border radius of the screen",
-          "default": "0px",
-          "title": "Border Left Radius"
-        },
-        "borderRightRadius": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "description": "Border radius of the screen",
-          "default": "0px",
-          "title": "Border Right Radius"
-        },
-        "backgroundColorLeft": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "default": "#ffffff",
-          "description": "Color of the Background Right of the screen",
-          "title": "Background Color Left"
-        },
-        "backgroundColorRight": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "default": "#a0a0a0",
-          "description": "Color of the Background Left of the screen",
-          "title": "Background Color Right"
-        },
-        "backgroundRightHeight": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "description": "Height of the backgroundColorRight",
-          "title": "Background Right Height"
+          "title": "Button"
         },
         "firstVideo": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video",
@@ -7779,17 +7791,9 @@
       },
       "title": "Link[]"
     },
-    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL05hdi50c3g=@Props": {
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL05hdi50c3g=@Nav": {
       "type": "object",
       "properties": {
-        "logo": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
-          "title": "Logo"
-        },
-        "links": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL05hdi50c3g=@Link[]",
-          "title": "Links"
-        },
         "gap": {
           "type": [
             "string",
@@ -7857,32 +7861,6 @@
           "format": "color",
           "description": "Background of the button open/close menu",
           "title": "Background Button"
-        },
-        "borderTop": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "description": "Border Top of the nav",
-          "title": "Border Top"
-        },
-        "borderBottom": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "description": "Border Bottom of the nav",
-          "title": "Border Bottom"
-        },
-        "borderColor": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "default": "#000000",
-          "description": "Color of the border",
-          "title": "Border Color"
         },
         "padding": {
           "type": [
@@ -8026,9 +8004,29 @@
         }
       },
       "required": [
-        "logo",
         "iconOpenButton",
         "iconCloseButton"
+      ],
+      "title": "Nav"
+    },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL05hdi50c3g=@Props": {
+      "type": "object",
+      "properties": {
+        "logo": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "title": "Logo"
+        },
+        "links": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL05hdi50c3g=@Link[]",
+          "title": "Links"
+        },
+        "nav": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL05hdi50c3g=@Nav",
+          "title": "Nav"
+        }
+      },
+      "required": [
+        "logo"
       ],
       "title": "deco-sites/web/components/ui/Main/Nav.tsx@Props"
     },
@@ -9334,7 +9332,7 @@
       ],
       "title": "deco-cx/live/actions/workflows/cancel.ts@Props"
     },
-    "ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@63e0dc8518b7b95dcee9d0a023130ccd&Metadata": {
+    "ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@Metadata&d53c654012b1a9c30560229e428269fa": {
       "allOf": [
         {
           "type": "object",
@@ -9352,9 +9350,9 @@
           "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@Metadata"
         }
       ],
-      "title": "63e0dc8518b7b95dcee9d0a023130ccd&Metadata"
+      "title": "Metadata&d53c654012b1a9c30560229e428269fa"
     },
-    "ZGVjby1jeC9kdXJhYmxlL2hhbmRsZXIudHM=@RunRequest+Arg+63e0dc8518b7b95dcee9d0a023130ccd&Metadata": {
+    "ZGVjby1jeC9kdXJhYmxlL2hhbmRsZXIudHM=@RunRequest+Arg+Metadata&d53c654012b1a9c30560229e428269fa": {
       "type": "object",
       "properties": {
         "results": {
@@ -9365,7 +9363,7 @@
           "title": "Execution Id"
         },
         "metadata": {
-          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@63e0dc8518b7b95dcee9d0a023130ccd&Metadata",
+          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@Metadata&d53c654012b1a9c30560229e428269fa",
           "title": "Metadata"
         }
       },
@@ -9374,7 +9372,7 @@
         "executionId",
         "metadata"
       ],
-      "title": "deco-cx/durable/handler.ts@RunRequest+Arg+63e0dc8518b7b95dcee9d0a023130ccd&Metadata"
+      "title": "deco-cx/durable/handler.ts@RunRequest+Arg+Metadata&d53c654012b1a9c30560229e428269fa"
     },
     "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3NpZ25hbC50cw==@Props": {
       "type": "object",
@@ -11142,6 +11140,22 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9zdGQvaGFuZGxlcnMvdnRleC9zaXRlbWFwLnRz": {
+      "title": "Sitemap Proxy",
+      "type": "object",
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/handlers/vtex/sitemap.ts"
+          ],
+          "default": "deco-sites/std/handlers/vtex/sitemap.ts"
+        }
+      }
+    },
     "JGxpdmUvcGFnZXMvTGl2ZVBhZ2UudHN4": {
       "title": "$live/pages/LivePage.tsx",
       "type": "object",
@@ -11878,7 +11892,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2hhbmRsZXIudHM=@RunRequest+Arg+63e0dc8518b7b95dcee9d0a023130ccd&Metadata"
+          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2hhbmRsZXIudHM=@RunRequest+Arg+Metadata&d53c654012b1a9c30560229e428269fa"
         }
       ],
       "required": [
@@ -12495,6 +12509,9 @@
         },
         {
           "$ref": "#/definitions/JGxpdmUvaGFuZGxlcnMvd29ya2Zsb3dSdW5uZXIudHM="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvaGFuZGxlcnMvdnRleC9zaXRlbWFwLnRz"
         }
       ]
     },

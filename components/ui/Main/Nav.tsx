@@ -42,9 +42,7 @@ export interface Link {
   url: string;
 }
 
-export interface Props {
-  logo: LiveImage;
-  links?: Link[];
+export interface Nav {
   gap?: string;
   /**
    * @description Main color of the screen
@@ -70,20 +68,6 @@ export interface Props {
    * @description Background of the button open/close menu
    */
   backgroundButton?: string;
-  /**
-   * @description Border Top of the nav
-   */
-  borderTop?: string;
-  /**
-   * @description Border Bottom of the nav
-   */
-  borderBottom?: string;
-  /**
-   * @format color
-   * @default #000000
-   * @description Color of the border
-   */
-  borderColor?: string;
   /**
    * @description Padding of the Nav Mobile
    */
@@ -122,6 +106,12 @@ export interface Props {
     | "inherit";
 }
 
+export interface Props {
+  logo: LiveImage;
+  links?: Link[];
+  nav?: Nav;
+}
+
 export default function Nav(props: Props) {
   const [links] = useState<Link[]>(
     Array.isArray(props.links) ? props.links : [],
@@ -145,9 +135,6 @@ export default function Nav(props: Props) {
     navColor,
     boxShadowColor,
     backgroundButton,
-    borderTop,
-    borderBottom,
-    borderColor,
     padding,
     paddingLeft,
     paddingRight,
@@ -156,12 +143,12 @@ export default function Nav(props: Props) {
     justifyContentRight,
     navHeight,
     navPosition,
-  } = props;
+  } = props.nav || {};
 
   const linkElements = links.map((link) => (
     <li>
       <a
-        href={link.url}
+        href={link?.url}
         class="whitespace-nowrap"
         style={{
           color: link.color || "#000000",
@@ -185,11 +172,7 @@ export default function Nav(props: Props) {
   const navItemsMobileStyle = {
     backgroundColor: navColor || "#ffffff",
     alignItems: alignItems || "center",
-    borderTop: borderTop || "none",
-    borderBottom: borderBottom || "none",
-    borderColor: borderColor || "transparent",
     padding: padding || "0px",
-    transform: "translateY(0%)",
   };
 
   const buttonStyle = {
@@ -205,7 +188,7 @@ export default function Nav(props: Props) {
   const rightDivStyle = {
     padding: paddingRight || "0px",
     height: navHeight,
-    gap: props.gap || "0px",
+    gap: props.nav?.gap || "0px",
     justifyContent: justifyContentRight || "flex-start",
   };
 
@@ -215,17 +198,17 @@ export default function Nav(props: Props) {
 
   return (
     <nav
-      class="grid grid-cols-2 absolute w-full items-center relative z-10"
+      class="flex justify-between w-full items-center relative z-10"
       style={navItemsStyle}
     >
       <div
         class={`col-span-1 flex`}
         style={leftDivStyle}
       >
-        <a href={links[0].url}>
+        <a href={links[0]?.url}>
           <figure>
             <Image
-              src={props.logo}
+              src={props.logo ?? ""}
               alt="Logo"
               class="min-w-[100px] h-[50px]"
               width={100}
@@ -236,13 +219,13 @@ export default function Nav(props: Props) {
       </div>
 
       {menuOpen && (
-        <div class="fixed inset-0 z-10 bg-opacity-75 backdrop-filter backdrop-blur">
+        <div class="fixed inset-0 z-10 bg-opacity-75 backdrop-filter backdrop-blur md:left-[85%]">
           <div
-            class="fixed inset-x-0 top-0 max-h-screen overflow-auto transition-transform duration-300"
+            class="fixed inset-x-0 top-0 max-h-screen overflow-auto transition-transform duration-300 md:w-[100%] md:h-full"
             style={navItemsMobileStyle}
           >
             <ul
-              class={`col-span-1 flex md:flex-row flex-col h-full md:items-center`}
+              class={`col-span-1 flex flex-col h-full md:items-center`}
               style={rightDivStyle}
             >
               {linkElements}
@@ -260,7 +243,7 @@ export default function Nav(props: Props) {
           ? (
             <figure>
               <Image
-                src={props.iconCloseButton}
+                src={props.nav?.iconCloseButton ?? ""}
                 alt="icon close menu"
                 class="w-8 h-8"
                 width={32}
@@ -271,7 +254,7 @@ export default function Nav(props: Props) {
           : (
             <figure>
               <Image
-                src={props.iconOpenButton}
+                src={props.nav?.iconOpenButton ?? ""}
                 alt="icon open menu"
                 class="w-8 h-8"
                 width={32}
