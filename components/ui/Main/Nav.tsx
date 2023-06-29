@@ -149,7 +149,7 @@ export default function Nav(props: Props) {
     <li>
       <a
         href={link?.url}
-        class="whitespace-nowrap"
+        class="whitespace-nowrap relative group"
         style={{
           color: link.color || "#000000",
           fontSize: link.fontSize,
@@ -158,6 +158,8 @@ export default function Nav(props: Props) {
         }}
       >
         {link.label || ""}
+        <span className="absolute left-0 -bottom-1 w-full h-px bg-[#05FF00] -z-10 group-hover:h-full group-hover:transition-all">
+        </span>
       </a>
     </li>
   ));
@@ -217,11 +219,13 @@ export default function Nav(props: Props) {
           </figure>
         </a>
       </div>
-
-      {menuOpen && (
-        <div class="fixed inset-0 z-10 bg-opacity-75 backdrop-filter backdrop-blur md:left-[85%]">
+      <div
+         class={`fixed inset-0 z-10 bg-opacity-75 backdrop-filter backdrop-blur ${
+           menuOpen ? "md:left-[85%] left-0  transition-all duration-500 ease" : "left-[100%] transition-all duration-500 ease"
+         }`}
+       >
           <div
-            class="fixed inset-x-0 top-0 max-h-screen overflow-auto transition-transform duration-300 md:w-[100%] md:h-full"
+            class="fixed inset-x-0 top-0 max-h-screen overflow-auto md:w-[100%] md:h-full md:border-l-4 md:border-b-0 md:border-[#64EF7A] border-l-0 border-b-4 border-[#64EF7A]"
             style={navItemsMobileStyle}
           >
             <ul
@@ -232,7 +236,6 @@ export default function Nav(props: Props) {
             </ul>
           </div>
         </div>
-      )}
       <button
         class="absolute top-0 right-0 h-full p-2 flex items-center z-20"
         style={buttonStyle}
