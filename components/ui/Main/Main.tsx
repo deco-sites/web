@@ -205,18 +205,18 @@ export default function Main(props: Props) {
       linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 1px, transparent 1px)
     `,
     backgroundSize: "30px 30px",
-    position: "relative",
   };
 
-  const curveStyle = {
-    position: "absolute",
-    top: "0",
-    left: "0",
-    width: "100%",
-    height: "100%",
-    background:
-      "radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.5) 10%, transparent 40%)",
-  };
+  // const curveStyle = {
+  //   position: "absolute",
+  //   top: "0",
+  //   left: "0",
+  //   width: "100%",
+  //   height: "100%",
+  //   // borderRadius: "500px 0px 500px",
+  //   background:
+  //     "radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.5) 10%, transparent 40%)",
+  // };
 
   const scrollbarStyle = `
   ::-webkit-scrollbar {
@@ -254,46 +254,51 @@ export default function Main(props: Props) {
     fontWeight: props.paragraph?.fontWeight || fontWeight || "normal",
     color: backgroundColorRight || "#ffffff",
   };
-
+ 
   return (
     <main
-      class="grid lg:grid-cols-2 grid-cols-1 w-full h-full md:h-screen items-center lg:pt-[100px] md:pt-[50px] pt-[100px]"
+      class="w-full lg:h-screen items-center lg:pt-[100px] md:pt-[50px] pt-[100px]"
       style={mainStyle}
     >
-      <style>{scrollbarStyle}</style>
-      <div
-        class="col-auto flex flex-col justify-center gap-[10px] md:pb-0 py-[10%] pl-[10%] lg:pr-[20%] pr-[10%] md:bottom-[100px] relative"
-        style={leftDivStyle}
-      >
-        <h1 style={titleStyle}>
-          {title}
-          {secondTitle && <span style={spanTitleStyle}>{secondTitle}</span>}
-        </h1>
-        <p style={paragraphyStyle} class="mt-[10px]">
-          {paragraph}
-        </p>
-        {props.button?.label && (
-          <div class="grid md:grid-cols-2 grid-cols-1 items-center w-full mt-[20px] gap-[20px]">
-            {props.button.text && (
-              <>
-                <p style={textBeforeButton}>
-                  {props.button.text}
-                </p>
-              </>
-            )}
-            <a
-              href={`${props.button.url}`}
-              class="p-4 text-center rounded-md"
-              style={linkStyle}
-            >
-              {props.button.label}
-            </a>
-          </div>
-        )}
-      </div>
-      <div class="col-auto flex pb-[10%]" style={rightDivStyle}>
-        <Window firstVideo={props.firstVideo} secondVideo={props.secondVideo} />
-        <span style={curveStyle}></span>
+      <div class="grid lg:grid-cols-2 grid-cols-1 gap-[20px] max-w-[1440px] mx-auto">
+        <style>{scrollbarStyle}</style>
+        <div
+          class="col-auto flex flex-col justify-center gap-[10px] lg:pb-0 lg:pt-0 py-[10%] relative md:px-[80px] px-[40px]"
+          style={leftDivStyle}
+        >
+          <h1 style={titleStyle}>
+            {title}
+            {secondTitle && <span style={spanTitleStyle}>{secondTitle}</span>}
+          </h1>
+          <p style={paragraphyStyle} class="mt-[10px] leading-[22px]">
+            {paragraph}
+          </p>
+          {props.button?.label && (
+            <div class="grid md:grid-cols-2 grid-cols-1 items-center w-full mt-[20px] gap-[20px]">
+              {props.button.text && (
+                <>
+                  <p style={textBeforeButton}>
+                    {props.button.text}
+                  </p>
+                </>
+              )}
+              <a
+                href={`${props.button.url}`}
+                class="p-4 text-center rounded-md"
+                style={linkStyle}
+              >
+                {props.button.label}
+              </a>
+            </div>
+          )}
+        </div>
+        <div class="col-auto flex relative" style={rightDivStyle}>
+          <Window
+            firstVideo={props.firstVideo}
+            secondVideo={props.secondVideo}
+          />
+          {/* <span style={curveStyle}></span> */}
+        </div>
       </div>
     </main>
   );
