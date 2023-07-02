@@ -1,4 +1,4 @@
-import { FunctionalComponent, h } from "preact";
+import { FunctionalComponent } from "preact";
 import type { Video as LiveImage } from "deco-sites/std/components/types.ts";
 
 interface WindowProps {
