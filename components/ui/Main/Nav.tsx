@@ -120,13 +120,24 @@ export default function Nav(props: Props) {
 
   useEffect(() => {
     const body = document.body;
-    if (menuOpen) {
-      body.style.overflow = "hidden";
-    } else {
-      body.style.overflow = "";
-    }
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        if (menuOpen) {
+          body.style.overflow = "hidden";
+        } else {
+          body.style.overflow = "";
+        }
+      } else {
+        body.style.overflow = "";
+      }
+    };
+
+    handleResize();
+
+    addEventListener("resize", handleResize);
 
     return () => {
+      removeEventListener("resize", handleResize);
       body.style.overflow = "";
     };
   }, [menuOpen]);
@@ -220,22 +231,24 @@ export default function Nav(props: Props) {
         </a>
       </div>
       <div
-         class={`fixed inset-0 z-10 bg-opacity-75 backdrop-filter backdrop-blur ${
-           menuOpen ? "md:left-[85%] left-0  transition-all duration-500 ease" : "left-[100%] transition-all duration-500 ease"
-         }`}
-       >
-          <div
-            class="fixed inset-x-0 top-0 max-h-screen overflow-auto md:w-[100%] md:h-full md:border-l-4 md:border-b-0 md:border-[#64EF7A] border-l-0 border-b-4 border-[#64EF7A]"
-            style={navItemsMobileStyle}
+        class={`fixed inset-0 z-10 bg-opacity-75 backdrop-filter backdrop-blur ${
+          menuOpen
+            ? "md:left-[85%] left-0  transition-all duration-500 ease"
+            : "left-[100%] transition-all duration-500 ease"
+        }`}
+      >
+        <div
+          class="fixed inset-x-0 top-0 max-h-screen overflow-auto md:w-[100%] md:h-full md:border-l-4 md:border-b-0 md:border-[#64EF7A] border-l-0 border-b-4 border-[#64EF7A]"
+          style={navItemsMobileStyle}
+        >
+          <ul
+            class={`col-span-1 flex flex-col h-full md:items-center`}
+            style={rightDivStyle}
           >
-            <ul
-              class={`col-span-1 flex flex-col h-full md:items-center`}
-              style={rightDivStyle}
-            >
-              {linkElements}
-            </ul>
-          </div>
+            {linkElements}
+          </ul>
         </div>
+      </div>
       <button
         class="absolute top-0 right-0 h-full p-2 flex items-center z-20"
         style={buttonStyle}
