@@ -254,10 +254,10 @@ export default function Main(props: Props) {
     fontWeight: props.paragraph?.fontWeight || fontWeight || "normal",
     color: backgroundColorRight || "#ffffff",
   };
- 
+
   return (
     <main
-      class="w-full lg:h-screen items-center lg:pt-[100px] md:pt-[50px] pt-[100px]"
+      class="w-full lg:min-h-[770px] items-center lg:pt-[100px] md:pt-[50px] pt-[100px]"
       style={mainStyle}
     >
       <div class="grid lg:grid-cols-2 grid-cols-1 gap-[20px] max-w-[1440px] mx-auto">
@@ -274,17 +274,17 @@ export default function Main(props: Props) {
             {paragraph}
           </p>
           {props.button?.label && (
-            <div class="grid md:grid-cols-2 grid-cols-1 items-center w-full mt-[20px] gap-[20px]">
+            <div class="grid md:grid-cols-2 grid-cols-1 items-center w-full mt-[20px] md:gap-[40px] gap-[20px]">
               {props.button.text && (
                 <>
-                  <p style={textBeforeButton}>
+                  <p style={textBeforeButton} class="leading-[22px]">
                     {props.button.text}
                   </p>
                 </>
               )}
               <a
                 href={`${props.button.url}`}
-                class="p-4 text-center rounded-md"
+                class="p-4 text-center lg:button-leaf rounded-md"
                 style={linkStyle}
               >
                 {props.button.label}
