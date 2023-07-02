@@ -20,6 +20,10 @@
     -moz-appearance: textfield;
     appearance: textfield;
   }
+
+  .button-leaf {
+    border-radius: 0 70px;
+  }
 }
 
 @layer components {
