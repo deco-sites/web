@@ -98,11 +98,11 @@ export interface Main {
    * @default 0px
    */
   borderLeftRadius?: string;
-  /**
-   * @description Border radius of the screen
-   * @default 0px
-   */
-  borderRightRadius?: string;
+  // /**
+  //  * @description Border radius of the screen
+  //  * @default 0px
+  //  */
+  // borderRightRadius?: string;
   /**
    * @format color
    * @default #ffffff
@@ -143,7 +143,7 @@ export default function Main(props: Props) {
   const {
     mainColor,
     borderLeftRadius,
-    borderRightRadius,
+    // borderRightRadius,
     backgroundColorRight,
     backgroundColorLeft,
     alignItems,
@@ -196,15 +196,15 @@ export default function Main(props: Props) {
   };
 
   const rightDivStyle = {
-    backgroundColor: backgroundColorRight,
+    // backgroundColor: backgroundColorRight,
     height: backgroundRightHeight,
     alignItems: alignItems || "flex-start",
-    borderRadius: borderRightRadius || "0",
-    backgroundImage: `
-      linear-gradient(to right, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 1px, transparent 1px)
-    `,
-    backgroundSize: "30px 30px",
+    // borderRadius: borderRightRadius || "0",
+    // backgroundImage: `
+    //   linear-gradient(to right, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+    //   linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 1px, transparent 1px)
+    // `,
+    // backgroundSize: "30px 30px",
   };
 
   const scrollbarStyle = `
@@ -273,10 +273,21 @@ export default function Main(props: Props) {
               )}
               <a
                 href={`${props.button.url}`}
-                class="p-4 text-center lg:button-leaf rounded-md"
+                class="relative p-4 text-center rounded-full"
                 style={linkStyle}
               >
-                {props.button.label}
+                <span>{props.button.label}</span>
+                <span
+                  class="absolute right-[10px] top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full"
+                  style={`background-color: ${backgroundColorLeft}`}
+                >
+                  <span
+                    class="flex items-center justify-center text-2xl text-bolder w-full h-full"
+                    style={`color: ${secondTitleColor}`}
+                  >
+                    ↗
+                  </span>
+                </span>
               </a>
             </div>
           )}
