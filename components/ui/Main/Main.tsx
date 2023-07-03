@@ -207,17 +207,6 @@ export default function Main(props: Props) {
     backgroundSize: "30px 30px",
   };
 
-  // const curveStyle = {
-  //   position: "absolute",
-  //   top: "0",
-  //   left: "0",
-  //   width: "100%",
-  //   height: "100%",
-  //   // borderRadius: "500px 0px 500px",
-  //   background:
-  //     "radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.5) 10%, transparent 40%)",
-  // };
-
   const scrollbarStyle = `
   ::-webkit-scrollbar {
     width: 12px;
@@ -297,7 +286,6 @@ export default function Main(props: Props) {
             firstVideo={props.firstVideo}
             secondVideo={props.secondVideo}
           />
-          {/* <span style={curveStyle}></span> */}
         </div>
       </div>
     </main>
