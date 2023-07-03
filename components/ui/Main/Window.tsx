@@ -9,9 +9,22 @@ interface WindowProps {
 const Window: FunctionalComponent<WindowProps> = (
   { firstVideo, secondVideo },
 ) => {
+
+  const curveStyle = {
+    position: "absolute",
+    top: "0",
+    left: "0",
+    width: "100%",
+    height: "100%",
+    background:
+      "radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.5) 10%, transparent 40%)",
+    borderRadius: "0.5rem",  
+  };
+
   return (
     <div class="flex flex-col items-center relative w-full px-[10%]">
       <div class="bg-white rounded-lg shadow-lg relative w-full max-w-[500px]">
+      <span style={curveStyle}></span> 
         <div class="flex items-center flex-row-reverse gap-[10px] mt-2 pb-2 px-4 border-b shadow-md">
           <span class="bg-red-500 w-3 h-3 rounded-full"></span>
           <span class="bg-yellow-500 w-3 h-3 rounded-full"></span>
@@ -30,11 +43,12 @@ const Window: FunctionalComponent<WindowProps> = (
             playsInline
             class="w-full h-full rounded-b-lg"
           >
-            Video não suportado!
+           Video not supported!
           </video>
         </div>
       </div>
       <div class="bg-white rounded-lg shadow-[3px_1px_19px_9px_#00000024] relative left-[3%] max-w-[500px] w-full">
+      <span style={curveStyle}></span> 
         <div class="flex items-center flex-row-reverse gap-[10px] mt-2 pb-2 px-4 border-b shadow-md">
           <span class="bg-red-500 w-3 h-3 rounded-full"></span>
           <span class="bg-yellow-500 w-3 h-3 rounded-full"></span>
@@ -53,7 +67,7 @@ const Window: FunctionalComponent<WindowProps> = (
             playsInline
             class="w-full h-full rounded-b-lg"
           >
-            Video não suportado!
+           Video not supported!
           </video>
         </div>
       </div>
