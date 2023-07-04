@@ -4,12 +4,6 @@ import { useEffect, useState } from "preact/hooks";
 
 export interface Link {
   /**
-   * @format color
-   * @default #000000
-   * @description Color of the link
-   */
-  color: string;
-  /**
    * @description Font size of the link in desktop view
    */
   fontSize?: string;
@@ -160,9 +154,8 @@ export default function Nav(props: Props) {
     <li>
       <a
         href={link?.url}
-        class="whitespace-nowrap relative group"
+        class="whitespace-nowrap relative group text-white hover:text-black"
         style={{
-          color: link.color || "#000000",
           fontSize: link.fontSize,
           fontWeight: link.fontWeight || "normal",
           textAlign: link.textAlign || "left",
@@ -211,7 +204,7 @@ export default function Nav(props: Props) {
 
   return (
     <nav
-      class="flex justify-between w-full items-center relative z-10"
+      class="flex justify-between w-full items-center relative z-10 border border-b-[3px] border-black"
       style={navItemsStyle}
     >
       <div
