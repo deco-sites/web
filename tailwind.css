@@ -42,4 +42,8 @@
   .scrollbar-none::-webkit-scrollbar {
     display: none;
   }
+
+  .shadow-custom {
+    box-shadow: inset 6px 6px 12px #000000, inset 6px -6px 12px #626262;
+  }
 }

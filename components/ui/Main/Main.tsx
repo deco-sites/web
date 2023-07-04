@@ -279,11 +279,11 @@ export default function Main(props: Props) {
               )}
               <a
                 href={`${props.button.url}`}
-                class="relative p-4 text-center rounded-full"
+                class="relative p-4 text-center rounded-full hover:shadow-custom"
                 style={linkStyle}
               >
                 <span>{props.button.label}</span>
-                <span class="absolute right-[10px] top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-[#25d366]">
+                <span class="absolute right-[10px] top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-[#00ff5e]">
                   <span
                     class="flex items-center justify-center text-2xl text-bolder w-full h-full"
                     style={`color: ${colorTitle}`}

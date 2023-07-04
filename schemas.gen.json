@@ -7844,13 +7844,6 @@
     "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL05hdi50c3g=@Link": {
       "type": "object",
       "properties": {
-        "color": {
-          "type": "string",
-          "format": "color",
-          "default": "#000000",
-          "description": "Color of the link",
-          "title": "Color"
-        },
         "fontSize": {
           "type": [
             "string",
@@ -7998,7 +7991,6 @@
         }
       },
       "required": [
-        "color",
         "label",
         "url"
       ],
@@ -9616,7 +9608,7 @@
       ],
       "title": "deco-cx/live/actions/workflows/cancel.ts@Props"
     },
-    "ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@507352d4562990dd46b22ffc3dafea4f&Metadata": {
+    "ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@05a2cc66449ee3cc43ad1783938e3940&Metadata": {
       "allOf": [
         {
           "type": "object",
@@ -9634,9 +9626,9 @@
           "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@Metadata"
         }
       ],
-      "title": "507352d4562990dd46b22ffc3dafea4f&Metadata"
+      "title": "05a2cc66449ee3cc43ad1783938e3940&Metadata"
     },
-    "ZGVjby1jeC9kdXJhYmxlL2hhbmRsZXIudHM=@RunRequest+Arg+507352d4562990dd46b22ffc3dafea4f&Metadata": {
+    "ZGVjby1jeC9kdXJhYmxlL2hhbmRsZXIudHM=@RunRequest+Arg+05a2cc66449ee3cc43ad1783938e3940&Metadata": {
       "type": "object",
       "properties": {
         "results": {
@@ -9647,7 +9639,7 @@
           "title": "Execution Id"
         },
         "metadata": {
-          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@507352d4562990dd46b22ffc3dafea4f&Metadata",
+          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@05a2cc66449ee3cc43ad1783938e3940&Metadata",
           "title": "Metadata"
         }
       },
@@ -9656,7 +9648,7 @@
         "executionId",
         "metadata"
       ],
-      "title": "deco-cx/durable/handler.ts@RunRequest+Arg+507352d4562990dd46b22ffc3dafea4f&Metadata"
+      "title": "deco-cx/durable/handler.ts@RunRequest+Arg+05a2cc66449ee3cc43ad1783938e3940&Metadata"
     },
     "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3NpZ25hbC50cw==@Props": {
       "type": "object",
@@ -12308,7 +12300,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2hhbmRsZXIudHM=@RunRequest+Arg+507352d4562990dd46b22ffc3dafea4f&Metadata"
+          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2hhbmRsZXIudHM=@RunRequest+Arg+05a2cc66449ee3cc43ad1783938e3940&Metadata"
         }
       ],
       "required": [
