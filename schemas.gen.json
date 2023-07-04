@@ -7408,7 +7408,7 @@
           "description": "Color of the Background Right of the screen",
           "title": "Background Color Left"
         },
-        "backgroundColorRight": {
+        "textColorBeforeButton": {
           "type": [
             "string",
             "null"
@@ -7416,14 +7416,14 @@
           "format": "color",
           "default": "#a0a0a0",
           "description": "Color of the Background Left of the screen",
-          "title": "Background Color Right"
+          "title": "Text Color Before Button"
         },
         "backgroundRightHeight": {
           "type": [
             "string",
             "null"
           ],
-          "description": "Height of the backgroundColorRight",
+          "description": "Height of the textColorBeforeButton",
           "title": "Background Right Height"
         }
       },
