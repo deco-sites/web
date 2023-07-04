@@ -114,9 +114,9 @@ export interface Main {
    * @default #a0a0a0
    * @description Color of the Background Left of the screen
    */
-  backgroundColorRight?: string;
+  textColorBeforeButton?: string;
   /**
-   * @description Height of the backgroundColorRight
+   * @description Height of the textColorBeforeButton
    */
   backgroundRightHeight?: string;
 }
@@ -144,7 +144,7 @@ export default function Main(props: Props) {
     mainColor,
     borderLeftRadius,
     // borderRightRadius,
-    backgroundColorRight,
+    textColorBeforeButton,
     backgroundColorLeft,
     alignItems,
     backgroundRightHeight,
@@ -196,7 +196,7 @@ export default function Main(props: Props) {
   };
 
   const rightDivStyle = {
-    // backgroundColor: backgroundColorRight,
+    // backgroundColor: textColorBeforeButton,
     height: backgroundRightHeight,
     alignItems: alignItems || "flex-start",
     // borderRadius: borderRightRadius || "0",
@@ -208,16 +208,22 @@ export default function Main(props: Props) {
   };
 
   const scrollbarStyle = `
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: ${props.title?.colorTitle || "#ffffff"} ${
+    props.main?.backgroundColorLeft || "#a0a0a0"
+  };
+  }
   ::-webkit-scrollbar {
     width: 12px;
   }
 
   ::-webkit-scrollbar-track {
-    background-color: ${props.main?.backgroundColorRight || "#a0a0a0"};
+    background-color: ${props.main?.backgroundColorLeft || "#a0a0a0"};
   }
   
   ::-webkit-scrollbar-thumb {
-    background-color: ${props.main?.backgroundColorLeft || "#ffffff"};
+    background-color: ${props.title?.colorTitle || "#ffffff"};
   }
 `;
 
@@ -230,8 +236,8 @@ export default function Main(props: Props) {
   };
 
   const linkStyle = {
-    backgroundColor: secondTitleColor || "#000000",
-    color: "#000000",
+    backgroundColor: colorTitle || "#000000",
+    color: "#ffffff",
     fontSize: props.paragraph?.fontSize || fontSize,
     fontWeight: props.paragraph?.fontWeight || fontWeight || "normal",
     url: props.button?.url || url,
@@ -241,7 +247,7 @@ export default function Main(props: Props) {
   const textBeforeButton = {
     fontSize: props.paragraph?.fontSize || fontSize,
     fontWeight: props.paragraph?.fontWeight || fontWeight || "normal",
-    color: backgroundColorRight || "#ffffff",
+    color: textColorBeforeButton || "#ffffff",
   };
 
   return (
@@ -252,7 +258,7 @@ export default function Main(props: Props) {
       <div class="grid lg:grid-cols-2 grid-cols-1 gap-[20px] max-w-[1440px] mx-auto">
         <style>{scrollbarStyle}</style>
         <div
-          class="col-auto flex flex-col justify-center gap-[10px] lg:pb-0 lg:pt-0 py-[10%] relative md:px-[80px] px-[40px]"
+          class="col-auto flex flex-col justify-center gap-[10px] lg:pb-0 lg:pt-0 pt-[10%] pb-[5%] relative md:px-[80px] px-[35px]"
           style={leftDivStyle}
         >
           <h1 style={titleStyle}>
@@ -263,7 +269,7 @@ export default function Main(props: Props) {
             {paragraph}
           </p>
           {props.button?.label && (
-            <div class="grid md:grid-cols-2 grid-cols-1 items-center w-full mt-[20px] md:gap-[40px] gap-[20px]">
+            <div class="grid md:grid-cols-2 grid-cols-1 items-center w-full mt-[20px] md:gap-[40px] gap-[30px]">
               {props.button.text && (
                 <>
                   <p style={textBeforeButton} class="leading-[22px]">
@@ -277,13 +283,10 @@ export default function Main(props: Props) {
                 style={linkStyle}
               >
                 <span>{props.button.label}</span>
-                <span
-                  class="absolute right-[10px] top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full"
-                  style={`background-color: ${backgroundColorLeft}`}
-                >
+                <span class="absolute right-[10px] top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-[#25d366]">
                   <span
                     class="flex items-center justify-center text-2xl text-bolder w-full h-full"
-                    style={`color: ${secondTitleColor}`}
+                    style={`color: ${colorTitle}`}
                   >
                     ↗
                   </span>
