@@ -25,7 +25,7 @@ export default function Gallery(props: Props) {
                 autoPlay
                 muted
                 loop
-                preload="auto"
+                preload="metadata"
                 webkit-playsinline
                 x5-playsinline
                 playsInline
