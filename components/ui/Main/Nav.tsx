@@ -204,7 +204,7 @@ export default function Nav(props: Props) {
 
   return (
     <nav
-      class="flex justify-between w-full items-center relative z-10 border border-b-[3px] border-black"
+      class="flex justify-between w-full items-center relative z-10 border border-x-0 border-t-0 border-b-[3px] border-black"
       style={navItemsStyle}
     >
       <div
