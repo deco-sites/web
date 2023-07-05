@@ -219,7 +219,7 @@ export default function Main(props: Props) {
   }
 
   ::-webkit-scrollbar-track {
-    background-color: ${props.main?.backgroundColorLeft || "#a0a0a0"};
+    background-color: #00ff5e;
   }
   
   ::-webkit-scrollbar-thumb {
@@ -252,7 +252,7 @@ export default function Main(props: Props) {
 
   return (
     <main
-      class="w-full lg:min-h-[770px] items-center lg:pt-[100px] md:pt-[50px] pt-[100px]"
+      class="w-full lg:min-h-[770px] lg:pt-[100px] md:pt-[50px] lg:pb-0 pb-[100px] relative top-[50px]"
       style={mainStyle}
     >
       <div class="grid lg:grid-cols-2 grid-cols-1 gap-[20px] max-w-[1440px] mx-auto">
