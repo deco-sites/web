@@ -6,8 +6,9 @@ import { DecoManifest } from "$live/types.ts";
 import * as $0 from "./functions/LoadGitHubRaw.ts";
 import * as $$$$0 from "./routes/styles.css.ts";
 import * as $$$$1 from "./routes/_app.tsx";
-import * as $$$$$0 from "./islands/Main.tsx";
-import * as $$$$$1 from "./islands/Nav.tsx";
+import * as $$$$$0 from "./islands/Gallery.tsx";
+import * as $$$$$1 from "./islands/Main.tsx";
+import * as $$$$$2 from "./islands/Nav.tsx";
 import * as $$$$$$$$0 from "./sections/DesignSystem.tsx";
 import * as $$$$$$$$1 from "./sections/Gallery.tsx";
 import * as $$$$$$$$2 from "./sections/Head.tsx";
@@ -186,8 +187,9 @@ const manifest = {
     "./routes/styles.css.ts": $$$$0,
   },
   "islands": {
-    "./islands/Main.tsx": $$$$$0,
-    "./islands/Nav.tsx": $$$$$1,
+    "./islands/Gallery.tsx": $$$$$0,
+    "./islands/Main.tsx": $$$$$1,
+    "./islands/Nav.tsx": $$$$$2,
   },
   "sections": {
     "$live/sections/Conditional_Beta.tsx": i2$$$$$0,
