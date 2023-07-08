@@ -10,11 +10,13 @@ import * as $$$$$0 from "./islands/Gallery.tsx";
 import * as $$$$$1 from "./islands/Main.tsx";
 import * as $$$$$2 from "./islands/Nav.tsx";
 import * as $$$$$$$$0 from "./sections/DesignSystem.tsx";
-import * as $$$$$$$$1 from "./sections/Gallery.tsx";
-import * as $$$$$$$$2 from "./sections/Head.tsx";
-import * as $$$$$$$$3 from "./sections/Home.tsx";
-import * as $$$$$$$$4 from "./sections/Main.tsx";
-import * as $$$$$$$$5 from "./sections/Nav.tsx";
+import * as $$$$$$$$1 from "./sections/Footer.tsx";
+import * as $$$$$$$$2 from "./sections/Gallery.tsx";
+import * as $$$$$$$$3 from "./sections/Generic.tsx";
+import * as $$$$$$$$4 from "./sections/Head.tsx";
+import * as $$$$$$$$5 from "./sections/Home.tsx";
+import * as $$$$$$$$6 from "./sections/Main.tsx";
+import * as $$$$$$$$7 from "./sections/Nav.tsx";
 import * as $live_workflows from "$live/routes/live/workflows/run.ts";
 import * as $live_middleware from "$live/routes/_middleware.ts";
 import * as $live_workbench from "$live/routes/live/workbench.ts";
@@ -210,11 +212,13 @@ const manifest = {
     "deco-sites/std/sections/SEOPLP.tsx": i2$$$$$14,
     "deco-sites/std/sections/VTEXPortalDataLayerCompatibility.tsx": i2$$$$$15,
     "deco-sites/web/sections/DesignSystem.tsx": $$$$$$$$0,
-    "deco-sites/web/sections/Gallery.tsx": $$$$$$$$1,
-    "deco-sites/web/sections/Head.tsx": $$$$$$$$2,
-    "deco-sites/web/sections/Home.tsx": $$$$$$$$3,
-    "deco-sites/web/sections/Main.tsx": $$$$$$$$4,
-    "deco-sites/web/sections/Nav.tsx": $$$$$$$$5,
+    "deco-sites/web/sections/Footer.tsx": $$$$$$$$1,
+    "deco-sites/web/sections/Gallery.tsx": $$$$$$$$2,
+    "deco-sites/web/sections/Generic.tsx": $$$$$$$$3,
+    "deco-sites/web/sections/Head.tsx": $$$$$$$$4,
+    "deco-sites/web/sections/Home.tsx": $$$$$$$$5,
+    "deco-sites/web/sections/Main.tsx": $$$$$$$$6,
+    "deco-sites/web/sections/Nav.tsx": $$$$$$$$7,
   },
   "loaders": {
     "$live/loaders/state.ts": i2$$$0,

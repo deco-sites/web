@@ -252,7 +252,7 @@ export default function Main(props: Props) {
 
   return (
     <main
-      class="w-full lg:min-h-[770px] lg:pt-[100px] md:pt-[50px] lg:pb-0 pb-[100px] relative top-[50px]"
+      class="w-full lg:min-h-[770px] lg:pt-[100px] md:pt-[50px] lg:pb-0 pb-[40px] relative top-[50px]"
       style={mainStyle}
     >
       <div class="grid lg:grid-cols-2 grid-cols-1 gap-[20px] max-w-[1440px] mx-auto">
