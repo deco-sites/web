@@ -95,7 +95,9 @@
               "deco-sites/std/sections/SEOPLP.tsx",
               "deco-sites/std/sections/VTEXPortalDataLayerCompatibility.tsx",
               "deco-sites/web/sections/DesignSystem.tsx",
+              "deco-sites/web/sections/Footer.tsx",
               "deco-sites/web/sections/Gallery.tsx",
+              "deco-sites/web/sections/Generic.tsx",
               "deco-sites/web/sections/Head.tsx",
               "deco-sites/web/sections/Home.tsx",
               "deco-sites/web/sections/Main.tsx",
@@ -9505,6 +9507,34 @@
       "required": [],
       "title": "deco-sites/web/sections/DesignSystem.tsx@Props"
     },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9Gb290ZXIvRm9vdGVyLnRzeA==@Props": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Text"
+        }
+      },
+      "required": [],
+      "title": "deco-sites/web/components/ui/Footer/Footer.tsx@Props"
+    },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dlbmVyaWMudHN4@Props": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Text"
+        }
+      },
+      "required": [],
+      "title": "deco-sites/web/components/ui/Main/Generic.tsx@Props"
+    },
     "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvSGVhZC50c3g=@Props": {
       "type": "object",
       "properties": {
@@ -12145,6 +12175,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvRm9vdGVyLnRzeA==": {
+      "title": "deco-sites/web/sections/Footer.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9Gb290ZXIvRm9vdGVyLnRzeA==@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/web/sections/Footer.tsx"
+          ],
+          "default": "deco-sites/web/sections/Footer.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvR2FsbGVyeS50c3g=": {
       "title": "deco-sites/web/sections/Gallery.tsx",
       "type": "object",
@@ -12163,6 +12214,27 @@
             "deco-sites/web/sections/Gallery.tsx"
           ],
           "default": "deco-sites/web/sections/Gallery.tsx"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvR2VuZXJpYy50c3g=": {
+      "title": "deco-sites/web/sections/Generic.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dlbmVyaWMudHN4@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/web/sections/Generic.tsx"
+          ],
+          "default": "deco-sites/web/sections/Generic.tsx"
         }
       }
     },
@@ -13256,7 +13328,13 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvRGVzaWduU3lzdGVtLnRzeA=="
         },
         {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvRm9vdGVyLnRzeA=="
+        },
+        {
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvR2FsbGVyeS50c3g="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvR2VuZXJpYy50c3g="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvSGVhZC50c3g="
