@@ -105,9 +105,9 @@ export default function Gallery(props: Props) {
           {slides.map((slide, index) => (
             <div
               key={`${slide.id}-${index}`}
-              class="w-full flex-shrink-0"
-            >
-              <div class="max-w-[1440px] mx-auto w-full py-[100px] rounded-md glassmorphism">
+              class="w-full flex-shrink-0 flex items-stretch">
+            
+              <div class="max-w-[1440px] mx-auto w-full md:py-[80px] py-[40px] rounded-md glassmorphism">
                 <div class="flex md:flex-row flex-col md:justify-between justify-center items-center md:px-[80px] px-[35px] gap-[20px]">
                   <div class="lg:w-[30%] md:w-[50%] w-full flex md:justify-start justify-center">
                     <div class="aspect-w-16 aspect-h-9 overflow-hidden max-w-[300px] h-full relative rounded-[13px] shadow-[3px_1px_19px_9px_#00000024]">
