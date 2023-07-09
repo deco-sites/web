@@ -66,7 +66,6 @@
               "deco-sites/std/loaders/vtex/proxy.ts",
               "deco-sites/std/loaders/vtex/user.ts",
               "deco-sites/std/loaders/vtex/wishlist.ts",
-              "./islands/Gallery.tsx",
               "./islands/Main.tsx",
               "./islands/Nav.tsx",
               "$live/handlers/devPage.ts",
@@ -7348,259 +7347,6 @@
       ],
       "title": "deco-sites/std/packs/vtex/loaders/wishlist.ts@Props"
     },
-    "ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video": {
-      "type": "string",
-      "format": "video-uri",
-      "title": "Video"
-    },
-    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dhbGxlcnkudHN4@Slide": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "title": "Id"
-        },
-        "preview": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video",
-          "title": "Preview"
-        },
-        "title": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "Title"
-        },
-        "fontSizeTitle": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "Font Size Title"
-        },
-        "fontWeightTitle": {
-          "anyOf": [
-            {
-              "type": "string",
-              "const": "100",
-              "default": "100"
-            },
-            {
-              "type": "string",
-              "const": "200",
-              "default": "200"
-            },
-            {
-              "type": "string",
-              "const": "300",
-              "default": "300"
-            },
-            {
-              "type": "string",
-              "const": "400",
-              "default": "400"
-            },
-            {
-              "type": "string",
-              "const": "500",
-              "default": "500"
-            },
-            {
-              "type": "string",
-              "const": "600",
-              "default": "600"
-            },
-            {
-              "type": "string",
-              "const": "700",
-              "default": "700"
-            },
-            {
-              "type": "string",
-              "const": "800",
-              "default": "800"
-            },
-            {
-              "type": "string",
-              "const": "900",
-              "default": "900"
-            },
-            {
-              "type": "string",
-              "const": "bold",
-              "default": "bold"
-            },
-            {
-              "type": "string",
-              "const": "bolder",
-              "default": "bolder"
-            },
-            {
-              "type": "string",
-              "const": "inherit",
-              "default": "inherit"
-            },
-            {
-              "type": "string",
-              "const": "initial",
-              "default": "initial"
-            },
-            {
-              "type": "string",
-              "const": "lighter",
-              "default": "lighter"
-            },
-            {
-              "type": "string",
-              "const": "normal",
-              "default": "normal"
-            },
-            {
-              "type": "string",
-              "const": "revert",
-              "default": "revert"
-            },
-            {
-              "type": "string",
-              "const": "unset",
-              "default": "unset"
-            }
-          ],
-          "type": "string",
-          "title": "Font Weight Title"
-        },
-        "paragraph": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "Paragraph"
-        },
-        "fontSizeParagraph": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "Font Size Paragraph"
-        },
-        "fontWeightParagraph": {
-          "anyOf": [
-            {
-              "type": "string",
-              "const": "100",
-              "default": "100"
-            },
-            {
-              "type": "string",
-              "const": "200",
-              "default": "200"
-            },
-            {
-              "type": "string",
-              "const": "300",
-              "default": "300"
-            },
-            {
-              "type": "string",
-              "const": "400",
-              "default": "400"
-            },
-            {
-              "type": "string",
-              "const": "500",
-              "default": "500"
-            },
-            {
-              "type": "string",
-              "const": "600",
-              "default": "600"
-            },
-            {
-              "type": "string",
-              "const": "700",
-              "default": "700"
-            },
-            {
-              "type": "string",
-              "const": "800",
-              "default": "800"
-            },
-            {
-              "type": "string",
-              "const": "900",
-              "default": "900"
-            },
-            {
-              "type": "string",
-              "const": "bold",
-              "default": "bold"
-            },
-            {
-              "type": "string",
-              "const": "bolder",
-              "default": "bolder"
-            },
-            {
-              "type": "string",
-              "const": "inherit",
-              "default": "inherit"
-            },
-            {
-              "type": "string",
-              "const": "initial",
-              "default": "initial"
-            },
-            {
-              "type": "string",
-              "const": "lighter",
-              "default": "lighter"
-            },
-            {
-              "type": "string",
-              "const": "normal",
-              "default": "normal"
-            },
-            {
-              "type": "string",
-              "const": "revert",
-              "default": "revert"
-            },
-            {
-              "type": "string",
-              "const": "unset",
-              "default": "unset"
-            }
-          ],
-          "type": "string",
-          "title": "Font Weight Paragraph"
-        }
-      },
-      "required": [],
-      "title": "Slide"
-    },
-    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dhbGxlcnkudHN4@Slide[]": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dhbGxlcnkudHN4@Slide"
-      },
-      "title": "Slide[]"
-    },
-    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dhbGxlcnkudHN4@Props": {
-      "type": "object",
-      "properties": {
-        "slides": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dhbGxlcnkudHN4@Slide[]",
-          "title": "Slides"
-        }
-      },
-      "required": [
-        "slides"
-      ],
-      "title": "deco-sites/web/components/ui/Main/Gallery.tsx@Props"
-    },
     "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Main": {
       "type": "object",
       "properties": {
@@ -8049,6 +7795,11 @@
       },
       "required": [],
       "title": "Link"
+    },
+    "ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video": {
+      "type": "string",
+      "format": "video-uri",
+      "title": "Video"
     },
     "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL01haW4udHN4@Props": {
       "type": "object",
@@ -9520,6 +9271,227 @@
       },
       "required": [],
       "title": "deco-sites/web/components/ui/Footer/Footer.tsx@Props"
+    },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dhbGxlcnkudHN4@Props": {
+      "type": "object",
+      "properties": {
+        "preview": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video",
+          "title": "Preview"
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Title"
+        },
+        "fontSizeTitle": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Font Size Title"
+        },
+        "fontWeightTitle": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "100",
+              "default": "100"
+            },
+            {
+              "type": "string",
+              "const": "200",
+              "default": "200"
+            },
+            {
+              "type": "string",
+              "const": "300",
+              "default": "300"
+            },
+            {
+              "type": "string",
+              "const": "400",
+              "default": "400"
+            },
+            {
+              "type": "string",
+              "const": "500",
+              "default": "500"
+            },
+            {
+              "type": "string",
+              "const": "600",
+              "default": "600"
+            },
+            {
+              "type": "string",
+              "const": "700",
+              "default": "700"
+            },
+            {
+              "type": "string",
+              "const": "800",
+              "default": "800"
+            },
+            {
+              "type": "string",
+              "const": "900",
+              "default": "900"
+            },
+            {
+              "type": "string",
+              "const": "bold",
+              "default": "bold"
+            },
+            {
+              "type": "string",
+              "const": "bolder",
+              "default": "bolder"
+            },
+            {
+              "type": "string",
+              "const": "inherit",
+              "default": "inherit"
+            },
+            {
+              "type": "string",
+              "const": "initial",
+              "default": "initial"
+            },
+            {
+              "type": "string",
+              "const": "lighter",
+              "default": "lighter"
+            },
+            {
+              "type": "string",
+              "const": "normal",
+              "default": "normal"
+            },
+            {
+              "type": "string",
+              "const": "revert",
+              "default": "revert"
+            },
+            {
+              "type": "string",
+              "const": "unset",
+              "default": "unset"
+            }
+          ],
+          "type": "string",
+          "title": "Font Weight Title"
+        },
+        "paragraph": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Paragraph"
+        },
+        "fontSizeParagraph": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Font Size Paragraph"
+        },
+        "fontWeightParagraph": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "100",
+              "default": "100"
+            },
+            {
+              "type": "string",
+              "const": "200",
+              "default": "200"
+            },
+            {
+              "type": "string",
+              "const": "300",
+              "default": "300"
+            },
+            {
+              "type": "string",
+              "const": "400",
+              "default": "400"
+            },
+            {
+              "type": "string",
+              "const": "500",
+              "default": "500"
+            },
+            {
+              "type": "string",
+              "const": "600",
+              "default": "600"
+            },
+            {
+              "type": "string",
+              "const": "700",
+              "default": "700"
+            },
+            {
+              "type": "string",
+              "const": "800",
+              "default": "800"
+            },
+            {
+              "type": "string",
+              "const": "900",
+              "default": "900"
+            },
+            {
+              "type": "string",
+              "const": "bold",
+              "default": "bold"
+            },
+            {
+              "type": "string",
+              "const": "bolder",
+              "default": "bolder"
+            },
+            {
+              "type": "string",
+              "const": "inherit",
+              "default": "inherit"
+            },
+            {
+              "type": "string",
+              "const": "initial",
+              "default": "initial"
+            },
+            {
+              "type": "string",
+              "const": "lighter",
+              "default": "lighter"
+            },
+            {
+              "type": "string",
+              "const": "normal",
+              "default": "normal"
+            },
+            {
+              "type": "string",
+              "const": "revert",
+              "default": "revert"
+            },
+            {
+              "type": "string",
+              "const": "unset",
+              "default": "unset"
+            }
+          ],
+          "type": "string",
+          "title": "Font Weight Paragraph"
+        }
+      },
+      "required": [],
+      "title": "deco-sites/web/components/ui/Main/Gallery.tsx@Props"
     },
     "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dlbmVyaWMudHN4@Props": {
       "type": "object",
@@ -11572,27 +11544,6 @@
         }
       }
     },
-    "Li9pc2xhbmRzL0dhbGxlcnkudHN4": {
-      "title": "./islands/Gallery.tsx",
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dhbGxlcnkudHN4@Props"
-        }
-      ],
-      "required": [
-        "__resolveType"
-      ],
-      "properties": {
-        "__resolveType": {
-          "type": "string",
-          "enum": [
-            "./islands/Gallery.tsx"
-          ],
-          "default": "./islands/Gallery.tsx"
-        }
-      }
-    },
     "Li9pc2xhbmRzL01haW4udHN4": {
       "title": "./islands/Main.tsx",
       "type": "object",
@@ -13215,9 +13166,6 @@
       "anyOf": [
         {
           "$ref": "#/definitions/Resolvable"
-        },
-        {
-          "$ref": "#/definitions/Li9pc2xhbmRzL0dhbGxlcnkudHN4"
         },
         {
           "$ref": "#/definitions/Li9pc2xhbmRzL01haW4udHN4"
