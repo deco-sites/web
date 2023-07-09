@@ -22,6 +22,7 @@ export interface Props {
     | "normal"
     | "revert"
     | "unset";
+  /** @format textarea */
   paragraph?: string;
   fontSizeParagraph?: string;
   fontWeightParagraph?:
@@ -55,7 +56,7 @@ export default function Gallery(props: Props) {
     fontWeightTitle = "normal",
     fontSizeParagraph = "",
     fontWeightParagraph = "normal",
-  } = props|| {};
+  } = props || {};
 
   const titleStyle = {
     fontSize: fontSizeTitle,
@@ -69,14 +70,14 @@ export default function Gallery(props: Props) {
 
   return (
     <div
-      class="w-full lg:min-h-[770px] flex items-center justify-center mt-[50px]"
+      class="w-full min-h-[770px] flex items-center justify-center mt-[50px]"
       style={gradientStyle}
     >
       <div class="relative lg:my-0 m-[5%] w-full h-full">
-        <div class="max-w-[1440px] mx-auto w-full h-full md:py-[20px] py-[10px] rounded-md glassmorphism">
-          <div class="flex md:flex-row flex-col md:justify-between justify-center items-center px-[20px] gap-[40px] w-full h-full">
+        <div class="max-w-[1440px] mx-auto w-full h-full md:min-h-0 min-h-[400px] md:p-[20px] p-[10px] rounded-md bg-white">
+          <div class="flex md:flex-row flex-col md:justify-between justify-center items-center gap-[40px] w-full h-full">
             <div class="md:w-[50%] w-full flex md:justify-start justify-center">
-              <div class="aspect-w-16 aspect-h-9 w-full h-full relative rounded-lg shadow-[3px_1px_19px_9px_#00000024]">
+              <div class="aspect-w-16 aspect-h-9 w-full h-full relative rounded-lg">
                 <video
                   src={props.preview || ""}
                   alt={props.preview || ""}
@@ -87,7 +88,7 @@ export default function Gallery(props: Props) {
                   webkit-playsinline
                   x5-playsinline
                   playsInline
-                  class="w-full rounded-lg relative z-[-1]"
+                  class="w-full rounded-lg"
                 >
                   Video not supported!
                 </video>
@@ -101,10 +102,7 @@ export default function Gallery(props: Props) {
                   {props.title || ""}
                 </span>
               </h2>
-              <p
-                style={paragraphStyle}
-                class="text-white"
-              >
+              <p class="text-justify" style={paragraphStyle}>
                 {props.paragraph || ""}
               </p>
             </div>
