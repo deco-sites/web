@@ -9272,6 +9272,28 @@
       "required": [],
       "title": "deco-sites/web/components/ui/Footer/Footer.tsx@Props"
     },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dhbGxlcnkudHN4@Text": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "textarea",
+          "title": "Label"
+        }
+      },
+      "required": [],
+      "title": "Text"
+    },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dhbGxlcnkudHN4@Text[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dhbGxlcnkudHN4@Text"
+      },
+      "title": "Text[]"
+    },
     "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dhbGxlcnkudHN4@Props": {
       "type": "object",
       "properties": {
@@ -9384,22 +9406,18 @@
           "type": "string",
           "title": "Font Weight Title"
         },
-        "paragraph": {
+        "Text": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dhbGxlcnkudHN4@Text[]",
+          "title": " Text"
+        },
+        "fontSizeText": {
           "type": [
             "string",
             "null"
           ],
-          "format": "textarea",
-          "title": "Paragraph"
+          "title": "Font Size Text"
         },
-        "fontSizeParagraph": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "Font Size Paragraph"
-        },
-        "fontWeightParagraph": {
+        "fontWeightText": {
           "anyOf": [
             {
               "type": "string",
@@ -9488,7 +9506,7 @@
             }
           ],
           "type": "string",
-          "title": "Font Weight Paragraph"
+          "title": "Font Weight Text"
         }
       },
       "required": [],
