@@ -1,5 +1,10 @@
 import type { Video as LiveImage } from "deco-sites/std/components/types.ts";
 
+export interface Text {
+  /** @format textarea */
+  label?: string;
+}
+
 export interface Props {
   preview?: LiveImage;
   title?: string;
@@ -22,10 +27,9 @@ export interface Props {
     | "normal"
     | "revert"
     | "unset";
-  /** @format textarea */
-  paragraph?: string;
-  fontSizeParagraph?: string;
-  fontWeightParagraph?:
+  Text?: Text[];
+  fontSizeText?: string;
+  fontWeightText?:
     | "100"
     | "200"
     | "300"
@@ -54,8 +58,8 @@ export default function Gallery(props: Props) {
   const {
     fontSizeTitle = "",
     fontWeightTitle = "normal",
-    fontSizeParagraph = "",
-    fontWeightParagraph = "normal",
+    fontSizeText = "",
+    fontWeightText = "normal",
   } = props || {};
 
   const titleStyle = {
@@ -63,10 +67,16 @@ export default function Gallery(props: Props) {
     fontWeight: fontWeightTitle,
   };
 
-  const paragraphStyle = {
-    fontSize: fontSizeParagraph,
-    fontWeight: fontWeightParagraph,
+  const TextStyle = {
+    fontSize: fontSizeText,
+    fontWeight: fontWeightText,
   };
+
+  const Text = props.Text?.map((props) => (
+    <li class="text-justify" style={TextStyle}>
+      {props.label || ""}
+    </li>
+  ));
 
   return (
     <div
@@ -102,9 +112,9 @@ export default function Gallery(props: Props) {
                   {props.title || ""}
                 </span>
               </h2>
-              <p class="text-justify" style={paragraphStyle}>
-                {props.paragraph || ""}
-              </p>
+              <ul>
+                {Text || ""}
+              </ul>
             </div>
           </div>
         </div>
