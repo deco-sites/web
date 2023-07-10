@@ -8,7 +8,13 @@ export default function PoweredBy() {
         href="https://www.deco.cx"
         aria-label="powered by https://www.deco.cx"
       >
-        <Icon id="Deco" height={20} width={60} strokeWidth={0.01} style={{ color: 'white' }} />
+        <Icon
+          id="Deco"
+          height={20}
+          width={60}
+          strokeWidth={0.01}
+          style={{ color: "white" }}
+        />
       </a>
     </span>
   );
