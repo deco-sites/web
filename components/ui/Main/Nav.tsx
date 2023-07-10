@@ -37,6 +37,7 @@ export interface Link {
 }
 
 export interface Nav {
+  visible?: boolean;
   gap?: string;
   /**
    * @description Main color of the screen
@@ -244,7 +245,7 @@ export default function Nav(props: Props) {
       </div>
       <button
         class="absolute top-0 right-0 h-full p-2 flex items-center z-20"
-        style={buttonStyle}
+        style={{ ...buttonStyle, display: props.nav?.visible ? "" : "none" }}
         onClick={toggleMenu}
         aria-label="Close/Open Menu"
       >

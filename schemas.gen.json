@@ -8008,6 +8008,13 @@
     "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL05hdi50c3g=@Nav": {
       "type": "object",
       "properties": {
+        "visible": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "title": "Visible"
+        },
         "gap": {
           "type": [
             "string",
