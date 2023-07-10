@@ -96,11 +96,11 @@
               "deco-sites/web/sections/DesignSystem.tsx",
               "deco-sites/web/sections/Footer.tsx",
               "deco-sites/web/sections/Gallery.tsx",
-              "deco-sites/web/sections/Generic.tsx",
               "deco-sites/web/sections/Head.tsx",
               "deco-sites/web/sections/Home.tsx",
               "deco-sites/web/sections/Main.tsx",
               "deco-sites/web/sections/Nav.tsx",
+              "deco-sites/web/sections/Works.tsx",
               "$live/matchers/MatchAlways.ts",
               "$live/matchers/MatchCron.ts",
               "$live/matchers/MatchDate.ts",
@@ -9512,20 +9512,6 @@
       "required": [],
       "title": "deco-sites/web/components/ui/Main/Gallery.tsx@Props"
     },
-    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dlbmVyaWMudHN4@Props": {
-      "type": "object",
-      "properties": {
-        "text": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "Text"
-        }
-      },
-      "required": [],
-      "title": "deco-sites/web/components/ui/Main/Generic.tsx@Props"
-    },
     "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvSGVhZC50c3g=@Props": {
       "type": "object",
       "properties": {
@@ -9577,6 +9563,283 @@
       },
       "required": [],
       "title": "deco-sites/web/sections/Home.tsx@Props"
+    },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Image": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "title": "Image"
+        },
+        "link": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Link"
+        },
+        "height": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Height"
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Name"
+        },
+        "fontSizeName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Font Size Name"
+        },
+        "fontWeightName": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "100",
+              "default": "100"
+            },
+            {
+              "type": "string",
+              "const": "200",
+              "default": "200"
+            },
+            {
+              "type": "string",
+              "const": "300",
+              "default": "300"
+            },
+            {
+              "type": "string",
+              "const": "400",
+              "default": "400"
+            },
+            {
+              "type": "string",
+              "const": "500",
+              "default": "500"
+            },
+            {
+              "type": "string",
+              "const": "600",
+              "default": "600"
+            },
+            {
+              "type": "string",
+              "const": "700",
+              "default": "700"
+            },
+            {
+              "type": "string",
+              "const": "800",
+              "default": "800"
+            },
+            {
+              "type": "string",
+              "const": "900",
+              "default": "900"
+            },
+            {
+              "type": "string",
+              "const": "bold",
+              "default": "bold"
+            },
+            {
+              "type": "string",
+              "const": "bolder",
+              "default": "bolder"
+            },
+            {
+              "type": "string",
+              "const": "inherit",
+              "default": "inherit"
+            },
+            {
+              "type": "string",
+              "const": "initial",
+              "default": "initial"
+            },
+            {
+              "type": "string",
+              "const": "lighter",
+              "default": "lighter"
+            },
+            {
+              "type": "string",
+              "const": "normal",
+              "default": "normal"
+            },
+            {
+              "type": "string",
+              "const": "revert",
+              "default": "revert"
+            },
+            {
+              "type": "string",
+              "const": "unset",
+              "default": "unset"
+            }
+          ],
+          "type": "string",
+          "title": "Font Weight Name"
+        }
+      },
+      "required": [
+        "image"
+      ],
+      "title": "Image"
+    },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Image[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Image"
+      },
+      "title": "Image[]"
+    },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Work": {
+      "type": "object",
+      "properties": {
+        "platform": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Image[]",
+          "title": "Platform"
+        },
+        "sites": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Image[]",
+          "title": "Sites"
+        }
+      },
+      "required": [],
+      "title": "Work"
+    },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Work[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Work"
+      },
+      "title": "Work[]"
+    },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Props": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Title"
+        },
+        "fontSizeTitle": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Font Size Title"
+        },
+        "fontWeightTitle": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "100",
+              "default": "100"
+            },
+            {
+              "type": "string",
+              "const": "200",
+              "default": "200"
+            },
+            {
+              "type": "string",
+              "const": "300",
+              "default": "300"
+            },
+            {
+              "type": "string",
+              "const": "400",
+              "default": "400"
+            },
+            {
+              "type": "string",
+              "const": "500",
+              "default": "500"
+            },
+            {
+              "type": "string",
+              "const": "600",
+              "default": "600"
+            },
+            {
+              "type": "string",
+              "const": "700",
+              "default": "700"
+            },
+            {
+              "type": "string",
+              "const": "800",
+              "default": "800"
+            },
+            {
+              "type": "string",
+              "const": "900",
+              "default": "900"
+            },
+            {
+              "type": "string",
+              "const": "bold",
+              "default": "bold"
+            },
+            {
+              "type": "string",
+              "const": "bolder",
+              "default": "bolder"
+            },
+            {
+              "type": "string",
+              "const": "inherit",
+              "default": "inherit"
+            },
+            {
+              "type": "string",
+              "const": "initial",
+              "default": "initial"
+            },
+            {
+              "type": "string",
+              "const": "lighter",
+              "default": "lighter"
+            },
+            {
+              "type": "string",
+              "const": "normal",
+              "default": "normal"
+            },
+            {
+              "type": "string",
+              "const": "revert",
+              "default": "revert"
+            },
+            {
+              "type": "string",
+              "const": "unset",
+              "default": "unset"
+            }
+          ],
+          "type": "string",
+          "title": "Font Weight Title"
+        },
+        "works": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Work[]",
+          "title": "Works"
+        }
+      },
+      "required": [],
+      "title": "deco-sites/web/components/ui/Main/Works.tsx@Props"
     },
     "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoQ3Jvbi50cw==@CronProps": {
       "type": "object",
@@ -12187,27 +12450,6 @@
         }
       }
     },
-    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvR2VuZXJpYy50c3g=": {
-      "title": "deco-sites/web/sections/Generic.tsx",
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL0dlbmVyaWMudHN4@Props"
-        }
-      ],
-      "required": [
-        "__resolveType"
-      ],
-      "properties": {
-        "__resolveType": {
-          "type": "string",
-          "enum": [
-            "deco-sites/web/sections/Generic.tsx"
-          ],
-          "default": "deco-sites/web/sections/Generic.tsx"
-        }
-      }
-    },
     "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvSGVhZC50c3g=": {
       "title": "deco-sites/web/sections/Head.tsx",
       "type": "object",
@@ -12289,6 +12531,27 @@
             "deco-sites/web/sections/Nav.tsx"
           ],
           "default": "deco-sites/web/sections/Nav.tsx"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvV29ya3MudHN4": {
+      "title": "deco-sites/web/sections/Works.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/web/sections/Works.tsx"
+          ],
+          "default": "deco-sites/web/sections/Works.tsx"
         }
       }
     },
@@ -13301,9 +13564,6 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvR2FsbGVyeS50c3g="
         },
         {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvR2VuZXJpYy50c3g="
-        },
-        {
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvSGVhZC50c3g="
         },
         {
@@ -13314,6 +13574,9 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvTmF2LnRzeA=="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvV29ya3MudHN4"
         }
       ]
     },
