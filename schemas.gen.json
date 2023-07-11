@@ -118,6 +118,7 @@
               "$live/actions/workflows/cancel.ts",
               "$live/actions/workflows/signal.ts",
               "$live/actions/workflows/start.ts",
+              "deco-sites/std/actions/vtex/analytics/sendEvent.ts",
               "deco-sites/std/actions/vtex/cart/addItems.ts",
               "deco-sites/std/actions/vtex/cart/getInstallment.ts",
               "deco-sites/std/actions/vtex/cart/removeItemAttachment.ts",
@@ -9732,6 +9733,72 @@
       },
       "title": "Work[]"
     },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@SkillLogo": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "title": "Image"
+        },
+        "width": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "title": "Width"
+        },
+        "height": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "title": "Height"
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Label"
+        }
+      },
+      "required": [
+        "image"
+      ],
+      "title": "SkillLogo"
+    },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@SkillLogo[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@SkillLogo"
+      },
+      "title": "SkillLogo[]"
+    },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Skill": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Title"
+        },
+        "skillLogo": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@SkillLogo[]",
+          "title": "Skill Logo"
+        }
+      },
+      "required": [],
+      "title": "Skill"
+    },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Skill[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Skill"
+      },
+      "title": "Skill[]"
+    },
     "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Props": {
       "type": "object",
       "properties": {
@@ -9843,6 +9910,10 @@
         "works": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Work[]",
           "title": "Works"
+        },
+        "skills": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL1dvcmtzLnRzeA==@Skill[]",
+          "title": "Skills"
         }
       },
       "required": [],
@@ -12921,6 +12992,23 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9zdGQvYWN0aW9ucy92dGV4L2FuYWx5dGljcy9zZW5kRXZlbnQudHM=": {
+      "title": "deco-sites/std/actions/vtex/analytics/sendEvent.ts",
+      "docs": "https://developers.vtex.com/docs/api-reference/checkout-api#post-/api/checkout/pub/orderForm/-orderFormId-/items",
+      "type": "object",
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/actions/vtex/analytics/sendEvent.ts"
+          ],
+          "default": "deco-sites/std/actions/vtex/analytics/sendEvent.ts"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9zdGQvYWN0aW9ucy92dGV4L2NhcnQvYWRkSXRlbXMudHM=": {
       "title": "deco-sites/std/actions/vtex/cart/addItems.ts",
       "docs": "https://developers.vtex.com/docs/api-reference/checkout-api#post-/api/checkout/pub/orderForm/-orderFormId-/items",
@@ -13659,6 +13747,9 @@
         },
         {
           "$ref": "#/definitions/JGxpdmUvYWN0aW9ucy93b3JrZmxvd3Mvc3RhcnQudHM="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvYWN0aW9ucy92dGV4L2FuYWx5dGljcy9zZW5kRXZlbnQudHM="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvYWN0aW9ucy92dGV4L2NhcnQvYWRkSXRlbXMudHM="
