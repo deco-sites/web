@@ -41,6 +41,7 @@
               "deco-sites/std/functions/vtexWishlist.ts",
               "deco-sites/web/functions/LoadGitHubRaw.ts",
               "deco-sites/std/accounts/butterCMS.ts",
+              "deco-sites/std/accounts/linxImpulse.ts",
               "deco-sites/std/accounts/nuvemShop.ts",
               "deco-sites/std/accounts/occ.ts",
               "deco-sites/std/accounts/shopify.ts",
@@ -50,9 +51,18 @@
               "$live/loaders/state.ts",
               "$live/loaders/workflows/events.ts",
               "$live/loaders/workflows/get.ts",
+              "deco-sites/std/loaders/linxImpulse/autocompletes/popular.ts",
+              "deco-sites/std/loaders/linxImpulse/autocompletes/suggestions.ts",
+              "deco-sites/std/loaders/linxImpulse/pages/recommendations.ts",
+              "deco-sites/std/loaders/linxImpulse/products/similarItems.ts",
+              "deco-sites/std/loaders/linxImpulse/search.ts",
               "deco-sites/std/loaders/nuvemShop/nuvemShopProductDetailsPage.ts",
               "deco-sites/std/loaders/nuvemShop/nuvemShopProductList.ts",
               "deco-sites/std/loaders/nuvemShop/nuvemShopProductListingPage.ts",
+              "deco-sites/std/loaders/vnda/cart.ts",
+              "deco-sites/std/loaders/vnda/productDetailsPage.ts",
+              "deco-sites/std/loaders/vnda/productList.ts",
+              "deco-sites/std/loaders/vnda/productListingPage.ts",
               "deco-sites/std/loaders/vnda/proxy.ts",
               "deco-sites/std/loaders/vtex/cart.ts",
               "deco-sites/std/loaders/vtex/intelligentSearch/productDetailsPage.ts",
@@ -77,6 +87,7 @@
               "$live/handlers/router.ts",
               "$live/handlers/routesSelection.ts",
               "$live/handlers/workflowRunner.ts",
+              "deco-sites/std/handlers/sitemap.ts",
               "deco-sites/std/handlers/vtex/sitemap.ts",
               "$live/pages/LivePage.tsx",
               "$live/sections/Conditional_Beta.tsx",
@@ -86,6 +97,7 @@
               "$live/sections/UseSlot.tsx",
               "deco-sites/std/sections/Analytics.tsx",
               "deco-sites/std/sections/configButterCMS.global.tsx",
+              "deco-sites/std/sections/configLinxImpulse.global.tsx",
               "deco-sites/std/sections/configNuvemShop.tsx",
               "deco-sites/std/sections/configOCC.global.tsx",
               "deco-sites/std/sections/configShopify.global.tsx",
@@ -95,13 +107,13 @@
               "deco-sites/std/sections/SEOPDP.tsx",
               "deco-sites/std/sections/SEOPLP.tsx",
               "deco-sites/std/sections/VTEXPortalDataLayerCompatibility.tsx",
-              "deco-sites/web/sections/DesignSystem.tsx",
               "deco-sites/web/sections/Footer.tsx",
               "deco-sites/web/sections/Gallery.tsx",
               "deco-sites/web/sections/Head.tsx",
               "deco-sites/web/sections/Home.tsx",
               "deco-sites/web/sections/Main.tsx",
               "deco-sites/web/sections/Nav.tsx",
+              "deco-sites/web/sections/Theme.tsx",
               "deco-sites/web/sections/Works.tsx",
               "$live/matchers/MatchAlways.ts",
               "$live/matchers/MatchCron.ts",
@@ -121,6 +133,10 @@
               "$live/actions/workflows/cancel.ts",
               "$live/actions/workflows/signal.ts",
               "$live/actions/workflows/start.ts",
+              "deco-sites/std/actions/vnda/cart/addItem.ts",
+              "deco-sites/std/actions/vnda/cart/setShippingAddress.ts",
+              "deco-sites/std/actions/vnda/cart/updateCoupon.ts",
+              "deco-sites/std/actions/vnda/cart/updateItem.ts",
               "deco-sites/std/actions/vtex/analytics/sendEvent.ts",
               "deco-sites/std/actions/vtex/cart/addItems.ts",
               "deco-sites/std/actions/vtex/cart/getInstallment.ts",
@@ -1710,8 +1726,7 @@
           }
         },
         {
-          "title": "VTEX Product Page Loader",
-          "description": "Works on routes of type /:slug/p",
+          "title": "deco-sites/std/functions/vndaProductDetailsPage.ts",
           "type": "object",
           "required": [
             "__resolveType"
@@ -1780,6 +1795,23 @@
                 "deco-sites/std/loaders/nuvemShop/nuvemShopProductDetailsPage.ts"
               ],
               "default": "deco-sites/std/loaders/nuvemShop/nuvemShopProductDetailsPage.ts"
+            }
+          }
+        },
+        {
+          "title": "VNDA Product Page Loader",
+          "description": "Works on routes of type /produto/:slug",
+          "type": "object",
+          "required": [
+            "__resolveType"
+          ],
+          "properties": {
+            "__resolveType": {
+              "type": "string",
+              "enum": [
+                "deco-sites/std/loaders/vnda/productDetailsPage.ts"
+              ],
+              "default": "deco-sites/std/loaders/vnda/productDetailsPage.ts"
             }
           }
         },
@@ -1918,12 +1950,11 @@
           }
         },
         {
-          "title": "VNDA - Search Products",
-          "description": "Use it in Shelves and static Galleries.",
+          "title": "deco-sites/std/functions/vndaProductList.ts",
           "type": "object",
           "allOf": [
             {
-              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL3ZuZGFQcm9kdWN0TGlzdC50cw==@Props"
+              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9sb2FkZXJzL3Byb2R1Y3RMaXN0LnRz@Props"
             }
           ],
           "required": [
@@ -2009,6 +2040,50 @@
           }
         },
         {
+          "title": "Linx Impulse - Pages Recomendations",
+          "description": "Use it in Shelves",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvbG9hZGVycy9wYWdlcy9yZWNvbW1lbmRhdGlvbnMudHM=@Props"
+            }
+          ],
+          "required": [
+            "__resolveType"
+          ],
+          "properties": {
+            "__resolveType": {
+              "type": "string",
+              "enum": [
+                "deco-sites/std/loaders/linxImpulse/pages/recommendations.ts"
+              ],
+              "default": "deco-sites/std/loaders/linxImpulse/pages/recommendations.ts"
+            }
+          }
+        },
+        {
+          "title": "Linx Impulse - Product SimilarItems",
+          "description": "Use it in Shelves on Product Page",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvbG9hZGVycy9wcm9kdWN0cy9zaW1pbGFySXRlbXMudHM=@Props"
+            }
+          ],
+          "required": [
+            "__resolveType"
+          ],
+          "properties": {
+            "__resolveType": {
+              "type": "string",
+              "enum": [
+                "deco-sites/std/loaders/linxImpulse/products/similarItems.ts"
+              ],
+              "default": "deco-sites/std/loaders/linxImpulse/products/similarItems.ts"
+            }
+          }
+        },
+        {
           "title": "NuvemShop - Search Products",
           "type": "object",
           "allOf": [
@@ -2026,6 +2101,28 @@
                 "deco-sites/std/loaders/nuvemShop/nuvemShopProductList.ts"
               ],
               "default": "deco-sites/std/loaders/nuvemShop/nuvemShopProductList.ts"
+            }
+          }
+        },
+        {
+          "title": "VNDA - Search Products",
+          "description": "Use it in Shelves and static Galleries.",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9sb2FkZXJzL3Byb2R1Y3RMaXN0LnRz@Props"
+            }
+          ],
+          "required": [
+            "__resolveType"
+          ],
+          "properties": {
+            "__resolveType": {
+              "type": "string",
+              "enum": [
+                "deco-sites/std/loaders/vnda/productList.ts"
+              ],
+              "default": "deco-sites/std/loaders/vnda/productList.ts"
             }
           }
         },
@@ -2424,12 +2521,11 @@
           }
         },
         {
-          "title": "VNDA - Product Listing page",
-          "description": "Useful for category, search, brand and collection pages.",
+          "title": "deco-sites/std/functions/vndaProductListingPage.ts",
           "type": "object",
           "allOf": [
             {
-              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL3ZuZGFQcm9kdWN0TGlzdGluZ1BhZ2UudHM=@Props"
+              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9sb2FkZXJzL3Byb2R1Y3RMaXN0aW5nUGFnZS50cw==@Props"
             }
           ],
           "required": [
@@ -2515,6 +2611,28 @@
           }
         },
         {
+          "title": "Linx Impulse - Product Listing page",
+          "description": "Returns data ready for search pages like category, brand pages",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvbG9hZGVycy9zZWFyY2gudHM=@Props"
+            }
+          ],
+          "required": [
+            "__resolveType"
+          ],
+          "properties": {
+            "__resolveType": {
+              "type": "string",
+              "enum": [
+                "deco-sites/std/loaders/linxImpulse/search.ts"
+              ],
+              "default": "deco-sites/std/loaders/linxImpulse/search.ts"
+            }
+          }
+        },
+        {
           "title": "NuvemShop - Product Listing page",
           "description": "Useful for category, search, brand and collection pages.",
           "type": "object",
@@ -2533,6 +2651,28 @@
                 "deco-sites/std/loaders/nuvemShop/nuvemShopProductListingPage.ts"
               ],
               "default": "deco-sites/std/loaders/nuvemShop/nuvemShopProductListingPage.ts"
+            }
+          }
+        },
+        {
+          "title": "VNDA - Product Listing page",
+          "description": "Useful for category, search, brand and collection pages.",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9sb2FkZXJzL3Byb2R1Y3RMaXN0aW5nUGFnZS50cw==@Props"
+            }
+          ],
+          "required": [
+            "__resolveType"
+          ],
+          "properties": {
+            "__resolveType": {
+              "type": "string",
+              "enum": [
+                "deco-sites/std/loaders/vnda/productListingPage.ts"
+              ],
+              "default": "deco-sites/std/loaders/vnda/productListingPage.ts"
             }
           }
         },
@@ -2604,13 +2744,13 @@
       ],
       "title": "deco-sites/std/functions/shopifyProductListingPage.ts@Props"
     },
-    "ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL3ZuZGFQcm9kdWN0TGlzdC50cw==@Props": {
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9sb2FkZXJzL3Byb2R1Y3RMaXN0LnRz@Props": {
       "type": "object",
       "properties": {
-        "limit": {
+        "count": {
           "type": "number",
           "description": "total number of items to display",
-          "title": "Limit"
+          "title": "Count"
         },
         "term": {
           "type": [
@@ -2668,11 +2808,11 @@
         }
       },
       "required": [
-        "limit"
+        "count"
       ],
-      "title": "deco-sites/std/functions/vndaProductList.ts@Props"
+      "title": "deco-sites/std/packs/vnda/loaders/productList.ts@Props"
     },
-    "ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL3ZuZGFQcm9kdWN0TGlzdGluZ1BhZ2UudHM=@Props": {
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9sb2FkZXJzL3Byb2R1Y3RMaXN0aW5nUGFnZS50cw==@Props": {
       "type": "object",
       "properties": {
         "term": {
@@ -2698,12 +2838,16 @@
           "type": "number",
           "title": "Items per page",
           "description": "number of products per page to display"
+        },
+        "slug": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL3JlcXVlc3RUb1BhcmFtLnRz@RequestURLParam",
+          "title": "Slug"
         }
       },
       "required": [
         "count"
       ],
-      "title": "deco-sites/std/functions/vndaProductListingPage.ts@Props"
+      "title": "deco-sites/std/packs/vnda/loaders/productListingPage.ts@Props"
     },
     "ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL3Z0ZXhMZWdhY3lQcm9kdWN0TGlzdC50cw==@Props": {
       "type": "object",
@@ -3347,6 +3491,48 @@
           }
         },
         {
+          "title": "Linx Impulse - Autocompletes Popular Terms",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvbG9hZGVycy9hdXRvY29tcGxldGVzL3BvcHVsYXIudHM=@Props"
+            }
+          ],
+          "required": [
+            "__resolveType"
+          ],
+          "properties": {
+            "__resolveType": {
+              "type": "string",
+              "enum": [
+                "deco-sites/std/loaders/linxImpulse/autocompletes/popular.ts"
+              ],
+              "default": "deco-sites/std/loaders/linxImpulse/autocompletes/popular.ts"
+            }
+          }
+        },
+        {
+          "title": "Linx Impulse - Autocompletes Products",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvbG9hZGVycy9hdXRvY29tcGxldGVzL3N1Z2dlc3Rpb25zLnRz@Props"
+            }
+          ],
+          "required": [
+            "__resolveType"
+          ],
+          "properties": {
+            "__resolveType": {
+              "type": "string",
+              "enum": [
+                "deco-sites/std/loaders/linxImpulse/autocompletes/suggestions.ts"
+              ],
+              "default": "deco-sites/std/loaders/linxImpulse/autocompletes/suggestions.ts"
+            }
+          }
+        },
+        {
           "title": "VTEX Intelligent Search - Search Suggestions",
           "type": "object",
           "allOf": [
@@ -3433,7 +3619,7 @@
       ],
       "title": "deco-sites/web/functions/LoadGitHubRaw.ts@Props"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9hY2NvdW50LnRz@Account": {
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy9hY2NvdW50LnRz@Account": {
       "type": "object",
       "properties": {},
       "required": [],
@@ -3468,7 +3654,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9hY2NvdW50LnRz@Account"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9hY2NvdW50LnRz@Account"
         }
       ],
       "properties": {
@@ -3497,6 +3683,47 @@
         "defaultLocale"
       ],
       "title": "deco-sites/std/commerce/butterCMS/client.ts@ConfigButterCMS"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvYWNjb3VudHMvbGlueEltcHVsc2UudHM=@Account": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9hY2NvdW50LnRz@Account"
+        }
+      ],
+      "properties": {
+        "apiKey": {
+          "type": "string",
+          "description": "Linx Impulse apiKey. For more info, read here: https://docs.linximpulse.com/v2-search-api/reference/introdu%C3%A7%C3%A3o#via-backend",
+          "title": "Api Key"
+        },
+        "secretKey": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Linx Impulse secretKey.",
+          "title": "Secret Key"
+        },
+        "salesChannel": {
+          "type": "string",
+          "description": "Linx Impulse sales channel.",
+          "title": "Sales Channel"
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Url to set headers request \"origin\" and \"referer\", used when no secret key is available.",
+          "title": "Url"
+        }
+      },
+      "required": [
+        "apiKey",
+        "salesChannel"
+      ],
+      "title": "deco-sites/std/packs/linxImpulse/accounts/linxImpulse.ts@Account"
     },
     "ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvbnV2ZW1TaG9wL3R5cGVzLnRz@Account": {
       "type": "object",
@@ -3528,7 +3755,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9hY2NvdW50LnRz@Account"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9hY2NvdW50LnRz@Account"
         }
       ],
       "properties": {
@@ -3553,7 +3780,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9hY2NvdW50LnRz@Account"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9hY2NvdW50LnRz@Account"
         }
       ],
       "properties": {
@@ -3574,11 +3801,11 @@
       ],
       "title": "deco-sites/std/commerce/shopify/client.ts@ConfigShopify"
     },
-    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS92bmRhQWNjb3VudC50cw==@Account": {
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9hY2NvdW50cy92bmRhLnRz@Account": {
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9hY2NvdW50LnRz@Account"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9hY2NvdW50LnRz@Account"
         }
       ],
       "properties": {
@@ -3616,13 +3843,13 @@
         "useSandbox",
         "defaultPriceCurrency"
       ],
-      "title": "deco-sites/std/packs/vnda/vndaAccount.ts@Account"
+      "title": "deco-sites/std/packs/vnda/accounts/vnda.ts@Account"
     },
     "ZGVjby1zaXRlcy9zdGQvcGFja3MvdnRleC9hY2NvdW50cy92dGV4LnRz@Account": {
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9hY2NvdW50LnRz@Account"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9hY2NvdW50LnRz@Account"
         }
       ],
       "properties": {
@@ -3696,7 +3923,7 @@
       ],
       "title": "deco-sites/std/commerce/yourViews/client.ts@ConfigYourViews"
     },
-    "ZGVjby1jeC9saXZlL3JvdXRlcy9fbWlkZGxld2FyZS50cw==@MiddlewareConfig": {
+    "ZGVjby1jeC9kZWNvL3JvdXRlcy9fbWlkZGxld2FyZS50cw==@MiddlewareConfig": {
       "anyOf": [
         {
           "$ref": "#/definitions/Resolvable"
@@ -3716,7 +3943,7 @@
           "required": [
             "state"
           ],
-          "title": "deco-cx/live/routes/_middleware.ts@MiddlewareConfig",
+          "title": "deco-cx/deco/routes/_middleware.ts@MiddlewareConfig",
           "description": "Global configurations for ./routes/_middleware.ts route"
         },
         {
@@ -3725,7 +3952,7 @@
           "type": "object",
           "allOf": [
             {
-              "$ref": "#/definitions/ZGVjby1jeC9saXZlL2xvYWRlcnMvc3RhdGUudHM=@Props"
+              "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2xvYWRlcnMvc3RhdGUudHM=@Props"
             }
           ],
           "required": [
@@ -3743,46 +3970,48 @@
         }
       ]
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9sb2FkZXIudHM=@Loader": {
-      "$ref": "#/root/loaders",
-      "title": "Loader"
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy9hY2NvdW50LnRz@Accounts": {
+      "$ref": "#/root/accounts",
+      "title": "Accounts"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@Flag": {
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy9mbGFnLnRz@Flag": {
       "$ref": "#/root/flags",
       "title": "Flag"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9zZWN0aW9uLnRz@Section": {
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy9zZWN0aW9uLnRz@Section": {
       "$ref": "#/root/sections",
+      "widget": "none",
       "title": "Section"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9wYWdlLnRz@Page": {
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy9sb2FkZXIudHM=@Loader": {
+      "$ref": "#/root/loaders",
+      "title": "Loader"
+    },
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy9wYWdlLnRz@Page": {
       "$ref": "#/root/pages",
       "title": "Page"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9sb2FkZXIudHM=@4dc8c2f895a6513848bc8f3f1319d3f2|Account|Flag|Loader|Page|Section": {
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy9hY2NvdW50LnRz@Accounts|Flag|Loader|Page|Section": {
       "anyOf": [
         {
-          "$ref": "#/definitions/Resolvable"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9hY2NvdW50LnRz@Accounts"
         },
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9sb2FkZXIudHM=@Loader"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9mbGFnLnRz@Flag"
         },
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9hY2NvdW50LnRz@Account"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9zZWN0aW9uLnRz@Section"
         },
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@Flag"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9sb2FkZXIudHM=@Loader"
         },
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9zZWN0aW9uLnRz@Section"
-        },
-        {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9wYWdlLnRz@Page"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9wYWdlLnRz@Page"
         }
       ],
-      "title": "4dc8c2f895a6513848bc8f3f1319d3f2|Account|Flag|Loader|Page|Section"
+      "title": "Accounts|Flag|Loader|Page|Section"
     },
-    "ZGVjby1jeC9saXZlL2xvYWRlcnMvc3RhdGUudHM=@StateProp": {
+    "ZGVjby1jeC9kZWNvL2xvYWRlcnMvc3RhdGUudHM=@StateProp": {
       "type": "object",
       "properties": {
         "key": {
@@ -3790,7 +4019,7 @@
           "title": "Key"
         },
         "value": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9sb2FkZXIudHM=@4dc8c2f895a6513848bc8f3f1319d3f2|Account|Flag|Loader|Page|Section",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9hY2NvdW50LnRz@Accounts|Flag|Loader|Page|Section",
           "title": "Value"
         }
       },
@@ -3801,25 +4030,25 @@
       "title": "StateProp",
       "titleBy": "key"
     },
-    "ZGVjby1jeC9saXZlL2xvYWRlcnMvc3RhdGUudHM=@StateProp[]": {
+    "ZGVjby1jeC9kZWNvL2xvYWRlcnMvc3RhdGUudHM=@StateProp[]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/ZGVjby1jeC9saXZlL2xvYWRlcnMvc3RhdGUudHM=@StateProp"
+        "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2xvYWRlcnMvc3RhdGUudHM=@StateProp"
       },
       "title": "StateProp[]"
     },
-    "ZGVjby1jeC9saXZlL2xvYWRlcnMvc3RhdGUudHM=@Props": {
+    "ZGVjby1jeC9kZWNvL2xvYWRlcnMvc3RhdGUudHM=@Props": {
       "type": "object",
       "properties": {
         "state": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2xvYWRlcnMvc3RhdGUudHM=@StateProp[]",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2xvYWRlcnMvc3RhdGUudHM=@StateProp[]",
           "title": "State"
         }
       },
       "required": [
         "state"
       ],
-      "title": "deco-cx/live/loaders/state.ts@Props"
+      "title": "deco-cx/deco/loaders/state.ts@Props"
     },
     "ZGVjby1jeC9kdXJhYmxlL3J1bnRpbWUvY29yZS9ldmVudHMudHM=@Event": {
       "type": "object",
@@ -3921,6 +4150,9 @@
         },
         "result": {
           "title": "Result"
+        },
+        "exception": {
+          "title": "Exception"
         }
       },
       "required": [
@@ -4031,11 +4263,16 @@
         },
         "until": {
           "title": "Until"
+        },
+        "timerId": {
+          "type": "string",
+          "title": "Timer Id"
         }
       },
       "required": [
         "type",
-        "until"
+        "until",
+        "timerId"
       ],
       "title": "TimerScheduledEvent"
     },
@@ -4052,10 +4289,15 @@
           "const": "timer_fired",
           "default": "timer_fired",
           "title": "Type"
+        },
+        "timerId": {
+          "type": "string",
+          "title": "Timer Id"
         }
       },
       "required": [
-        "type"
+        "type",
+        "timerId"
       ],
       "title": "TimerFiredEvent"
     },
@@ -4203,7 +4445,7 @@
       ],
       "title": "InvokeHttpResponseEvent"
     },
-    "ZGVjby1jeC9kdXJhYmxlL3J1bnRpbWUvY29yZS9ldmVudHMudHM=@ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent": {
+    "ZGVjby1jeC9kdXJhYmxlL3J1bnRpbWUvY29yZS9ldmVudHMudHM=@ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent|bfe3d4666feaf8f69ce8c4ce6d8b117b|bfe3d4666feaf8f69ce8c4ce6d8b117b": {
       "anyOf": [
         {
           "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL3J1bnRpbWUvY29yZS9ldmVudHMudHM=@NoOpEvent"
@@ -4240,18 +4482,20 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL3J1bnRpbWUvY29yZS9ldmVudHMudHM=@InvokeHttpResponseEvent"
-        }
+        },
+        {},
+        {}
       ],
-      "title": "ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent"
+      "title": "ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent|bfe3d4666feaf8f69ce8c4ce6d8b117b|bfe3d4666feaf8f69ce8c4ce6d8b117b"
     },
-    "ZGVjby1jeC9kdXJhYmxlL3J1bnRpbWUvY29yZS9ldmVudHMudHM=@ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent[]": {
+    "ZGVjby1jeC9kdXJhYmxlL3J1bnRpbWUvY29yZS9ldmVudHMudHM=@ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent|bfe3d4666feaf8f69ce8c4ce6d8b117b|bfe3d4666feaf8f69ce8c4ce6d8b117b[]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL3J1bnRpbWUvY29yZS9ldmVudHMudHM=@ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent"
+        "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL3J1bnRpbWUvY29yZS9ldmVudHMudHM=@ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent|bfe3d4666feaf8f69ce8c4ce6d8b117b|bfe3d4666feaf8f69ce8c4ce6d8b117b"
       },
-      "title": "ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent[]"
+      "title": "ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent|bfe3d4666feaf8f69ce8c4ce6d8b117b|bfe3d4666feaf8f69ce8c4ce6d8b117b[]"
     },
-    "ZGVjby1jeC9kdXJhYmxlL2FwaS9zZXJ2aWNlLnRz@Pagination+ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent": {
+    "ZGVjby1jeC9kdXJhYmxlL2FwaS9zZXJ2aWNlLnRz@Pagination+ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent|bfe3d4666feaf8f69ce8c4ce6d8b117b|bfe3d4666feaf8f69ce8c4ce6d8b117b": {
       "type": "object",
       "properties": {
         "page": {
@@ -4263,7 +4507,7 @@
           "title": "Page Size"
         },
         "items": {
-          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL3J1bnRpbWUvY29yZS9ldmVudHMudHM=@ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent[]",
+          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL3J1bnRpbWUvY29yZS9ldmVudHMudHM=@ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent|bfe3d4666feaf8f69ce8c4ce6d8b117b|bfe3d4666feaf8f69ce8c4ce6d8b117b[]",
           "title": "Items"
         }
       },
@@ -4272,15 +4516,15 @@
         "pageSize",
         "items"
       ],
-      "title": "Pagination+ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent"
+      "title": "Pagination+ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent|bfe3d4666feaf8f69ce8c4ce6d8b117b|bfe3d4666feaf8f69ce8c4ce6d8b117b"
     },
-    "ZGVjby1jeC9kdXJhYmxlL2FwaS9zZXJ2aWNlLnRz@Pagination+ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent|bfe3d4666feaf8f69ce8c4ce6d8b117b": {
+    "ZGVjby1jeC9kdXJhYmxlL2FwaS9zZXJ2aWNlLnRz@Pagination+ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent|bfe3d4666feaf8f69ce8c4ce6d8b117b|bfe3d4666feaf8f69ce8c4ce6d8b117b|bfe3d4666feaf8f69ce8c4ce6d8b117b": {
       "anyOf": [
         {
           "$ref": "#/definitions/Resolvable"
         },
         {
-          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2FwaS9zZXJ2aWNlLnRz@Pagination+ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent"
+          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2FwaS9zZXJ2aWNlLnRz@Pagination+ActivityCompletedEvent|ActivityStartedEvent|InvokeHttpResponseEvent|LocalActivityCalledEvent|NoOpEvent|SignalReceivedEvent|TimerFiredEvent|TimerScheduledEvent|WaitingSignalEvent|WorkflowCanceledEvent|WorkflowFinishedEvent|WorkflowStartedEvent|bfe3d4666feaf8f69ce8c4ce6d8b117b|bfe3d4666feaf8f69ce8c4ce6d8b117b"
         },
         {},
         {
@@ -4289,7 +4533,7 @@
           "type": "object",
           "allOf": [
             {
-              "$ref": "#/definitions/ZGVjby1jeC9saXZlL2xvYWRlcnMvd29ya2Zsb3dzL2V2ZW50cy50cw==@Props"
+              "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2xvYWRlcnMvd29ya2Zsb3dzL2V2ZW50cy50cw==@Props"
             }
           ],
           "required": [
@@ -4307,7 +4551,7 @@
         }
       ]
     },
-    "ZGVjby1jeC9saXZlL3V0aWxzL2ludm9rZS50cw==@StreamProps": {
+    "ZGVjby1jeC9kZWNvL3V0aWxzL2ludm9rZS50cw==@StreamProps": {
       "type": "object",
       "properties": {
         "id": {
@@ -4327,11 +4571,11 @@
       ],
       "title": "StreamProps"
     },
-    "ZGVjby1jeC9saXZlL2xvYWRlcnMvd29ya2Zsb3dzL2V2ZW50cy50cw==@Props": {
+    "ZGVjby1jeC9kZWNvL2xvYWRlcnMvd29ya2Zsb3dzL2V2ZW50cy50cw==@Props": {
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL3V0aWxzL2ludm9rZS50cw==@StreamProps"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL3V0aWxzL2ludm9rZS50cw==@StreamProps"
         }
       ],
       "properties": {
@@ -4357,10 +4601,99 @@
       "required": [
         "id"
       ],
-      "title": "deco-cx/live/loaders/workflows/events.ts@Props"
+      "title": "deco-cx/deco/loaders/workflows/events.ts@Props"
+    },
+    "ZGVjby1jeC9kdXJhYmxlL2JhY2tlbmRzL2JhY2tlbmQudHM=@RuntimeParameters": {
+      "type": "object",
+      "properties": {
+        "http": {
+          "type": "object",
+          "properties": {
+            "defaultHeaders": {
+              "title": "Default Headers",
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "defaultHeaders"
+          ],
+          "title": "Http"
+        },
+        "websocket": {
+          "type": "object",
+          "properties": {
+            "defaultQueryParams": {
+              "title": "Default Query Params",
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "defaultQueryParams"
+          ],
+          "title": "Websocket"
+        }
+      },
+      "required": [
+        "http",
+        "websocket"
+      ],
+      "title": "RuntimeParameters"
+    },
+    "ZGVjby1jeC9kdXJhYmxlL2JhY2tlbmRzL2JhY2tlbmQudHM=@WorkflowExecutionBase": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Id"
+        },
+        "namespace": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Namespace"
+        },
+        "workflow": {
+          "title": "Workflow"
+        },
+        "completedAt": {
+          "title": "Completed At"
+        },
+        "metadata": {
+          "title": "Metadata"
+        },
+        "runtimeParameters": {
+          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2JhY2tlbmRzL2JhY2tlbmQudHM=@RuntimeParameters",
+          "title": "Runtime Parameters"
+        },
+        "input": {
+          "title": "Input"
+        },
+        "output": {
+          "title": "Output"
+        }
+      },
+      "required": [
+        "workflow"
+      ],
+      "title": "WorkflowExecutionBase"
     },
     "ZGVjby1jeC9kdXJhYmxlL2JhY2tlbmRzL2JhY2tlbmQudHM=@indexedAccessstatusWorkflowExecution+Arg": {
       "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2JhY2tlbmRzL2JhY2tlbmQudHM=@WorkflowExecutionBase"
+        }
+      ],
       "properties": {
         "status": {
           "title": "Status"
@@ -4371,60 +4704,63 @@
       ],
       "title": "indexedAccessstatusWorkflowExecution+Arg"
     },
-    "ZGVjby1jeC9saXZlL2NvbW1vbnMvd29ya2Zsb3dzL3R5cGVzLnRz@Arg": {
-      "title": "Arg"
-    },
     "ZGVjby1jeC9kdXJhYmxlL2JhY2tlbmRzL2JhY2tlbmQudHM=@indexedAccessinputWorkflowExecution+Arg": {
       "type": "object",
-      "properties": {
-        "input": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2NvbW1vbnMvd29ya2Zsb3dzL3R5cGVzLnRz@Arg",
-          "title": "Input"
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2JhY2tlbmRzL2JhY2tlbmQudHM=@WorkflowExecutionBase"
         }
-      },
+      ],
+      "properties": {},
       "required": [],
       "title": "indexedAccessinputWorkflowExecution+Arg"
     },
-    "ZGVjby1jeC9saXZlL2NvbW1vbnMvd29ya2Zsb3dzL3R5cGVzLnRz@WorkflowExecution": {
+    "ZGVjby1jeC9kZWNvL2NvbW1vbnMvd29ya2Zsb3dzL3R5cGVzLnRz@WorkflowExecution": {
+      "type": "object",
+      "properties": {
+        "completedAt": {
+          "title": "Completed At"
+        },
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "status": {
+          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2JhY2tlbmRzL2JhY2tlbmQudHM=@indexedAccessstatusWorkflowExecution+Arg",
+          "title": "Status"
+        },
+        "workflow": {
+          "type": "string",
+          "title": "Workflow"
+        },
+        "input": {
+          "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2JhY2tlbmRzL2JhY2tlbmQudHM=@indexedAccessinputWorkflowExecution+Arg",
+          "title": "Input"
+        },
+        "output": {
+          "title": "Output"
+        },
+        "props": {
+          "title": "Props"
+        }
+      },
+      "required": [
+        "id",
+        "status",
+        "workflow"
+      ],
+      "title": "WorkflowExecution"
+    },
+    "ZGVjby1jeC9kZWNvL2NvbW1vbnMvd29ya2Zsb3dzL3R5cGVzLnRz@WorkflowExecution|null": {
       "anyOf": [
         {
           "$ref": "#/definitions/Resolvable"
         },
         {
-          "type": "object",
-          "properties": {
-            "completedAt": {
-              "title": "Completed At"
-            },
-            "id": {
-              "type": "string",
-              "title": "Id"
-            },
-            "status": {
-              "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2JhY2tlbmRzL2JhY2tlbmQudHM=@indexedAccessstatusWorkflowExecution+Arg",
-              "title": "Status"
-            },
-            "workflow": {
-              "type": "string",
-              "title": "Workflow"
-            },
-            "input": {
-              "$ref": "#/definitions/ZGVjby1jeC9kdXJhYmxlL2JhY2tlbmRzL2JhY2tlbmQudHM=@indexedAccessinputWorkflowExecution+Arg",
-              "title": "Input"
-            },
-            "output": {
-              "title": "Output"
-            },
-            "props": {
-              "title": "Props"
-            }
-          },
-          "required": [
-            "id",
-            "status",
-            "workflow"
-          ],
-          "title": "deco-cx/live/commons/workflows/types.ts@WorkflowExecution"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2NvbW1vbnMvd29ya2Zsb3dzL3R5cGVzLnRz@WorkflowExecution"
+        },
+        {
+          "type": "null"
         },
         {
           "title": "$live/loaders/workflows/get.ts",
@@ -4432,7 +4768,7 @@
           "type": "object",
           "allOf": [
             {
-              "$ref": "#/definitions/ZGVjby1jeC9saXZlL2xvYWRlcnMvd29ya2Zsb3dzL2dldC50cw==@Props"
+              "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2xvYWRlcnMvd29ya2Zsb3dzL2dldC50cw==@Props"
             }
           ],
           "required": [
@@ -4450,7 +4786,7 @@
         }
       ]
     },
-    "ZGVjby1jeC9saXZlL2xvYWRlcnMvd29ya2Zsb3dzL2dldC50cw==@Props": {
+    "ZGVjby1jeC9kZWNvL2xvYWRlcnMvd29ya2Zsb3dzL2dldC50cw==@Props": {
       "type": "object",
       "properties": {
         "id": {
@@ -4461,7 +4797,344 @@
       "required": [
         "id"
       ],
-      "title": "deco-cx/live/loaders/workflows/get.ts@Props"
+      "title": "deco-cx/deco/loaders/workflows/get.ts@Props"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvbG9hZGVycy9hdXRvY29tcGxldGVzL3BvcHVsYXIudHM=@Props": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "limit the number of searches",
+          "title": "Count"
+        }
+      },
+      "required": [],
+      "title": "deco-sites/std/packs/linxImpulse/loaders/autocompletes/popular.ts@Props"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvbG9hZGVycy9hdXRvY29tcGxldGVzL3N1Z2dlc3Rpb25zLnRz@Props": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "term to get the list of product suggestions",
+          "title": "Query"
+        },
+        "countSuggestions": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "limit the number of suggestions terms",
+          "title": "Count Suggestions"
+        },
+        "countProducts": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "limit the number of products",
+          "title": "Count Products"
+        }
+      },
+      "required": [],
+      "title": "deco-sites/std/packs/linxImpulse/loaders/autocompletes/suggestions.ts@Props"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvbG9hZGVycy9wYWdlcy9yZWNvbW1lbmRhdGlvbnMudHM=@Props": {
+      "type": "object",
+      "properties": {
+        "position": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "top",
+              "default": "top"
+            },
+            {
+              "type": "string",
+              "const": "middle",
+              "default": "middle"
+            },
+            {
+              "type": "string",
+              "const": "bottom",
+              "default": "bottom"
+            }
+          ],
+          "type": "string",
+          "title": "Position"
+        },
+        "feature": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "MostPopular",
+              "default": "MostPopular"
+            },
+            {
+              "type": "string",
+              "const": "Offers",
+              "default": "Offers"
+            },
+            {
+              "type": "string",
+              "const": "New4You",
+              "default": "New4You"
+            },
+            {
+              "type": "string",
+              "const": "Push",
+              "default": "Push"
+            },
+            {
+              "type": "string",
+              "const": "HistoryPersonalized",
+              "default": "HistoryPersonalized"
+            },
+            {
+              "type": "string",
+              "const": "SimilarItems",
+              "default": "SimilarItems"
+            }
+          ],
+          "type": "string",
+          "title": "Feature"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "home",
+              "default": "home"
+            },
+            {
+              "type": "string",
+              "const": "product",
+              "default": "product"
+            },
+            {
+              "type": "string",
+              "const": "category",
+              "default": "category"
+            },
+            {
+              "type": "string",
+              "const": "subcategory",
+              "default": "subcategory"
+            },
+            {
+              "type": "string",
+              "const": "not_found",
+              "default": "not_found"
+            },
+            {
+              "type": "string",
+              "const": "search",
+              "default": "search"
+            },
+            {
+              "type": "string",
+              "const": "landing_page",
+              "default": "landing_page"
+            },
+            {
+              "type": "string",
+              "const": "other",
+              "default": "other"
+            }
+          ],
+          "type": "string",
+          "title": "Page"
+        }
+      },
+      "required": [
+        "position",
+        "feature",
+        "page"
+      ],
+      "title": "deco-sites/std/packs/linxImpulse/loaders/pages/recommendations.ts@Props"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvbG9hZGVycy9wcm9kdWN0cy9zaW1pbGFySXRlbXMudHM=@Props": {
+      "type": "object",
+      "properties": {
+        "slug": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL3JlcXVlc3RUb1BhcmFtLnRz@RequestURLParam",
+          "title": "Slug"
+        },
+        "position": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "top",
+              "default": "top"
+            },
+            {
+              "type": "string",
+              "const": "middle",
+              "default": "middle"
+            },
+            {
+              "type": "string",
+              "const": "bottom",
+              "default": "bottom"
+            }
+          ],
+          "type": "string",
+          "title": "Position"
+        },
+        "feature": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "SimilarItems",
+              "default": "SimilarItems"
+            },
+            {
+              "type": "string",
+              "const": "FrequentlyBoughtTogether",
+              "default": "FrequentlyBoughtTogether"
+            }
+          ],
+          "type": "string",
+          "title": "Feature"
+        }
+      },
+      "required": [
+        "slug",
+        "position",
+        "feature"
+      ],
+      "title": "deco-sites/std/packs/linxImpulse/loaders/products/similarItems.ts@Props"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvdHlwZXMudHM=@SelectedFacet": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "title": "Key"
+        },
+        "value": {
+          "type": "string",
+          "title": "Value"
+        }
+      },
+      "required": [
+        "key",
+        "value"
+      ],
+      "title": "SelectedFacet"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvdHlwZXMudHM=@SelectedFacet[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvdHlwZXMudHM=@SelectedFacet"
+      },
+      "title": "SelectedFacet[]"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvbG9hZGVycy9zZWFyY2gudHM=@Props": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "overides the query term",
+          "title": "Query"
+        },
+        "count": {
+          "type": "number",
+          "title": "Items per page",
+          "description": "number of products per page to display"
+        },
+        "sort": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "descDiscount",
+              "default": "descDiscount"
+            },
+            {
+              "type": "string",
+              "const": "relevance",
+              "default": "relevance"
+            },
+            {
+              "type": "string",
+              "const": "ascPrice",
+              "default": "ascPrice"
+            },
+            {
+              "type": "string",
+              "const": "descPrice",
+              "default": "descPrice"
+            },
+            {
+              "type": "string",
+              "const": "descDate",
+              "default": "descDate"
+            },
+            {
+              "type": "string",
+              "const": "descSold",
+              "default": "descSold"
+            },
+            {
+              "type": "string",
+              "const": "pid",
+              "default": "pid"
+            },
+            {
+              "type": "string",
+              "const": "descReview",
+              "default": "descReview"
+            },
+            {
+              "type": "string",
+              "const": "ascReview",
+              "default": "ascReview"
+            },
+            {
+              "type": "string",
+              "const": "ascSold",
+              "default": "ascSold"
+            }
+          ],
+          "type": "string",
+          "title": "Sorting",
+          "default": "relevance"
+        },
+        "selectedFacets": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvdHlwZXMudHM=@SelectedFacet[]",
+          "title": "Selected Facets",
+          "description": "Override selected facets from url"
+        },
+        "hideUnavailableItems": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "title": "Hide Unavailable Items",
+          "description": "Do not return out of stock items"
+        },
+        "page": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "title": "Starting page query parameter.",
+          "description": "Set the starting page. Default to 1."
+        }
+      },
+      "required": [
+        "count"
+      ],
+      "title": "deco-sites/std/packs/linxImpulse/loaders/search.ts@Props"
     },
     "ZGVjby1zaXRlcy9zdGQvbG9hZGVycy9udXZlbVNob3AvbnV2ZW1TaG9wUHJvZHVjdERldGFpbHNQYWdlLnRz@Props": {
       "type": "object",
@@ -4567,11 +5240,1304 @@
       ],
       "title": "deco-sites/std/loaders/nuvemShop/nuvemShopProductListingPage.ts@Props"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9oYW5kbGVyLnRz@Handler": {
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Property": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name"
+        },
+        "value": {
+          "type": "string",
+          "title": "Value"
+        },
+        "defining": {
+          "type": "boolean",
+          "title": "Defining"
+        }
+      },
+      "required": [
+        "name",
+        "value",
+        "defining"
+      ],
+      "title": "Property"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@VariantProperties": {
+      "type": "object",
+      "properties": {
+        "property1": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Property",
+          "title": "Property1"
+        },
+        "property2": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Property",
+          "title": "Property2"
+        }
+      },
+      "required": [
+        "property1",
+        "property2"
+      ],
+      "title": "VariantProperties"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Item": {
+      "type": "object",
+      "properties": {
+        "delivery_days": {
+          "type": "number",
+          "title": "Delivery_days"
+        },
+        "extra": {
+          "title": "Extra",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "type": "number",
+          "title": "Id"
+        },
+        "place_id": {
+          "type": "null",
+          "title": "Place_id"
+        },
+        "price": {
+          "type": "number",
+          "title": "Price"
+        },
+        "product_id": {
+          "type": "number",
+          "title": "Product_id"
+        },
+        "product_name": {
+          "type": "string",
+          "title": "Product_name"
+        },
+        "product_reference": {
+          "type": "string",
+          "title": "Product_reference"
+        },
+        "product_url": {
+          "type": "string",
+          "title": "Product_url"
+        },
+        "product_type": {
+          "type": "string",
+          "title": "Product_type"
+        },
+        "quantity": {
+          "type": "number",
+          "title": "Quantity"
+        },
+        "subtotal": {
+          "type": "number",
+          "title": "Subtotal"
+        },
+        "total": {
+          "type": "number",
+          "title": "Total"
+        },
+        "updated_at": {
+          "title": "Updated_at"
+        },
+        "has_customizations": {
+          "type": "boolean",
+          "title": "Has_customizations"
+        },
+        "available_quantity": {
+          "type": "number",
+          "title": "Available_quantity"
+        },
+        "image_url": {
+          "type": "string",
+          "title": "Image_url"
+        },
+        "variant_attributes": {
+          "title": "Variant_attributes",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "variant_min_quantity": {
+          "type": "number",
+          "title": "Variant_min_quantity"
+        },
+        "variant_name": {
+          "type": "string",
+          "title": "Variant_name"
+        },
+        "variant_price": {
+          "type": "number",
+          "title": "Variant_price"
+        },
+        "variant_intl_price": {
+          "type": "number",
+          "title": "Variant_intl_price"
+        },
+        "variant_properties": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@VariantProperties",
+          "title": "Variant_properties"
+        },
+        "variant_sku": {
+          "type": "string",
+          "title": "Variant_sku"
+        },
+        "seller": {
+          "type": "null",
+          "title": "Seller"
+        },
+        "seller_name": {
+          "type": "null",
+          "title": "Seller_name"
+        }
+      },
+      "required": [
+        "delivery_days",
+        "extra",
+        "id",
+        "place_id",
+        "price",
+        "product_id",
+        "product_name",
+        "product_reference",
+        "product_url",
+        "product_type",
+        "quantity",
+        "subtotal",
+        "total",
+        "updated_at",
+        "has_customizations",
+        "available_quantity",
+        "image_url",
+        "variant_attributes",
+        "variant_min_quantity",
+        "variant_name",
+        "variant_price",
+        "variant_intl_price",
+        "variant_properties",
+        "variant_sku",
+        "seller",
+        "seller_name"
+      ],
+      "title": "Item"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Item[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Item"
+      },
+      "title": "Item[]"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@OrderForm": {
+      "type": "object",
+      "properties": {
+        "agent": {
+          "type": "null",
+          "title": "Agent"
+        },
+        "billing_address_id": {
+          "type": "null",
+          "title": "Billing_address_id"
+        },
+        "channel": {
+          "type": "string",
+          "title": "Channel"
+        },
+        "client_id": {
+          "type": "null",
+          "title": "Client_id"
+        },
+        "code": {
+          "type": "string",
+          "title": "Code"
+        },
+        "coupon_code": {
+          "type": "null",
+          "title": "Coupon_code"
+        },
+        "discount": {
+          "type": "null",
+          "title": "Discount"
+        },
+        "discount_price": {
+          "type": "number",
+          "title": "Discount_price"
+        },
+        "extra": {
+          "title": "Extra",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "type": "number",
+          "title": "Id"
+        },
+        "installments": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "title": "Installments"
+        },
+        "items": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Item[]",
+          "title": "Items"
+        },
+        "items_count": {
+          "type": "number",
+          "title": "Items_count"
+        },
+        "shipping_address_id": {
+          "type": "null",
+          "title": "Shipping_address_id"
+        },
+        "shipping_method": {
+          "type": "null",
+          "title": "Shipping_method"
+        },
+        "shipping_methods": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "title": "Shipping_methods"
+        },
+        "shipping_price": {
+          "type": "number",
+          "title": "Shipping_price"
+        },
+        "subtotal": {
+          "type": "number",
+          "title": "Subtotal"
+        },
+        "subtotal_discount": {
+          "type": "number",
+          "title": "Subtotal_discount"
+        },
+        "token": {
+          "type": "string",
+          "title": "Token"
+        },
+        "total": {
+          "type": "number",
+          "title": "Total"
+        },
+        "total_discount": {
+          "type": "number",
+          "title": "Total_discount"
+        },
+        "total_for_deposit": {
+          "type": "number",
+          "title": "Total_for_deposit"
+        },
+        "total_for_slip": {
+          "type": "number",
+          "title": "Total_for_slip"
+        },
+        "total_for_pix": {
+          "type": "number",
+          "title": "Total_for_pix"
+        },
+        "updated_at": {
+          "title": "Updated_at"
+        },
+        "rebate_token": {
+          "type": "null",
+          "title": "Rebate_token"
+        },
+        "rebate_discount": {
+          "type": "number",
+          "title": "Rebate_discount"
+        },
+        "user_id": {
+          "type": "null",
+          "title": "User_id"
+        },
+        "handling_days": {
+          "type": "number",
+          "title": "Handling_days"
+        }
+      },
+      "required": [
+        "agent",
+        "billing_address_id",
+        "channel",
+        "client_id",
+        "code",
+        "coupon_code",
+        "discount",
+        "discount_price",
+        "extra",
+        "id",
+        "installments",
+        "items",
+        "items_count",
+        "shipping_address_id",
+        "shipping_method",
+        "shipping_methods",
+        "shipping_price",
+        "subtotal",
+        "subtotal_discount",
+        "token",
+        "total",
+        "total_discount",
+        "total_for_deposit",
+        "total_for_slip",
+        "total_for_pix",
+        "updated_at",
+        "rebate_token",
+        "rebate_discount",
+        "user_id",
+        "handling_days"
+      ],
+      "title": "OrderForm"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemTag": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name"
+        },
+        "title": {
+          "type": "string",
+          "title": "Title"
+        },
+        "subtitle": {
+          "type": "string",
+          "title": "Subtitle"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Description"
+        },
+        "importance": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Importance"
+        },
+        "type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Type"
+        },
+        "image_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Image_url"
+        }
+      },
+      "required": [
+        "name",
+        "title",
+        "subtitle",
+        "description",
+        "importance",
+        "type",
+        "image_url"
+      ],
+      "title": "RelatedItemTag"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemTag[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemTag"
+      },
+      "title": "RelatedItemTag[]"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemAttribute": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name"
+        },
+        "mandatory": {
+          "type": "boolean",
+          "title": "Mandatory"
+        },
+        "values": {
+          "type": "array",
+          "items": {},
+          "title": "Values"
+        }
+      },
+      "required": [
+        "name",
+        "mandatory",
+        "values"
+      ],
+      "title": "RelatedItemAttribute"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemAttribute@record": {
+      "title": "Unknown record",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemAttribute"
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemInstallment": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "number",
+          "title": "Number"
+        },
+        "price": {
+          "type": "number",
+          "title": "Price"
+        },
+        "interest": {
+          "type": "boolean",
+          "title": "Interest"
+        },
+        "interest_rate": {
+          "type": "number",
+          "title": "Interest_rate"
+        },
+        "total": {
+          "type": "number",
+          "title": "Total"
+        }
+      },
+      "required": [
+        "number",
+        "price",
+        "interest",
+        "interest_rate",
+        "total"
+      ],
+      "title": "RelatedItemInstallment"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemInstallment[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemInstallment"
+      },
+      "title": "RelatedItemInstallment[]"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Property|null": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Property"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Property|null"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Property|null@record": {
+      "title": "Unknown record",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Property|null"
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Inventory": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Name"
+        },
+        "slug": {
+          "type": "string",
+          "title": "Slug"
+        },
+        "available": {
+          "type": "boolean",
+          "title": "Available"
+        },
+        "price": {
+          "type": "number",
+          "title": "Price"
+        },
+        "sale_price": {
+          "type": "number",
+          "title": "Sale_price"
+        },
+        "quantity": {
+          "type": "number",
+          "title": "Quantity"
+        },
+        "quantity_sold": {
+          "type": "number",
+          "title": "Quantity_sold"
+        },
+        "place": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number",
+              "title": "Id"
+            },
+            "name": {
+              "type": "string",
+              "title": "Name"
+            }
+          },
+          "required": [
+            "id",
+            "name"
+          ],
+          "title": "Place"
+        }
+      },
+      "required": [
+        "name",
+        "slug",
+        "available",
+        "price",
+        "sale_price",
+        "quantity",
+        "quantity_sold",
+        "place"
+      ],
+      "title": "Inventory"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Inventory[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Inventory"
+      },
+      "title": "Inventory[]"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemVariant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "title": "Id"
+        },
+        "sku": {
+          "type": "string",
+          "title": "Sku"
+        },
+        "sku_lowercase": {
+          "type": "string",
+          "title": "Sku_lowercase"
+        },
+        "name": {
+          "type": "string",
+          "title": "Name"
+        },
+        "full_name": {
+          "type": "string",
+          "title": "Full_name"
+        },
+        "main": {
+          "type": "boolean",
+          "title": "Main"
+        },
+        "available": {
+          "type": "boolean",
+          "title": "Available"
+        },
+        "image_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Image_url"
+        },
+        "price": {
+          "type": "number",
+          "title": "Price"
+        },
+        "sale_price": {
+          "type": "number",
+          "title": "Sale_price"
+        },
+        "intl_price": {
+          "type": "number",
+          "title": "Intl_price"
+        },
+        "installments": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemInstallment[]",
+          "title": "Installments"
+        },
+        "stock": {
+          "type": "number",
+          "title": "Stock"
+        },
+        "quantity": {
+          "type": "number",
+          "title": "Quantity"
+        },
+        "quantity_sold": {
+          "type": "number",
+          "title": "Quantity_sold"
+        },
+        "min_quantity": {
+          "type": "number",
+          "title": "Min_quantity"
+        },
+        "available_quantity": {
+          "type": "number",
+          "title": "Available_quantity"
+        },
+        "custom_attributes": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Custom_attributes"
+        },
+        "attribute1": {
+          "type": "string",
+          "title": "Attribute1"
+        },
+        "attribute2": {
+          "type": "string",
+          "title": "Attribute2"
+        },
+        "attribute3": {
+          "type": "string",
+          "title": "Attribute3"
+        },
+        "properties": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Property|null@record",
+          "title": "Properties"
+        },
+        "inventories": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Inventory[]",
+          "title": "Inventories"
+        },
+        "handling_days": {
+          "type": "number",
+          "title": "Handling_days"
+        },
+        "barcode": {
+          "type": "string",
+          "title": "Barcode"
+        },
+        "weight": {
+          "type": "number",
+          "title": "Weight"
+        },
+        "width": {
+          "type": "number",
+          "title": "Width"
+        },
+        "height": {
+          "type": "number",
+          "title": "Height"
+        },
+        "length": {
+          "type": "number",
+          "title": "Length"
+        }
+      },
+      "required": [
+        "id",
+        "sku",
+        "sku_lowercase",
+        "name",
+        "full_name",
+        "main",
+        "available",
+        "image_url",
+        "price",
+        "sale_price",
+        "intl_price",
+        "installments",
+        "stock",
+        "quantity",
+        "quantity_sold",
+        "min_quantity",
+        "available_quantity",
+        "custom_attributes",
+        "attribute1",
+        "attribute2",
+        "attribute3",
+        "properties",
+        "inventories",
+        "handling_days",
+        "barcode",
+        "weight",
+        "width",
+        "height",
+        "length"
+      ],
+      "title": "RelatedItemVariant"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemVariant[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemVariant"
+      },
+      "title": "RelatedItemVariant[]"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "title": "Id"
+        },
+        "active": {
+          "type": "boolean",
+          "title": "Active"
+        },
+        "available": {
+          "type": "boolean",
+          "title": "Available"
+        },
+        "subscription": {
+          "type": "boolean",
+          "title": "Subscription"
+        },
+        "slug": {
+          "type": "string",
+          "title": "Slug"
+        },
+        "reference": {
+          "type": "string",
+          "title": "Reference"
+        },
+        "name": {
+          "type": "string",
+          "title": "Name"
+        },
+        "description": {
+          "type": "string",
+          "title": "Description"
+        },
+        "image_url": {
+          "type": "string",
+          "title": "Image_url"
+        },
+        "url": {
+          "type": "string",
+          "title": "Url"
+        },
+        "tags": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemTag[]",
+          "title": "Tags"
+        },
+        "price": {
+          "type": "number",
+          "title": "Price"
+        },
+        "on_sale": {
+          "type": "boolean",
+          "title": "On_sale"
+        },
+        "sale_price": {
+          "type": "number",
+          "title": "Sale_price"
+        },
+        "intl_price": {
+          "type": "number",
+          "title": "Intl_price"
+        },
+        "discount_id": {
+          "type": "number",
+          "title": "Discount_id"
+        },
+        "discount_rule": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Discount_rule"
+        },
+        "discount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Discount"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sku": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Sku"
+              },
+              "url": {
+                "type": "string",
+                "title": "Url"
+              }
+            },
+            "required": [
+              "sku",
+              "url"
+            ]
+          },
+          "title": "Images"
+        },
+        "attribute": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemAttribute@record",
+          "title": "Attribute"
+        },
+        "variants": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemVariant[]",
+          "title": "Variants"
+        },
+        "installments": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItemInstallment[]",
+          "title": "Installments"
+        }
+      },
+      "required": [
+        "id",
+        "active",
+        "available",
+        "subscription",
+        "slug",
+        "reference",
+        "name",
+        "description",
+        "image_url",
+        "url",
+        "tags",
+        "price",
+        "on_sale",
+        "sale_price",
+        "intl_price",
+        "discount_id",
+        "discount_rule",
+        "discount",
+        "images",
+        "attribute",
+        "variants",
+        "installments"
+      ],
+      "title": "RelatedItem"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItem[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItem"
+      },
+      "title": "RelatedItem[]"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Address": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string",
+          "title": "City"
+        },
+        "client_address_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Client_address_id"
+        },
+        "company_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Company_name"
+        },
+        "complement": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Complement"
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Email"
+        },
+        "first_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "First_name"
+        },
+        "first_phone": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "First_phone"
+        },
+        "first_phone_area": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "First_phone_area"
+        },
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "last_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Last_name"
+        },
+        "neighborhood": {
+          "type": "string",
+          "title": "Neighborhood"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference"
+        },
+        "second_phone": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Second_phone"
+        },
+        "second_phone_area": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Second_phone_area"
+        },
+        "state": {
+          "type": "string",
+          "title": "State"
+        },
+        "street_name": {
+          "type": "string",
+          "title": "Street_name"
+        },
+        "street_number": {
+          "type": "string",
+          "title": "Street_number"
+        },
+        "zip": {
+          "type": "string",
+          "title": "Zip"
+        }
+      },
+      "required": [
+        "city",
+        "client_address_id",
+        "company_name",
+        "complement",
+        "email",
+        "first_name",
+        "first_phone",
+        "first_phone_area",
+        "id",
+        "last_name",
+        "neighborhood",
+        "reference",
+        "second_phone",
+        "second_phone_area",
+        "state",
+        "street_name",
+        "street_number",
+        "zip"
+      ],
+      "title": "Address"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@ShippingMethod": {
+      "type": "object",
+      "properties": {
+        "delivery_days": {
+          "type": "number",
+          "title": "Delivery_days"
+        },
+        "description": {
+          "type": "string",
+          "title": "Description"
+        },
+        "name": {
+          "type": "string",
+          "title": "Name"
+        },
+        "price": {
+          "type": "number",
+          "title": "Price"
+        },
+        "shipping_method_id": {
+          "type": "number",
+          "title": "Shipping_method_id"
+        },
+        "value": {
+          "type": "string",
+          "title": "Value"
+        },
+        "countries": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Countries"
+        },
+        "fulfillment_company": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Fulfillment_company"
+        },
+        "value_needed_to_discount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value_needed_to_discount"
+        }
+      },
+      "required": [
+        "delivery_days",
+        "description",
+        "name",
+        "price",
+        "shipping_method_id",
+        "value",
+        "countries",
+        "fulfillment_company",
+        "value_needed_to_discount"
+      ],
+      "title": "ShippingMethod"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@ShippingMethod[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@ShippingMethod"
+      },
+      "title": "ShippingMethod[]"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Shipping": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Address",
+          "title": "Address"
+        },
+        "methods": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@ShippingMethod[]",
+          "title": "Methods"
+        }
+      },
+      "required": [
+        "address",
+        "methods"
+      ],
+      "title": "Shipping"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Coupon": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "title": "Code"
+        },
+        "discount": {
+          "type": "number",
+          "title": "Discount"
+        },
+        "rebate_token": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Rebate_token"
+        },
+        "rebate_discount": {
+          "type": "number",
+          "title": "Rebate_discount"
+        }
+      },
+      "required": [
+        "code",
+        "discount",
+        "rebate_token",
+        "rebate_discount"
+      ],
+      "title": "Coupon"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Cart": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Resolvable"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "orderForm": {
+              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@OrderForm",
+              "title": "Order Form"
+            },
+            "relatedItems": {
+              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@RelatedItem[]",
+              "title": "Related Items"
+            },
+            "shipping": {
+              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Shipping",
+              "title": "Shipping"
+            },
+            "coupon": {
+              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS90eXBlcy50cw==@Coupon",
+              "title": "Coupon"
+            }
+          },
+          "required": [],
+          "title": "deco-sites/std/packs/vnda/types.ts@Cart"
+        },
+        {
+          "title": "deco-sites/std/loaders/vnda/cart.ts",
+          "type": "object",
+          "required": [
+            "__resolveType"
+          ],
+          "properties": {
+            "__resolveType": {
+              "type": "string",
+              "enum": [
+                "deco-sites/std/loaders/vnda/cart.ts"
+              ],
+              "default": "deco-sites/std/loaders/vnda/cart.ts"
+            }
+          }
+        }
+      ]
+    },
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy9oYW5kbGVyLnRz@Handler": {
       "$ref": "#/root/handlers",
       "title": "Handler"
     },
-    "ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route": {
+    "ZGVjby1jeC9kZWNvL2ZsYWdzL2F1ZGllbmNlLnRz@Route": {
       "type": "object",
       "properties": {
         "pathTemplate": {
@@ -4590,7 +6556,7 @@
           "type": "object",
           "properties": {
             "value": {
-              "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9oYW5kbGVyLnRz@Handler",
+              "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9oYW5kbGVyLnRz@Handler",
               "title": "Value"
             }
           },
@@ -4607,7 +6573,7 @@
       "title": "Site Route",
       "titleBy": "pathTemplate"
     },
-    "ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route[]": {
+    "ZGVjby1jeC9kZWNvL2ZsYWdzL2F1ZGllbmNlLnRz@Route[]": {
       "anyOf": [
         {
           "$ref": "#/definitions/Resolvable"
@@ -4615,9 +6581,9 @@
         {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route"
+            "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2ZsYWdzL2F1ZGllbmNlLnRz@Route"
           },
-          "title": "deco-cx/live/flags/audience.ts@Route[]"
+          "title": "deco-cx/deco/flags/audience.ts@Route[]"
         },
         {
           "title": "VNDA Proxy Routes",
@@ -4688,7 +6654,7 @@
           "type": "object",
           "allOf": [
             {
-              "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Audience"
+              "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2ZsYWdzL2F1ZGllbmNlLnRz@Audience"
             }
           ],
           "required": [
@@ -4710,7 +6676,7 @@
           "type": "object",
           "allOf": [
             {
-              "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2V2ZXJ5b25lLnRz@EveryoneConfig"
+              "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2ZsYWdzL2V2ZXJ5b25lLnRz@EveryoneConfig"
             }
           ],
           "required": [
@@ -7738,6 +9704,23 @@
             ]
           },
           "title": "Extra Paths To Proxy"
+        },
+        "includeSiteMap": {
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "title": "Other site maps to include"
+        },
+        "generateDecoSiteMap": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "title": "If deco site map should be exposed at /deco-sitemap.xml"
         }
       },
       "required": [],
@@ -8834,33 +10817,58 @@
       ],
       "title": "deco-sites/web/components/ui/Main/v1/Nav.tsx@Props"
     },
-    "ZGVjby1jeC9saXZlL2hhbmRsZXJzL2RldlBhZ2UudHM=@DevConfig": {
+    "ZGVjby1jeC9kZWNvL2hhbmRsZXJzL2RldlBhZ2UudHM=@DevConfig": {
       "type": "object",
       "properties": {
         "page": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9wYWdlLnRz@Page",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9wYWdlLnRz@Page",
           "title": "Page"
         }
       },
       "required": [
         "page"
       ],
-      "title": "deco-cx/live/handlers/devPage.ts@DevConfig"
+      "title": "deco-cx/deco/handlers/devPage.ts@DevConfig"
     },
-    "ZGVjby1jeC9saXZlL2hhbmRsZXJzL2ZyZXNoLnRz@FreshConfig": {
+    "ZGVjby1jeC9kZWNvL2hhbmRsZXJzL2ZyZXNoLnRz@FreshConfig": {
       "type": "object",
       "properties": {
         "page": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9wYWdlLnRz@Page",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9wYWdlLnRz@Page",
           "title": "Page"
         }
       },
       "required": [
         "page"
       ],
-      "title": "deco-cx/live/handlers/fresh.ts@FreshConfig"
+      "title": "deco-cx/deco/handlers/fresh.ts@FreshConfig"
     },
-    "ZGVjby1jeC9saXZlL2hhbmRsZXJzL3Byb3h5LnRz@Props": {
+    "ZGVjby1jeC9kZWNvL2hhbmRsZXJzL3Byb3h5LnRz@Header": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "title": "Key"
+        },
+        "value": {
+          "type": "string",
+          "title": "Value"
+        }
+      },
+      "required": [
+        "key",
+        "value"
+      ],
+      "title": "{{{key}}} - {{{value}}}"
+    },
+    "ZGVjby1jeC9kZWNvL2hhbmRsZXJzL3Byb3h5LnRz@Header[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2hhbmRsZXJzL3Byb3h5LnRz@Header"
+      },
+      "title": "Header[]"
+    },
+    "ZGVjby1jeC9kZWNvL2hhbmRsZXJzL3Byb3h5LnRz@Props": {
       "type": "object",
       "properties": {
         "url": {
@@ -8883,14 +10891,19 @@
           ],
           "description": "Host that should be used when proxying the request",
           "title": "Host"
+        },
+        "customHeaders": {
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2hhbmRsZXJzL3Byb3h5LnRz@Header[]",
+          "description": "custom headers",
+          "title": "Custom Headers"
         }
       },
       "required": [
         "url"
       ],
-      "title": "deco-cx/live/handlers/proxy.ts@Props"
+      "title": "deco-cx/deco/handlers/proxy.ts@Props"
     },
-    "ZGVjby1jeC9saXZlL2hhbmRsZXJzL3JlZGlyZWN0LnRz@RedirectConfig": {
+    "ZGVjby1jeC9kZWNvL2hhbmRsZXJzL3JlZGlyZWN0LnRz@RedirectConfig": {
       "type": "object",
       "properties": {
         "to": {
@@ -8917,9 +10930,9 @@
       "required": [
         "to"
       ],
-      "title": "deco-cx/live/handlers/redirect.ts@RedirectConfig"
+      "title": "deco-cx/deco/handlers/redirect.ts@RedirectConfig"
     },
-    "ZGVjby1jeC9saXZlL2hhbmRsZXJzL3JvdXRlci50cw==@RouterConfig": {
+    "ZGVjby1jeC9kZWNvL2hhbmRsZXJzL3JvdXRlci50cw==@RouterConfig": {
       "type": "object",
       "properties": {
         "base": {
@@ -8930,53 +10943,70 @@
           "title": "Base"
         },
         "routes": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route[]",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2ZsYWdzL2F1ZGllbmNlLnRz@Route[]",
           "title": "Routes"
         }
       },
       "required": [
         "routes"
       ],
-      "title": "deco-cx/live/handlers/router.ts@RouterConfig"
+      "title": "deco-cx/deco/handlers/router.ts@RouterConfig"
     },
-    "ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route[][]": {
+    "ZGVjby1jeC9kZWNvL2ZsYWdzL2F1ZGllbmNlLnRz@Route[][]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route[]"
+        "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2ZsYWdzL2F1ZGllbmNlLnRz@Route[]"
       },
       "title": "Route[][]"
     },
-    "ZGVjby1jeC9saXZlL2hhbmRsZXJzL3JvdXRlc1NlbGVjdGlvbi50cw==@SelectionConfig": {
+    "ZGVjby1jeC9kZWNvL2hhbmRsZXJzL3JvdXRlc1NlbGVjdGlvbi50cw==@SelectionConfig": {
       "type": "object",
       "properties": {
         "audiences": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route[][]",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2ZsYWdzL2F1ZGllbmNlLnRz@Route[][]",
           "title": "Audiences"
         }
       },
       "required": [
         "audiences"
       ],
-      "title": "deco-cx/live/handlers/routesSelection.ts@SelectionConfig"
+      "title": "deco-cx/deco/handlers/routesSelection.ts@SelectionConfig"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy93b3JrZmxvdy50cw==@Workflow": {
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy93b3JrZmxvdy50cw==@Workflow": {
       "$ref": "#/root/workflows",
       "title": "Workflow"
     },
-    "ZGVjby1jeC9saXZlL2hhbmRsZXJzL3dvcmtmbG93UnVubmVyLnRz@Config": {
+    "ZGVjby1jeC9kZWNvL2hhbmRsZXJzL3dvcmtmbG93UnVubmVyLnRz@Config": {
       "type": "object",
       "properties": {
         "workflow": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy93b3JrZmxvdy50cw==@Workflow",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy93b3JrZmxvdy50cw==@Workflow",
           "title": "Workflow"
         }
       },
       "required": [
         "workflow"
       ],
-      "title": "deco-cx/live/handlers/workflowRunner.ts@Config"
+      "title": "deco-cx/deco/handlers/workflowRunner.ts@Config"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9zZWN0aW9uLnRz@Section[]": {
+    "ZGVjby1zaXRlcy9zdGQvcGFja3MvdnRleC9oYW5kbGVycy9zaXRlbWFwLnRz@Props": {
+      "type": "object",
+      "properties": {
+        "include": {
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "title": "Include"
+        }
+      },
+      "required": [],
+      "title": "deco-sites/std/packs/vtex/handlers/sitemap.ts@Props"
+    },
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy9zZWN0aW9uLnRz@Section[]": {
       "anyOf": [
         {
           "$ref": "#/definitions/Resolvable"
@@ -8984,16 +11014,19 @@
         {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9zZWN0aW9uLnRz@Section"
+            "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9zZWN0aW9uLnRz@Section"
           },
-          "title": "Page Sections"
+          "title": "Sections",
+          "label": "hidden",
+          "changeable": "true"
         },
         {
           "title": "Variant",
+          "label": "hidden",
           "type": "object",
           "allOf": [
             {
-              "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@MultivariateFlag+Section[]+Section[]"
+              "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9mbGFnLnRz@MultivariateFlag+Section[]+Section[]"
             }
           ],
           "required": [
@@ -9011,7 +11044,7 @@
         }
       ]
     },
-    "ZGVjby1jeC9saXZlL3BhZ2VzL0xpdmVQYWdlLnRzeA==@Props": {
+    "ZGVjby1jeC9kZWNvL3BhZ2VzL0xpdmVQYWdlLnRzeA==@Props": {
       "type": "object",
       "properties": {
         "name": {
@@ -9026,7 +11059,7 @@
           "title": "Path"
         },
         "sections": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9zZWN0aW9uLnRz@Section[]",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9zZWN0aW9uLnRz@Section[]",
           "title": "Sections"
         }
       },
@@ -9034,22 +11067,23 @@
         "name",
         "sections"
       ],
-      "title": "deco-cx/live/pages/LivePage.tsx@Props",
-      "titleBy": "name"
+      "title": "deco-cx/deco/pages/LivePage.tsx@Props",
+      "titleBy": "name",
+      "label": "rootHidden"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher": {
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher": {
       "$ref": "#/root/matchers",
       "title": "Matcher"
     },
-    "ZGVjby1jeC9saXZlL3V0aWxzL2NvbmRpdGlvbmFscy50cw==@Rule+Section[]": {
+    "ZGVjby1jeC9kZWNvL3V0aWxzL2NvbmRpdGlvbmFscy50cw==@Rule+Section[]": {
       "type": "object",
       "properties": {
         "if": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher",
           "title": "If"
         },
         "then": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9zZWN0aW9uLnRz@Section[]",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9zZWN0aW9uLnRz@Section[]",
           "title": "Then"
         }
       },
@@ -9059,22 +11093,22 @@
       ],
       "title": "Rule"
     },
-    "ZGVjby1jeC9saXZlL3V0aWxzL2NvbmRpdGlvbmFscy50cw==@Rule+Section[][]": {
+    "ZGVjby1jeC9kZWNvL3V0aWxzL2NvbmRpdGlvbmFscy50cw==@Rule+Section[][]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/ZGVjby1jeC9saXZlL3V0aWxzL2NvbmRpdGlvbmFscy50cw==@Rule+Section[]"
+        "$ref": "#/definitions/ZGVjby1jeC9kZWNvL3V0aWxzL2NvbmRpdGlvbmFscy50cw==@Rule+Section[]"
       },
       "title": "Rule+Section[][]"
     },
-    "ZGVjby1jeC9saXZlL3V0aWxzL2NvbmRpdGlvbmFscy50cw==@Props+Section[]": {
+    "ZGVjby1jeC9kZWNvL3V0aWxzL2NvbmRpdGlvbmFscy50cw==@Props+Section[]": {
       "type": "object",
       "properties": {
         "rules": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL3V0aWxzL2NvbmRpdGlvbmFscy50cw==@Rule+Section[][]",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL3V0aWxzL2NvbmRpdGlvbmFscy50cw==@Rule+Section[][]",
           "title": "Rules"
         },
         "else": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9zZWN0aW9uLnRz@Section[]",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9zZWN0aW9uLnRz@Section[]",
           "title": "Otherwise",
           "description": "Used in case of none of the previous values are used."
         }
@@ -9083,22 +11117,22 @@
         "rules",
         "else"
       ],
-      "title": "deco-cx/live/utils/conditionals.ts@Props+Section[]"
+      "title": "deco-cx/deco/utils/conditionals.ts@Props+Section[]"
     },
-    "ZGVjby1jeC9saXZlL3NlY3Rpb25zL1BhZ2VJbmNsdWRlLnRzeA==@Props": {
+    "ZGVjby1jeC9kZWNvL3NlY3Rpb25zL1BhZ2VJbmNsdWRlLnRzeA==@Props": {
       "type": "object",
       "properties": {
         "page": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9wYWdlLnRz@Page",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9wYWdlLnRz@Page",
           "title": "Page"
         }
       },
       "required": [
         "page"
       ],
-      "title": "deco-cx/live/sections/PageInclude.tsx@Props"
+      "title": "deco-cx/deco/sections/PageInclude.tsx@Props"
     },
-    "ZGVjby1jeC9saXZlL3NlY3Rpb25zL1Nsb3QudHN4@Props": {
+    "ZGVjby1jeC9kZWNvL3NlY3Rpb25zL1Nsb3QudHN4@Props": {
       "type": "object",
       "properties": {
         "required": {
@@ -9157,9 +11191,9 @@
         }
       },
       "required": [],
-      "title": "deco-cx/live/sections/Slot.tsx@Props"
+      "title": "deco-cx/deco/sections/Slot.tsx@Props"
     },
-    "ZGVjby1jeC9saXZlL3NlY3Rpb25zL1VzZVNsb3QudHN4@Props": {
+    "ZGVjby1jeC9kZWNvL3NlY3Rpb25zL1VzZVNsb3QudHN4@Props": {
       "type": "object",
       "properties": {
         "name": {
@@ -9207,7 +11241,7 @@
           "title": "Name"
         },
         "sections": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9zZWN0aW9uLnRz@Section[]",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9zZWN0aW9uLnRz@Section[]",
           "title": "Sections"
         }
       },
@@ -9215,7 +11249,7 @@
         "name",
         "sections"
       ],
-      "title": "deco-cx/live/sections/UseSlot.tsx@Props"
+      "title": "deco-cx/deco/sections/UseSlot.tsx@Props"
     },
     "ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy9BbmFseXRpY3MudHN4@Props": {
       "type": "object",
@@ -9466,328 +11500,6 @@
         "slug"
       ],
       "title": "deco-sites/std/sections/VTEXPortalDataLayerCompatibility.tsx@LoaderProps"
-    },
-    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvRGVzaWduU3lzdGVtLnRzeA==@Colors": {
-      "type": "object",
-      "properties": {
-        "primary": {
-          "type": "string",
-          "format": "color",
-          "default": "#003232",
-          "title": "Primary"
-        },
-        "primary-focus": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Will be a darker tone of primary if not specified",
-          "title": "Primary-focus"
-        },
-        "primary-content": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Will be a readable tone of primary if not specified",
-          "title": "Primary-content"
-        },
-        "secondary": {
-          "type": "string",
-          "format": "color",
-          "default": "#8C3D3D",
-          "title": "Secondary"
-        },
-        "secondary-focus": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Will be a darker tone of secondary if not specified",
-          "title": "Secondary-focus"
-        },
-        "secondary-content": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Will be a readable tone of secondary if not specified",
-          "title": "Secondary-content"
-        },
-        "accent": {
-          "type": "string",
-          "format": "color",
-          "default": "#00FF7F",
-          "title": "Accent"
-        },
-        "accent-focus": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Will be a darker tone of accent if not specified",
-          "title": "Accent-focus"
-        },
-        "accent-content": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Will be a readable tone of accent if not specified",
-          "title": "Accent-content"
-        },
-        "neutral": {
-          "type": "string",
-          "format": "color",
-          "default": "#333333",
-          "title": "Neutral"
-        },
-        "neutral-focus": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Will be a darker tone of neutral if not specified",
-          "title": "Neutral-focus"
-        },
-        "neutral-content": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Will be a readable tone of neutral if not specified",
-          "title": "Neutral-content"
-        },
-        "base-100": {
-          "type": "string",
-          "format": "color",
-          "default": "#FFFFFF",
-          "title": "Base-100"
-        },
-        "base-200": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Will be a darker tone of base-100 if not specified",
-          "title": "Base-200"
-        },
-        "base-300": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Will be a darker tone of base-200 if not specified",
-          "title": "Base-300"
-        },
-        "base-content": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Will be a readable tone of base-100 if not specified",
-          "title": "Base-content"
-        },
-        "success": {
-          "type": "string",
-          "format": "color",
-          "default": "#EAFAF2",
-          "title": "Success"
-        },
-        "success-content": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Will be a readable success of neutral if not specified",
-          "title": "Success-content"
-        },
-        "warning": {
-          "type": "string",
-          "format": "color",
-          "default": "#FFF8E6",
-          "title": "Warning"
-        },
-        "warning-content": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Will be a readable tone of warning if not specified",
-          "title": "Warning-content"
-        },
-        "error": {
-          "type": "string",
-          "format": "color",
-          "default": "#FFE9E5",
-          "title": "Error"
-        },
-        "error-content": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Will be a readable tone of error if not specified",
-          "title": "Error-content"
-        },
-        "info": {
-          "type": "string",
-          "format": "color",
-          "default": "#F0F5FF",
-          "title": "Info"
-        },
-        "info-content": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "color",
-          "description": "Will be a readable tone of info if not specified",
-          "title": "Info-content"
-        }
-      },
-      "required": [
-        "primary",
-        "secondary",
-        "accent",
-        "neutral",
-        "base-100",
-        "success",
-        "warning",
-        "error",
-        "info"
-      ],
-      "title": "Colors"
-    },
-    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvRGVzaWduU3lzdGVtLnRzeA==@Miscellaneous": {
-      "type": "object",
-      "properties": {
-        "--rounded-box": {
-          "type": "string",
-          "default": "1rem",
-          "title": "Rounded box",
-          "description": "border radius rounded-box utility class, used in card and other large boxes"
-        },
-        "--rounded-btn": {
-          "type": "string",
-          "default": "0.5rem",
-          "title": "Rounded button",
-          "description": "border radius rounded-btn utility class, used in buttons and similar element"
-        },
-        "--rounded-badge": {
-          "type": "string",
-          "default": "1.9rem",
-          "title": "Rounded badge",
-          "description": "border radius rounded-badge utility class, used in badges and similar"
-        },
-        "--animation-btn": {
-          "type": "string",
-          "default": "0.25s",
-          "title": "Animation button",
-          "description": "duration of animation when you click on button"
-        },
-        "--animation-input": {
-          "type": "string",
-          "default": "0.2s",
-          "title": "Animation input",
-          "description": "duration of animation for inputs like checkbox, toggle, radio, etc"
-        },
-        "--btn-text-case": {
-          "type": "string",
-          "default": "uppercase",
-          "title": "Button text case",
-          "description": "set default text transform for buttons"
-        },
-        "--btn-focus-scale": {
-          "type": "string",
-          "default": "0.95",
-          "title": "Button focus scale",
-          "description": "scale transform of button when you focus on it"
-        },
-        "--border-btn": {
-          "type": "string",
-          "default": "1px",
-          "title": "Border button",
-          "description": "border width of buttons"
-        },
-        "--tab-border": {
-          "type": "string",
-          "default": "1px",
-          "title": "Tab border",
-          "description": "border width of tabs"
-        },
-        "--tab-radius": {
-          "type": "string",
-          "default": "0.5rem",
-          "title": "Tab radius",
-          "description": "border radius of tabs"
-        }
-      },
-      "required": [
-        "--rounded-box",
-        "--rounded-btn",
-        "--rounded-badge",
-        "--animation-btn",
-        "--animation-input",
-        "--btn-text-case",
-        "--btn-focus-scale",
-        "--border-btn",
-        "--tab-border",
-        "--tab-radius"
-      ],
-      "title": "Miscellaneous"
-    },
-    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvRGVzaWduU3lzdGVtLnRzeA==@Font": {
-      "type": "object",
-      "properties": {
-        "fontFamily": {
-          "type": "string",
-          "default": "'Albert Sans'",
-          "title": "Font Family"
-        },
-        "styleInnerHtml": {
-          "type": "string",
-          "title": "Style Inner Html"
-        }
-      },
-      "required": [
-        "fontFamily",
-        "styleInnerHtml"
-      ],
-      "title": "Font"
-    },
-    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvRGVzaWduU3lzdGVtLnRzeA==@Props": {
-      "type": "object",
-      "properties": {
-        "colors": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvRGVzaWduU3lzdGVtLnRzeA==@Colors",
-          "title": "Colors"
-        },
-        "miscellaneous": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvRGVzaWduU3lzdGVtLnRzeA==@Miscellaneous",
-          "title": "Miscellaneous"
-        },
-        "fonts": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvRGVzaWduU3lzdGVtLnRzeA==@Font",
-          "title": "Fonts"
-        }
-      },
-      "required": [],
-      "title": "deco-sites/web/sections/DesignSystem.tsx@Props"
     },
     "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9Gb290ZXIvRm9vdGVyLnRzeA==@Props": {
       "type": "object",
@@ -10094,6 +11806,590 @@
       },
       "required": [],
       "title": "deco-sites/web/sections/Home.tsx@Props"
+    },
+    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@MainColors": {
+      "type": "object",
+      "properties": {
+        "base-100": {
+          "type": "string",
+          "format": "color",
+          "title": "Base",
+          "default": "#FFFFFF"
+        },
+        "primary": {
+          "type": "string",
+          "format": "color",
+          "title": "Primary",
+          "default": "#003232"
+        },
+        "secondary": {
+          "type": "string",
+          "format": "color",
+          "title": "Scondary",
+          "default": "#8C3D3D"
+        },
+        "tertiary": {
+          "type": "string",
+          "format": "color",
+          "title": "Tertiary",
+          "default": "#00FF7F"
+        }
+      },
+      "required": [
+        "base-100",
+        "primary",
+        "secondary",
+        "tertiary"
+      ],
+      "title": "MainColors"
+    },
+    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@BaseColorOptional": {
+      "type": "object",
+      "properties": {
+        "base-200": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "color",
+          "title": "Base-200"
+        },
+        "base-300": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "color",
+          "title": "Base-300"
+        },
+        "base-content": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "color",
+          "title": "Base-content"
+        }
+      },
+      "required": [],
+      "title": "BaseColorOptional"
+    },
+    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@PrimaryColorOptional": {
+      "type": "object",
+      "properties": {
+        "primary-focus": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "color",
+          "title": "Hover"
+        },
+        "primary-content": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "color",
+          "title": "Content"
+        }
+      },
+      "required": [],
+      "title": "PrimaryColorOptional"
+    },
+    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@SecondaryColorOptional": {
+      "type": "object",
+      "properties": {
+        "secondary-focus": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "color",
+          "title": "Hover"
+        },
+        "secondary-content": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "color",
+          "title": "Content"
+        }
+      },
+      "required": [],
+      "title": "SecondaryColorOptional"
+    },
+    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@TertiaryColorOptional": {
+      "type": "object",
+      "properties": {
+        "tertiary-focus": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "color",
+          "title": "Hover"
+        },
+        "tertiary-content": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "color",
+          "title": "Content"
+        }
+      },
+      "required": [],
+      "title": "TertiaryColorOptional"
+    },
+    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@ComplementaryColors": {
+      "type": "object",
+      "properties": {
+        "base": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@BaseColorOptional",
+          "title": "Base"
+        },
+        "primary": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@PrimaryColorOptional",
+          "title": "Primary"
+        },
+        "secondary": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@SecondaryColorOptional",
+          "title": "Secondary"
+        },
+        "tertiary": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@TertiaryColorOptional",
+          "title": "Tertiary"
+        }
+      },
+      "required": [],
+      "title": "ComplementaryColors"
+    },
+    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@Button": {
+      "type": "object",
+      "properties": {
+        "--border-btn": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "1px",
+              "default": "1px"
+            },
+            {
+              "type": "string",
+              "const": "2px",
+              "default": "2px"
+            },
+            {
+              "type": "string",
+              "const": "3px",
+              "default": "3px"
+            },
+            {
+              "type": "string",
+              "const": "4px",
+              "default": "4px"
+            },
+            {
+              "type": "string",
+              "const": "5px",
+              "default": "5px"
+            },
+            {
+              "type": "string",
+              "const": "6px",
+              "default": "6px"
+            },
+            {
+              "type": "string",
+              "const": "7px",
+              "default": "7px"
+            },
+            {
+              "type": "string",
+              "const": "8px",
+              "default": "8px"
+            }
+          ],
+          "type": "string",
+          "default": "1px",
+          "title": "Border width"
+        },
+        "--rounded-btn": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "0",
+              "default": "0"
+            },
+            {
+              "type": "string",
+              "const": "0.2rem",
+              "default": "0.2rem"
+            },
+            {
+              "type": "string",
+              "const": "0.4rem",
+              "default": "0.4rem"
+            },
+            {
+              "type": "string",
+              "const": "0.8rem",
+              "default": "0.8rem"
+            },
+            {
+              "type": "string",
+              "const": "2rem",
+              "default": "2rem"
+            }
+          ],
+          "type": "string",
+          "default": "0.2rem",
+          "title": "Radius",
+          "description": "Button and similar elements"
+        },
+        "--btn-text-case": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "normal-case",
+              "default": "normal-case"
+            },
+            {
+              "type": "string",
+              "const": "uppercase",
+              "default": "uppercase"
+            },
+            {
+              "type": "string",
+              "const": "lowercase",
+              "default": "lowercase"
+            },
+            {
+              "type": "string",
+              "const": "capitalize",
+              "default": "capitalize"
+            }
+          ],
+          "type": "string",
+          "default": "normal-case",
+          "title": "Text transform"
+        },
+        "--btn-focus-scale": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "0.9",
+              "default": "0.9"
+            },
+            {
+              "type": "string",
+              "const": "0.95",
+              "default": "0.95"
+            },
+            {
+              "type": "string",
+              "const": "1",
+              "default": "1"
+            },
+            {
+              "type": "string",
+              "const": "1.05",
+              "default": "1.05"
+            },
+            {
+              "type": "string",
+              "const": "1.1",
+              "default": "1.1"
+            }
+          ],
+          "type": "string",
+          "default": "0.95",
+          "title": "Scale on click"
+        }
+      },
+      "required": [
+        "--border-btn",
+        "--rounded-btn",
+        "--btn-text-case",
+        "--btn-focus-scale"
+      ],
+      "title": "Button"
+    },
+    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@Font": {
+      "type": "object",
+      "properties": {
+        "fontFamily": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "None",
+              "default": "None"
+            },
+            {
+              "type": "string",
+              "const": "Alegreya",
+              "default": "Alegreya"
+            },
+            {
+              "type": "string",
+              "const": "Alegreya Sans",
+              "default": "Alegreya Sans"
+            },
+            {
+              "type": "string",
+              "const": "Archivo Narrow",
+              "default": "Archivo Narrow"
+            },
+            {
+              "type": "string",
+              "const": "BioRhyme",
+              "default": "BioRhyme"
+            },
+            {
+              "type": "string",
+              "const": "Cardo",
+              "default": "Cardo"
+            },
+            {
+              "type": "string",
+              "const": "Chivo",
+              "default": "Chivo"
+            },
+            {
+              "type": "string",
+              "const": "Cormorant",
+              "default": "Cormorant"
+            },
+            {
+              "type": "string",
+              "const": "DM Sans",
+              "default": "DM Sans"
+            },
+            {
+              "type": "string",
+              "const": "Eczar",
+              "default": "Eczar"
+            },
+            {
+              "type": "string",
+              "const": "Fira Sans",
+              "default": "Fira Sans"
+            },
+            {
+              "type": "string",
+              "const": "Inconsolata",
+              "default": "Inconsolata"
+            },
+            {
+              "type": "string",
+              "const": "Inknut Antiqua",
+              "default": "Inknut Antiqua"
+            },
+            {
+              "type": "string",
+              "const": "Inter",
+              "default": "Inter"
+            },
+            {
+              "type": "string",
+              "const": "IBM Plex Sans",
+              "default": "IBM Plex Sans"
+            },
+            {
+              "type": "string",
+              "const": "Karla",
+              "default": "Karla"
+            },
+            {
+              "type": "string",
+              "const": "Lato",
+              "default": "Lato"
+            },
+            {
+              "type": "string",
+              "const": "Libre Baskerville",
+              "default": "Libre Baskerville"
+            },
+            {
+              "type": "string",
+              "const": "Libre Franklin",
+              "default": "Libre Franklin"
+            },
+            {
+              "type": "string",
+              "const": "Lora",
+              "default": "Lora"
+            },
+            {
+              "type": "string",
+              "const": "Manrope",
+              "default": "Manrope"
+            },
+            {
+              "type": "string",
+              "const": "Merriweather",
+              "default": "Merriweather"
+            },
+            {
+              "type": "string",
+              "const": "Montserrat",
+              "default": "Montserrat"
+            },
+            {
+              "type": "string",
+              "const": "Neuton",
+              "default": "Neuton"
+            },
+            {
+              "type": "string",
+              "const": "Open Sans",
+              "default": "Open Sans"
+            },
+            {
+              "type": "string",
+              "const": "Poppins",
+              "default": "Poppins"
+            },
+            {
+              "type": "string",
+              "const": "Playfair Display",
+              "default": "Playfair Display"
+            },
+            {
+              "type": "string",
+              "const": "Proza Libre",
+              "default": "Proza Libre"
+            },
+            {
+              "type": "string",
+              "const": "PT Sans",
+              "default": "PT Sans"
+            },
+            {
+              "type": "string",
+              "const": "PT Serif",
+              "default": "PT Serif"
+            },
+            {
+              "type": "string",
+              "const": "Raleway",
+              "default": "Raleway"
+            },
+            {
+              "type": "string",
+              "const": "Roboto",
+              "default": "Roboto"
+            },
+            {
+              "type": "string",
+              "const": "Roboto Slab",
+              "default": "Roboto Slab"
+            },
+            {
+              "type": "string",
+              "const": "Rubik",
+              "default": "Rubik"
+            },
+            {
+              "type": "string",
+              "const": "Space Grotesk",
+              "default": "Space Grotesk"
+            },
+            {
+              "type": "string",
+              "const": "Space Mono",
+              "default": "Space Mono"
+            },
+            {
+              "type": "string",
+              "const": "Spectral",
+              "default": "Spectral"
+            },
+            {
+              "type": "string",
+              "const": "Source Sans Pro",
+              "default": "Source Sans Pro"
+            },
+            {
+              "type": "string",
+              "const": "Source Serif Pro",
+              "default": "Source Serif Pro"
+            },
+            {
+              "type": "string",
+              "const": "Syne",
+              "default": "Syne"
+            },
+            {
+              "type": "string",
+              "const": "Work Sans",
+              "default": "Work Sans"
+            }
+          ],
+          "type": "string",
+          "title": "Font family"
+        },
+        "other": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Other"
+        }
+      },
+      "required": [],
+      "title": "Font"
+    },
+    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@CustomFont": {
+      "type": "object",
+      "properties": {
+        "fontFamily": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Font Family"
+        },
+        "styleInnerHtml": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "css",
+          "title": "Style Inner Html"
+        }
+      },
+      "required": [],
+      "title": "CustomFont"
+    },
+    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@Props": {
+      "type": "object",
+      "properties": {
+        "mainColors": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@MainColors",
+          "title": "Main Colors"
+        },
+        "complementaryColors": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@ComplementaryColors",
+          "title": "Complementary Colors"
+        },
+        "buttonStyle": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@Button",
+          "title": "Button Style"
+        },
+        "font": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@Font",
+          "title": "Google font"
+        },
+        "customFont": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@CustomFont",
+          "title": "Custom Font"
+        }
+      },
+      "required": [],
+      "title": "deco-sites/web/sections/Theme.tsx@Props"
     },
     "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL3YxL1dvcmtzLnRzeA==@Image": {
       "type": "object",
@@ -10442,7 +12738,7 @@
       "required": [],
       "title": "deco-sites/web/components/ui/Main/v1/Works.tsx@Props"
     },
-    "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoQ3Jvbi50cw==@CronProps": {
+    "ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoQ3Jvbi50cw==@CronProps": {
       "type": "object",
       "properties": {
         "cron": {
@@ -10455,10 +12751,10 @@
       "required": [
         "cron"
       ],
-      "title": "deco-cx/live/matchers/MatchCron.ts@CronProps",
+      "title": "deco-cx/deco/matchers/MatchCron.ts@CronProps",
       "titleBy": "cron"
     },
-    "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoRGF0ZS50cw==@Props": {
+    "ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoRGF0ZS50cw==@Props": {
       "type": "object",
       "properties": {
         "start": {
@@ -10479,10 +12775,10 @@
         }
       },
       "required": [],
-      "title": "deco-cx/live/matchers/MatchDate.ts@Props",
+      "title": "deco-cx/deco/matchers/MatchDate.ts@Props",
       "titleBy": "start"
     },
-    "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoRGV2aWNlLnRz@Props": {
+    "ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoRGV2aWNlLnRz@Props": {
       "type": "object",
       "properties": {
         "mobile": {
@@ -10510,7 +12806,7 @@
       "required": [],
       "title": "{{#mobile}}Mobile{{/mobile}} {{#tablet}}Tablet{{/tablet}} {{#desktop}}Desktop{{/desktop}}"
     },
-    "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoRW52aXJvbm1lbnQudHM=@Props": {
+    "ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoRW52aXJvbm1lbnQudHM=@Props": {
       "type": "object",
       "properties": {
         "environment": {
@@ -10535,7 +12831,7 @@
       ],
       "title": "{{{environment}}}"
     },
-    "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoSG9zdC50cw==@Props": {
+    "ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoSG9zdC50cw==@Props": {
       "type": "object",
       "properties": {
         "includes": {
@@ -10556,7 +12852,7 @@
       "required": [],
       "title": "{{{includes}}} {{{match}}}"
     },
-    "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoTG9jYXRpb24udHM=@Location": {
+    "ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoTG9jYXRpb24udHM=@Location": {
       "type": "object",
       "properties": {
         "city": {
@@ -10584,36 +12880,36 @@
       "required": [],
       "title": "{{{city}}} {{{regionCode}}} {{{country}}}"
     },
-    "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoTG9jYXRpb24udHM=@Location[]": {
+    "ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoTG9jYXRpb24udHM=@Location[]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoTG9jYXRpb24udHM=@Location"
+        "$ref": "#/definitions/ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoTG9jYXRpb24udHM=@Location"
       },
       "title": "Location[]"
     },
-    "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoTG9jYXRpb24udHM=@Props": {
+    "ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoTG9jYXRpb24udHM=@Props": {
       "type": "object",
       "properties": {
         "includeLocations": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoTG9jYXRpb24udHM=@Location[]",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoTG9jYXRpb24udHM=@Location[]",
           "title": "Include Locations"
         },
         "excludeLocations": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoTG9jYXRpb24udHM=@Location[]",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoTG9jYXRpb24udHM=@Location[]",
           "title": "Exclude Locations"
         }
       },
       "required": [],
-      "title": "deco-cx/live/matchers/MatchLocation.ts@Props"
+      "title": "deco-cx/deco/matchers/MatchLocation.ts@Props"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher[]": {
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher[]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher"
+        "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher"
       },
       "title": "Matcher[]"
     },
-    "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoTXVsdGkudHM=@Props": {
+    "ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoTXVsdGkudHM=@Props": {
       "type": "object",
       "properties": {
         "op": {
@@ -10633,7 +12929,7 @@
           "title": "Op"
         },
         "matchers": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher[]",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher[]",
           "title": "Matchers"
         }
       },
@@ -10643,7 +12939,7 @@
       ],
       "title": "Combined options with {{{op}}}"
     },
-    "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoUmFuZG9tLnRz@Props": {
+    "ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoUmFuZG9tLnRz@Props": {
       "type": "object",
       "properties": {
         "traffic": {
@@ -10656,7 +12952,7 @@
       ],
       "title": "ABTest {{{percentage traffic}}}"
     },
-    "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoU2l0ZS50cw==@Props": {
+    "ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoU2l0ZS50cw==@Props": {
       "type": "object",
       "properties": {
         "siteId": {
@@ -10669,7 +12965,7 @@
       ],
       "title": "{{{siteId}}}"
     },
-    "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoVXNlckFnZW50LnRz@Props": {
+    "ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoVXNlckFnZW50LnRz@Props": {
       "type": "object",
       "properties": {
         "includes": {
@@ -10690,11 +12986,11 @@
       "required": [],
       "title": "{{{includes}}} {{{match}}}"
     },
-    "ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Audience": {
+    "ZGVjby1jeC9kZWNvL2ZsYWdzL2F1ZGllbmNlLnRz@Audience": {
       "type": "object",
       "properties": {
         "matcher": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher",
           "title": "Matcher"
         },
         "name": {
@@ -10705,7 +13001,7 @@
           "pattern": "^[A-Za-z0-9_-]+$"
         },
         "routes": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route[]",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2ZsYWdzL2F1ZGllbmNlLnRz@Route[]",
           "title": "Routes"
         }
       },
@@ -10713,25 +13009,25 @@
         "matcher",
         "name"
       ],
-      "title": "deco-cx/live/flags/audience.ts@Audience",
+      "title": "deco-cx/deco/flags/audience.ts@Audience",
       "titleBy": "name"
     },
-    "ZGVjby1jeC9saXZlL2ZsYWdzL2V2ZXJ5b25lLnRz@EveryoneConfig": {
+    "ZGVjby1jeC9kZWNvL2ZsYWdzL2V2ZXJ5b25lLnRz@EveryoneConfig": {
       "type": "object",
       "properties": {
         "routes": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Route[]",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2ZsYWdzL2F1ZGllbmNlLnRz@Route[]",
           "title": "Routes"
         }
       },
       "required": [],
-      "title": "deco-cx/live/flags/everyone.ts@EveryoneConfig"
+      "title": "deco-cx/deco/flags/everyone.ts@EveryoneConfig"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@FlagObj": {
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy9mbGFnLnRz@FlagObj": {
       "type": "object",
       "properties": {
         "matcher": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher",
           "title": "Matcher"
         },
         "name": {
@@ -10751,17 +13047,17 @@
         "true",
         "false"
       ],
-      "title": "deco-cx/live/blocks/flag.ts@FlagObj"
+      "title": "deco-cx/deco/blocks/flag.ts@FlagObj"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@Variant+Section[]": {
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy9mbGFnLnRz@Variant+Section[]": {
       "type": "object",
       "properties": {
         "rule": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9tYXRjaGVyLnRz@Matcher",
           "title": "Condition"
         },
         "value": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9zZWN0aW9uLnRz@Section[]",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9zZWN0aW9uLnRz@Section[]",
           "title": "Content"
         }
       },
@@ -10770,20 +13066,21 @@
         "value"
       ],
       "title": "{{#beautifySchemaTitle}}{{{rule.__resolveType}}}{{/beautifySchemaTitle}} Variant",
+      "label": "hidden",
       "icon": "flag"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@Variant+Section[][]": {
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy9mbGFnLnRz@Variant+Section[][]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@Variant+Section[]"
+        "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9mbGFnLnRz@Variant+Section[]"
       },
       "title": "Variant+Section[][]"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@MultivariateFlag+Section[]+Section[]": {
+    "ZGVjby1jeC9kZWNvL2Jsb2Nrcy9mbGFnLnRz@MultivariateFlag+Section[]+Section[]": {
       "type": "object",
       "properties": {
         "variants": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@Variant+Section[][]",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9mbGFnLnRz@Variant+Section[][]",
           "minItems": 1,
           "addBehavior": "1",
           "title": "Variants"
@@ -10794,7 +13091,7 @@
       ],
       "title": "Multivariate"
     },
-    "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL2NhbmNlbC50cw==@Props": {
+    "ZGVjby1jeC9kZWNvL2FjdGlvbnMvd29ya2Zsb3dzL2NhbmNlbC50cw==@Props": {
       "type": "object",
       "properties": {
         "executionId": {
@@ -10812,9 +13109,9 @@
       "required": [
         "executionId"
       ],
-      "title": "deco-cx/live/actions/workflows/cancel.ts@Props"
+      "title": "deco-cx/deco/actions/workflows/cancel.ts@Props"
     },
-    "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3NpZ25hbC50cw==@Props": {
+    "ZGVjby1jeC9kZWNvL2FjdGlvbnMvd29ya2Zsb3dzL3NpZ25hbC50cw==@Props": {
       "type": "object",
       "properties": {
         "signal": {
@@ -10837,9 +13134,9 @@
         "signal",
         "executionId"
       ],
-      "title": "deco-cx/live/actions/workflows/signal.ts@Props"
+      "title": "deco-cx/deco/actions/workflows/signal.ts@Props"
     },
-    "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@WorkflowProps": {
+    "ZGVjby1jeC9kZWNvL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@WorkflowProps": {
       "title": "WorkflowProps"
     },
     "ZGVjby1jeC9kdXJhYmxlL2NvbnRleHQudHM=@Metadata": {
@@ -10848,7 +13145,7 @@
       "required": [],
       "title": "Metadata"
     },
-    "ZGVjby1jeC9saXZlL2Jsb2Nrcy93b3JrZmxvdy50cw==@WorkflowMetadata": {
+    "ZGVjby1jeC9kZWNvL2NvbW1vbnMvd29ya2Zsb3dzL3R5cGVzLnRz@WorkflowMetadata": {
       "type": "object",
       "allOf": [
         {
@@ -10856,60 +13153,40 @@
         }
       ],
       "properties": {
-        "defaultInvokeHeaders": {
-          "title": "Default Invoke Headers",
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      },
-      "required": [],
-      "title": "WorkflowMetadata"
-    },
-    "ZGVjby1jeC9kdXJhYmxlL2JhY2tlbmRzL2JhY2tlbmQudHM=@RuntimeParameters": {
-      "type": "object",
-      "properties": {
-        "http": {
-          "type": "object",
-          "properties": {
-            "defaultHeaders": {
-              "title": "Default Headers",
+        "workflow": {
+          "allOf": [
+            {
               "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
+              "properties": {
+                "__resolveType": {
+                  "type": "string",
+                  "title": "__resolve Type"
+                }
+              },
+              "required": [
+                "__resolveType"
+              ]
+            },
+            {
+              "type": "object"
             }
-          },
-          "required": [
-            "defaultHeaders"
           ],
-          "title": "Http"
+          "title": "Workflow"
         },
-        "websocket": {
-          "type": "object",
-          "properties": {
-            "defaultQueryParams": {
-              "title": "Default Query Params",
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
-            }
-          },
-          "required": [
-            "defaultQueryParams"
-          ],
-          "title": "Websocket"
+        "__resolveType": {
+          "type": "string",
+          "const": "resolvable",
+          "default": "resolvable",
+          "title": "__resolve Type"
         }
       },
       "required": [
-        "http",
-        "websocket"
+        "workflow",
+        "__resolveType"
       ],
-      "title": "RuntimeParameters"
+      "title": "WorkflowMetadata"
     },
-    "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@CommonProps": {
+    "ZGVjby1jeC9kZWNvL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@CommonProps": {
       "type": "object",
       "properties": {
         "id": {
@@ -10920,7 +13197,7 @@
           "title": "Id"
         },
         "metadata": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy93b3JrZmxvdy50cw==@WorkflowMetadata",
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2NvbW1vbnMvd29ya2Zsb3dzL3R5cGVzLnRz@WorkflowMetadata",
           "title": "Metadata"
         },
         "runtimeParameters": {
@@ -10931,11 +13208,11 @@
       "required": [],
       "title": "CommonProps"
     },
-    "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@AnyWorkflow": {
+    "ZGVjby1jeC9kZWNvL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@AnyWorkflow": {
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@CommonProps"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@CommonProps"
         }
       ],
       "properties": {
@@ -10946,7 +13223,7 @@
           "type": "object",
           "properties": {
             "data": {
-              "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy93b3JrZmxvdy50cw==@Workflow",
+              "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy93b3JrZmxvdy50cw==@Workflow",
               "title": "Data"
             },
             "__resolveType": {
@@ -10968,16 +13245,86 @@
       ],
       "title": "AnyWorkflow"
     },
-    "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@AnyWorkflow|WorkflowProps": {
+    "ZGVjby1jeC9kZWNvL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@AnyWorkflow|WorkflowProps": {
       "anyOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@WorkflowProps"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@WorkflowProps"
         },
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@AnyWorkflow"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@AnyWorkflow"
         }
       ],
-      "title": "deco-cx/live/actions/workflows/start.ts@AnyWorkflow|WorkflowProps"
+      "title": "deco-cx/deco/actions/workflows/start.ts@AnyWorkflow|WorkflowProps"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9hY3Rpb25zL2NhcnQvYWRkSXRlbS50cw==@Props": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "title": "Item Id"
+        },
+        "quantity": {
+          "type": "number",
+          "title": "Quantity"
+        },
+        "attributes": {
+          "title": "Attributes",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "itemId",
+        "quantity",
+        "attributes"
+      ],
+      "title": "deco-sites/std/packs/vnda/actions/cart/addItem.ts@Props"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9hY3Rpb25zL2NhcnQvc2V0U2hpcHBpbmdBZGRyZXNzLnRz@Props": {
+      "type": "object",
+      "properties": {
+        "zip": {
+          "type": "string",
+          "title": "Zip"
+        }
+      },
+      "required": [
+        "zip"
+      ],
+      "title": "deco-sites/std/packs/vnda/actions/cart/setShippingAddress.ts@Props"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9hY3Rpb25zL2NhcnQvdXBkYXRlQ291cG9uLnRz@Props": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "title": "Code"
+        }
+      },
+      "required": [
+        "code"
+      ],
+      "title": "deco-sites/std/packs/vnda/actions/cart/updateCoupon.ts@Props"
+    },
+    "ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9hY3Rpb25zL2NhcnQvdXBkYXRlSXRlbS50cw==@Props": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "number",
+          "title": "Item Id"
+        },
+        "quantity": {
+          "type": "number",
+          "title": "Quantity"
+        }
+      },
+      "required": [
+        "itemId",
+        "quantity"
+      ],
+      "title": "deco-sites/std/packs/vnda/actions/cart/updateItem.ts@Props"
     },
     "ZGVjby1zaXRlcy9zdGQvcGFja3MvdnRleC9hY3Rpb25zL2NhcnQvYWRkSXRlbXMudHM=@Item": {
       "type": "object",
@@ -11681,8 +14028,7 @@
       }
     },
     "ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL3ZuZGFQcm9kdWN0RGV0YWlsc1BhZ2UudHM=": {
-      "title": "VTEX Product Page Loader",
-      "description": "Works on routes of type /:slug/p",
+      "title": "deco-sites/std/functions/vndaProductDetailsPage.ts",
       "type": "object",
       "required": [
         "__resolveType"
@@ -11698,12 +14044,11 @@
       }
     },
     "ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL3ZuZGFQcm9kdWN0TGlzdC50cw==": {
-      "title": "VNDA - Search Products",
-      "description": "Use it in Shelves and static Galleries.",
+      "title": "deco-sites/std/functions/vndaProductList.ts",
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL3ZuZGFQcm9kdWN0TGlzdC50cw==@Props"
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9sb2FkZXJzL3Byb2R1Y3RMaXN0LnRz@Props"
         }
       ],
       "required": [
@@ -11720,12 +14065,11 @@
       }
     },
     "ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL3ZuZGFQcm9kdWN0TGlzdGluZ1BhZ2UudHM=": {
-      "title": "VNDA - Product Listing page",
-      "description": "Useful for category, search, brand and collection pages.",
+      "title": "deco-sites/std/functions/vndaProductListingPage.ts",
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL3ZuZGFQcm9kdWN0TGlzdGluZ1BhZ2UudHM=@Props"
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9sb2FkZXJzL3Byb2R1Y3RMaXN0aW5nUGFnZS50cw==@Props"
         }
       ],
       "required": [
@@ -12002,6 +14346,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9zdGQvYWNjb3VudHMvbGlueEltcHVsc2UudHM=": {
+      "title": "deco-sites/std/accounts/linxImpulse.ts",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvYWNjb3VudHMvbGlueEltcHVsc2UudHM=@Account"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/accounts/linxImpulse.ts"
+          ],
+          "default": "deco-sites/std/accounts/linxImpulse.ts"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9zdGQvYWNjb3VudHMvbnV2ZW1TaG9wLnRz": {
       "title": "deco-sites/std/accounts/nuvemShop.ts",
       "type": "object",
@@ -12070,7 +14435,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS92bmRhQWNjb3VudC50cw==@Account"
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9hY2NvdW50cy92bmRhLnRz@Account"
         }
       ],
       "required": [
@@ -12134,7 +14499,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2xvYWRlcnMvc3RhdGUudHM=@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2xvYWRlcnMvc3RhdGUudHM=@Props"
         }
       ],
       "required": [
@@ -12156,7 +14521,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2xvYWRlcnMvd29ya2Zsb3dzL2V2ZW50cy50cw==@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2xvYWRlcnMvd29ya2Zsb3dzL2V2ZW50cy50cw==@Props"
         }
       ],
       "required": [
@@ -12178,7 +14543,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2xvYWRlcnMvd29ya2Zsb3dzL2dldC50cw==@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2xvYWRlcnMvd29ya2Zsb3dzL2dldC50cw==@Props"
         }
       ],
       "required": [
@@ -12191,6 +14556,114 @@
             "$live/loaders/workflows/get.ts"
           ],
           "default": "$live/loaders/workflows/get.ts"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvbG9hZGVycy9saW54SW1wdWxzZS9hdXRvY29tcGxldGVzL3BvcHVsYXIudHM=": {
+      "title": "Linx Impulse - Autocompletes Popular Terms",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvbG9hZGVycy9hdXRvY29tcGxldGVzL3BvcHVsYXIudHM=@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/loaders/linxImpulse/autocompletes/popular.ts"
+          ],
+          "default": "deco-sites/std/loaders/linxImpulse/autocompletes/popular.ts"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvbG9hZGVycy9saW54SW1wdWxzZS9hdXRvY29tcGxldGVzL3N1Z2dlc3Rpb25zLnRz": {
+      "title": "Linx Impulse - Autocompletes Products",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvbG9hZGVycy9hdXRvY29tcGxldGVzL3N1Z2dlc3Rpb25zLnRz@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/loaders/linxImpulse/autocompletes/suggestions.ts"
+          ],
+          "default": "deco-sites/std/loaders/linxImpulse/autocompletes/suggestions.ts"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvbG9hZGVycy9saW54SW1wdWxzZS9wYWdlcy9yZWNvbW1lbmRhdGlvbnMudHM=": {
+      "title": "Linx Impulse - Pages Recomendations",
+      "description": "Use it in Shelves",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvbG9hZGVycy9wYWdlcy9yZWNvbW1lbmRhdGlvbnMudHM=@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/loaders/linxImpulse/pages/recommendations.ts"
+          ],
+          "default": "deco-sites/std/loaders/linxImpulse/pages/recommendations.ts"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvbG9hZGVycy9saW54SW1wdWxzZS9wcm9kdWN0cy9zaW1pbGFySXRlbXMudHM=": {
+      "title": "Linx Impulse - Product SimilarItems",
+      "description": "Use it in Shelves on Product Page",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvbG9hZGVycy9wcm9kdWN0cy9zaW1pbGFySXRlbXMudHM=@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/loaders/linxImpulse/products/similarItems.ts"
+          ],
+          "default": "deco-sites/std/loaders/linxImpulse/products/similarItems.ts"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvbG9hZGVycy9saW54SW1wdWxzZS9zZWFyY2gudHM=": {
+      "title": "Linx Impulse - Product Listing page",
+      "description": "Returns data ready for search pages like category, brand pages",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvbG9hZGVycy9zZWFyY2gudHM=@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/loaders/linxImpulse/search.ts"
+          ],
+          "default": "deco-sites/std/loaders/linxImpulse/search.ts"
         }
       }
     },
@@ -12255,6 +14728,83 @@
             "deco-sites/std/loaders/nuvemShop/nuvemShopProductListingPage.ts"
           ],
           "default": "deco-sites/std/loaders/nuvemShop/nuvemShopProductListingPage.ts"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvbG9hZGVycy92bmRhL2NhcnQudHM=": {
+      "title": "deco-sites/std/loaders/vnda/cart.ts",
+      "type": "object",
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/loaders/vnda/cart.ts"
+          ],
+          "default": "deco-sites/std/loaders/vnda/cart.ts"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvbG9hZGVycy92bmRhL3Byb2R1Y3REZXRhaWxzUGFnZS50cw==": {
+      "title": "VNDA Product Page Loader",
+      "description": "Works on routes of type /produto/:slug",
+      "type": "object",
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/loaders/vnda/productDetailsPage.ts"
+          ],
+          "default": "deco-sites/std/loaders/vnda/productDetailsPage.ts"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvbG9hZGVycy92bmRhL3Byb2R1Y3RMaXN0LnRz": {
+      "title": "VNDA - Search Products",
+      "description": "Use it in Shelves and static Galleries.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9sb2FkZXJzL3Byb2R1Y3RMaXN0LnRz@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/loaders/vnda/productList.ts"
+          ],
+          "default": "deco-sites/std/loaders/vnda/productList.ts"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvbG9hZGVycy92bmRhL3Byb2R1Y3RMaXN0aW5nUGFnZS50cw==": {
+      "title": "VNDA - Product Listing page",
+      "description": "Useful for category, search, brand and collection pages.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9sb2FkZXJzL3Byb2R1Y3RMaXN0aW5nUGFnZS50cw==@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/loaders/vnda/productListingPage.ts"
+          ],
+          "default": "deco-sites/std/loaders/vnda/productListingPage.ts"
         }
       }
     },
@@ -12619,7 +15169,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2hhbmRsZXJzL2RldlBhZ2UudHM=@DevConfig"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2hhbmRsZXJzL2RldlBhZ2UudHM=@DevConfig"
         }
       ],
       "required": [
@@ -12641,7 +15191,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2hhbmRsZXJzL2ZyZXNoLnRz@FreshConfig"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2hhbmRsZXJzL2ZyZXNoLnRz@FreshConfig"
         }
       ],
       "required": [
@@ -12663,7 +15213,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2hhbmRsZXJzL3Byb3h5LnRz@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2hhbmRsZXJzL3Byb3h5LnRz@Props"
         }
       ],
       "required": [
@@ -12684,7 +15234,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2hhbmRsZXJzL3JlZGlyZWN0LnRz@RedirectConfig"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2hhbmRsZXJzL3JlZGlyZWN0LnRz@RedirectConfig"
         }
       ],
       "required": [
@@ -12705,7 +15255,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2hhbmRsZXJzL3JvdXRlci50cw==@RouterConfig"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2hhbmRsZXJzL3JvdXRlci50cw==@RouterConfig"
         }
       ],
       "required": [
@@ -12727,7 +15277,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2hhbmRsZXJzL3JvdXRlc1NlbGVjdGlvbi50cw==@SelectionConfig"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2hhbmRsZXJzL3JvdXRlc1NlbGVjdGlvbi50cw==@SelectionConfig"
         }
       ],
       "required": [
@@ -12748,7 +15298,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2hhbmRsZXJzL3dvcmtmbG93UnVubmVyLnRz@Config"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2hhbmRsZXJzL3dvcmtmbG93UnVubmVyLnRz@Config"
         }
       ],
       "required": [
@@ -12764,9 +15314,30 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9zdGQvaGFuZGxlcnMvc2l0ZW1hcC50cw==": {
+      "title": "SiteMap",
+      "type": "object",
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/handlers/sitemap.ts"
+          ],
+          "default": "deco-sites/std/handlers/sitemap.ts"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9zdGQvaGFuZGxlcnMvdnRleC9zaXRlbWFwLnRz": {
       "title": "Sitemap Proxy",
       "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvdnRleC9oYW5kbGVycy9zaXRlbWFwLnRz@Props"
+        }
+      ],
       "required": [
         "__resolveType"
       ],
@@ -12785,7 +15356,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL3BhZ2VzL0xpdmVQYWdlLnRzeA==@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL3BhZ2VzL0xpdmVQYWdlLnRzeA==@Props"
         }
       ],
       "required": [
@@ -12806,7 +15377,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL3V0aWxzL2NvbmRpdGlvbmFscy50cw==@Props+Section[]"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL3V0aWxzL2NvbmRpdGlvbmFscy50cw==@Props+Section[]"
         }
       ],
       "required": [
@@ -12843,7 +15414,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL3NlY3Rpb25zL1BhZ2VJbmNsdWRlLnRzeA==@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL3NlY3Rpb25zL1BhZ2VJbmNsdWRlLnRzeA==@Props"
         }
       ],
       "required": [
@@ -12864,7 +15435,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL3NlY3Rpb25zL1Nsb3QudHN4@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL3NlY3Rpb25zL1Nsb3QudHN4@Props"
         }
       ],
       "required": [
@@ -12885,7 +15456,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL3NlY3Rpb25zL1VzZVNsb3QudHN4@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL3NlY3Rpb25zL1VzZVNsb3QudHN4@Props"
         }
       ],
       "required": [
@@ -12940,6 +15511,27 @@
             "deco-sites/std/sections/configButterCMS.global.tsx"
           ],
           "default": "deco-sites/std/sections/configButterCMS.global.tsx"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvc2VjdGlvbnMvY29uZmlnTGlueEltcHVsc2UuZ2xvYmFsLnRzeA==": {
+      "title": "deco-sites/std/sections/configLinxImpulse.global.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3MvbGlueEltcHVsc2UvYWNjb3VudHMvbGlueEltcHVsc2UudHM=@Account"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/sections/configLinxImpulse.global.tsx"
+          ],
+          "default": "deco-sites/std/sections/configLinxImpulse.global.tsx"
         }
       }
     },
@@ -13132,27 +15724,6 @@
         }
       }
     },
-    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvRGVzaWduU3lzdGVtLnRzeA==": {
-      "title": "deco-sites/web/sections/DesignSystem.tsx",
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvRGVzaWduU3lzdGVtLnRzeA==@Props"
-        }
-      ],
-      "required": [
-        "__resolveType"
-      ],
-      "properties": {
-        "__resolveType": {
-          "type": "string",
-          "enum": [
-            "deco-sites/web/sections/DesignSystem.tsx"
-          ],
-          "default": "deco-sites/web/sections/DesignSystem.tsx"
-        }
-      }
-    },
     "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvRm9vdGVyLnRzeA==": {
       "title": "deco-sites/web/sections/Footer.tsx",
       "type": "object",
@@ -13279,6 +15850,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4": {
+      "title": "deco-sites/web/sections/Theme.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/web/sections/Theme.tsx"
+          ],
+          "default": "deco-sites/web/sections/Theme.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvV29ya3MudHN4": {
       "title": "deco-sites/web/sections/Works.tsx",
       "type": "object",
@@ -13322,7 +15914,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoQ3Jvbi50cw==@CronProps"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoQ3Jvbi50cw==@CronProps"
         }
       ],
       "required": [
@@ -13343,7 +15935,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoRGF0ZS50cw==@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoRGF0ZS50cw==@Props"
         }
       ],
       "required": [
@@ -13365,7 +15957,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoRGV2aWNlLnRz@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoRGV2aWNlLnRz@Props"
         }
       ],
       "required": [
@@ -13386,7 +15978,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoRW52aXJvbm1lbnQudHM=@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoRW52aXJvbm1lbnQudHM=@Props"
         }
       ],
       "required": [
@@ -13407,7 +15999,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoSG9zdC50cw==@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoSG9zdC50cw==@Props"
         }
       ],
       "required": [
@@ -13428,7 +16020,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoTG9jYXRpb24udHM=@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoTG9jYXRpb24udHM=@Props"
         }
       ],
       "required": [
@@ -13449,7 +16041,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoTXVsdGkudHM=@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoTXVsdGkudHM=@Props"
         }
       ],
       "required": [
@@ -13470,7 +16062,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoUmFuZG9tLnRz@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoUmFuZG9tLnRz@Props"
         }
       ],
       "required": [
@@ -13491,7 +16083,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoU2l0ZS50cw==@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoU2l0ZS50cw==@Props"
         }
       ],
       "required": [
@@ -13512,7 +16104,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoVXNlckFnZW50LnRz@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL21hdGNoZXJzL01hdGNoVXNlckFnZW50LnRz@Props"
         }
       ],
       "required": [
@@ -13534,7 +16126,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2F1ZGllbmNlLnRz@Audience"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2ZsYWdzL2F1ZGllbmNlLnRz@Audience"
         }
       ],
       "required": [
@@ -13556,7 +16148,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2ZsYWdzL2V2ZXJ5b25lLnRz@EveryoneConfig"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2ZsYWdzL2V2ZXJ5b25lLnRz@EveryoneConfig"
         }
       ],
       "required": [
@@ -13577,7 +16169,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@FlagObj"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9mbGFnLnRz@FlagObj"
         }
       ],
       "required": [
@@ -13595,10 +16187,11 @@
     },
     "JGxpdmUvZmxhZ3MvbXVsdGl2YXJpYXRlLnRz": {
       "title": "Variant",
+      "label": "hidden",
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9mbGFnLnRz@MultivariateFlag+Section[]+Section[]"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9mbGFnLnRz@MultivariateFlag+Section[]+Section[]"
         }
       ],
       "required": [
@@ -13620,7 +16213,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL2NhbmNlbC50cw==@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2FjdGlvbnMvd29ya2Zsb3dzL2NhbmNlbC50cw==@Props"
         }
       ],
       "required": [
@@ -13642,7 +16235,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3NpZ25hbC50cw==@Props"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2FjdGlvbnMvd29ya2Zsb3dzL3NpZ25hbC50cw==@Props"
         }
       ],
       "required": [
@@ -13664,7 +16257,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@AnyWorkflow|WorkflowProps"
+          "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@AnyWorkflow|WorkflowProps"
         }
       ],
       "required": [
@@ -13677,6 +16270,90 @@
             "$live/actions/workflows/start.ts"
           ],
           "default": "$live/actions/workflows/start.ts"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvYWN0aW9ucy92bmRhL2NhcnQvYWRkSXRlbS50cw==": {
+      "title": "deco-sites/std/actions/vnda/cart/addItem.ts",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9hY3Rpb25zL2NhcnQvYWRkSXRlbS50cw==@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/actions/vnda/cart/addItem.ts"
+          ],
+          "default": "deco-sites/std/actions/vnda/cart/addItem.ts"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvYWN0aW9ucy92bmRhL2NhcnQvc2V0U2hpcHBpbmdBZGRyZXNzLnRz": {
+      "title": "deco-sites/std/actions/vnda/cart/setShippingAddress.ts",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9hY3Rpb25zL2NhcnQvc2V0U2hpcHBpbmdBZGRyZXNzLnRz@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/actions/vnda/cart/setShippingAddress.ts"
+          ],
+          "default": "deco-sites/std/actions/vnda/cart/setShippingAddress.ts"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvYWN0aW9ucy92bmRhL2NhcnQvdXBkYXRlQ291cG9uLnRz": {
+      "title": "deco-sites/std/actions/vnda/cart/updateCoupon.ts",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9hY3Rpb25zL2NhcnQvdXBkYXRlQ291cG9uLnRz@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/actions/vnda/cart/updateCoupon.ts"
+          ],
+          "default": "deco-sites/std/actions/vnda/cart/updateCoupon.ts"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9zdGQvYWN0aW9ucy92bmRhL2NhcnQvdXBkYXRlSXRlbS50cw==": {
+      "title": "deco-sites/std/actions/vnda/cart/updateItem.ts",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvcGFja3Mvdm5kYS9hY3Rpb25zL2NhcnQvdXBkYXRlSXRlbS50cw==@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/actions/vnda/cart/updateItem.ts"
+          ],
+          "default": "deco-sites/std/actions/vnda/cart/updateItem.ts"
         }
       }
     },
@@ -14138,6 +16815,9 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvYWNjb3VudHMvYnV0dGVyQ01TLnRz"
         },
         {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvYWNjb3VudHMvbGlueEltcHVsc2UudHM="
+        },
+        {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvYWNjb3VudHMvbnV2ZW1TaG9wLnRz"
         },
         {
@@ -14173,6 +16853,21 @@
           "$ref": "#/definitions/JGxpdmUvbG9hZGVycy93b3JrZmxvd3MvZ2V0LnRz"
         },
         {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvbG9hZGVycy9saW54SW1wdWxzZS9hdXRvY29tcGxldGVzL3BvcHVsYXIudHM="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvbG9hZGVycy9saW54SW1wdWxzZS9hdXRvY29tcGxldGVzL3N1Z2dlc3Rpb25zLnRz"
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvbG9hZGVycy9saW54SW1wdWxzZS9wYWdlcy9yZWNvbW1lbmRhdGlvbnMudHM="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvbG9hZGVycy9saW54SW1wdWxzZS9wcm9kdWN0cy9zaW1pbGFySXRlbXMudHM="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvbG9hZGVycy9saW54SW1wdWxzZS9zZWFyY2gudHM="
+        },
+        {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvbG9hZGVycy9udXZlbVNob3AvbnV2ZW1TaG9wUHJvZHVjdERldGFpbHNQYWdlLnRz"
         },
         {
@@ -14180,6 +16875,18 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvbG9hZGVycy9udXZlbVNob3AvbnV2ZW1TaG9wUHJvZHVjdExpc3RpbmdQYWdlLnRz"
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvbG9hZGVycy92bmRhL2NhcnQudHM="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvbG9hZGVycy92bmRhL3Byb2R1Y3REZXRhaWxzUGFnZS50cw=="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvbG9hZGVycy92bmRhL3Byb2R1Y3RMaXN0LnRz"
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvbG9hZGVycy92bmRhL3Byb2R1Y3RMaXN0aW5nUGFnZS50cw=="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvbG9hZGVycy92bmRhL3Byb3h5LnRz"
@@ -14274,6 +16981,9 @@
           "$ref": "#/definitions/JGxpdmUvaGFuZGxlcnMvd29ya2Zsb3dSdW5uZXIudHM="
         },
         {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvaGFuZGxlcnMvc2l0ZW1hcC50cw=="
+        },
+        {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvaGFuZGxlcnMvdnRleC9zaXRlbWFwLnRz"
         }
       ]
@@ -14317,6 +17027,9 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvc2VjdGlvbnMvY29uZmlnQnV0dGVyQ01TLmdsb2JhbC50c3g="
         },
         {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvc2VjdGlvbnMvY29uZmlnTGlueEltcHVsc2UuZ2xvYmFsLnRzeA=="
+        },
+        {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvc2VjdGlvbnMvY29uZmlnTnV2ZW1TaG9wLnRzeA=="
         },
         {
@@ -14344,9 +17057,6 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvc2VjdGlvbnMvVlRFWFBvcnRhbERhdGFMYXllckNvbXBhdGliaWxpdHkudHN4"
         },
         {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvRGVzaWduU3lzdGVtLnRzeA=="
-        },
-        {
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvRm9vdGVyLnRzeA=="
         },
         {
@@ -14363,6 +17073,9 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvTmF2LnRzeA=="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4"
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvV29ya3MudHN4"
@@ -14446,6 +17159,18 @@
           "$ref": "#/definitions/JGxpdmUvYWN0aW9ucy93b3JrZmxvd3Mvc3RhcnQudHM="
         },
         {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvYWN0aW9ucy92bmRhL2NhcnQvYWRkSXRlbS50cw=="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvYWN0aW9ucy92bmRhL2NhcnQvc2V0U2hpcHBpbmdBZGRyZXNzLnRz"
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvYWN0aW9ucy92bmRhL2NhcnQvdXBkYXRlQ291cG9uLnRz"
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvYWN0aW9ucy92bmRhL2NhcnQvdXBkYXRlSXRlbS50cw=="
+        },
+        {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvYWN0aW9ucy92dGV4L2FuYWx5dGljcy9zZW5kRXZlbnQudHM="
         },
         {
@@ -14514,28 +17239,28 @@
         "./routes/_middleware.ts": {
           "anyOf": [
             {
-              "$ref": "#/definitions/ZGVjby1jeC9saXZlL3JvdXRlcy9fbWlkZGxld2FyZS50cw==@MiddlewareConfig"
+              "$ref": "#/definitions/ZGVjby1jeC9kZWNvL3JvdXRlcy9fbWlkZGxld2FyZS50cw==@MiddlewareConfig"
             }
           ]
         },
         "./routes/[...catchall].tsx": {
           "anyOf": [
             {
-              "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9oYW5kbGVyLnRz@Handler"
+              "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9oYW5kbGVyLnRz@Handler"
             }
           ]
         },
         "./routes/index.tsx": {
           "anyOf": [
             {
-              "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9oYW5kbGVyLnRz@Handler"
+              "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9oYW5kbGVyLnRz@Handler"
             }
           ]
         },
         "./routes/live/previews/index.tsx": {
           "anyOf": [
             {
-              "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9wYWdlLnRz@Page"
+              "$ref": "#/definitions/ZGVjby1jeC9kZWNvL2Jsb2Nrcy9wYWdlLnRz@Page"
             }
           ]
         }
