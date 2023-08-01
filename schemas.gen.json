@@ -112,6 +112,7 @@
               "deco-sites/web/sections/Head.tsx",
               "deco-sites/web/sections/Home.tsx",
               "deco-sites/web/sections/Main.tsx",
+              "deco-sites/web/sections/Nav__v2.tsx",
               "deco-sites/web/sections/Nav.tsx",
               "deco-sites/web/sections/Theme.tsx",
               "deco-sites/web/sections/Works.tsx",
@@ -11807,6 +11808,53 @@
       "required": [],
       "title": "deco-sites/web/sections/Home.tsx@Props"
     },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL3YyL0hvbWUvTmF2X192Mi50c3g=@Link": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Label"
+        },
+        "href": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Href"
+        }
+      },
+      "required": [],
+      "title": "Link"
+    },
+    "ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL3YyL0hvbWUvTmF2X192Mi50c3g=@Props": {
+      "type": "object",
+      "properties": {
+        "logo": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "title": "Logo"
+        },
+        "alt": {
+          "type": "string",
+          "title": "Alt"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL3YyL0hvbWUvTmF2X192Mi50c3g=@Link"
+          },
+          "title": "Links"
+        }
+      },
+      "required": [
+        "logo",
+        "alt",
+        "links"
+      ],
+      "title": "deco-sites/web/components/ui/Main/v2/Home/Nav__v2.tsx@Props"
+    },
     "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvVGhlbWUudHN4@MainColors": {
       "type": "object",
       "properties": {
@@ -15829,6 +15877,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvTmF2X192Mi50c3g=": {
+      "title": "deco-sites/web/sections/Nav__v2.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvY29tcG9uZW50cy91aS9NYWluL3YyL0hvbWUvTmF2X192Mi50c3g=@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/web/sections/Nav__v2.tsx"
+          ],
+          "default": "deco-sites/web/sections/Nav__v2.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvTmF2LnRzeA==": {
       "title": "deco-sites/web/sections/Nav.tsx",
       "type": "object",
@@ -17070,6 +17139,9 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvTWFpbi50c3g="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvTmF2X192Mi50c3g="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy93ZWIvc2VjdGlvbnMvTmF2LnRzeA=="
