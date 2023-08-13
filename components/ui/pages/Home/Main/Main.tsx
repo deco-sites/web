@@ -1,4 +1,4 @@
-import Window from "deco-sites/web/components/ui/Main/v1/Window.tsx";
+import Window from "deco-sites/web/components/ui/pages/Home/Main/Window.tsx";
 import type { Video as LiveImage } from "deco-sites/std/components/types.ts";
 
 export interface Paragraph {

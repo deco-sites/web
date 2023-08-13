@@ -1,5 +1,5 @@
 import { context } from "$live/live.ts";
-import Main from "deco-sites/web/components/ui/Main/v1/Main.tsx";
+import Main from "deco-sites/web/components/ui/pages/Home/Main/Main.tsx";
 
 export interface Props {
   enableInspectVSCode?: boolean;
