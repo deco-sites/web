@@ -1,4 +1,4 @@
-import PoweredBy from "deco-sites/web/components/ui/Footer/PoweredBy.tsx";
+import PoweredBy from "deco-sites/web/components/ui/pages/Home/Footer/PoweredBy.tsx";
 
 export interface Props {
   text?: string;
