@@ -1,1 +1,1 @@
-export { default } from "deco-sites/web/components/ui/Main/v1/Main.tsx";
+export { default } from "deco-sites/web/components/ui/pages/Home/Main/Main.tsx";
