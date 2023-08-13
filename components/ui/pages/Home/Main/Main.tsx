@@ -207,25 +207,6 @@ export default function Main(props: Props) {
     // backgroundSize: "30px 30px",
   };
 
-  const scrollbarStyle = `
-  body {
-    scrollbar-width: thin;
-    scrollbar-color: ${props.title?.colorTitle || "#ffffff"} ${
-    props.main?.backgroundColorLeft || "#a0a0a0"
-  };
-  }
-  ::-webkit-scrollbar {
-    width: 12px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background-color: #00ff5e;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background-color: ${props.title?.colorTitle || "#ffffff"};
-  }
-`;
 
   const paragraphyStyle = {
     paragraph: props.paragraph?.paragraph || "",
@@ -256,7 +237,6 @@ export default function Main(props: Props) {
       style={mainStyle}
     >
       <div class="grid lg:grid-cols-2 grid-cols-1 gap-[20px] max-w-[1440px] mx-auto">
-        <style>{scrollbarStyle}</style>
         <div
           class="col-auto flex flex-col justify-center gap-[10px] lg:pb-0 lg:pt-0 pt-[10%] pb-[5%] relative md:px-[80px] px-[35px]"
           style={leftDivStyle}

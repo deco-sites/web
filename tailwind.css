@@ -9,6 +9,23 @@
     font-family: var(--font-family);
   }
 
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: #00ff5e #053535;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #00ff5e;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #053535;
+  }
+
   /** Remove default styles from input[type=number] */
   input[type=number]::-webkit-inner-spin-button,
   input[type=number]::-webkit-outer-spin-button {

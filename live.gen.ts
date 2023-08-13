@@ -6,15 +6,18 @@ import * as $0 from "./functions/LoadGitHubRaw.ts";
 import * as $$$$0 from "./routes/styles.css.ts";
 import * as $$$$1 from "./routes/_app.tsx";
 import * as $$$$$0 from "./islands/Main.tsx";
-import * as $$$$$1 from "./islands/Nav.tsx";
-import * as $$$$$$$$0 from "./sections/Footer.tsx";
-import * as $$$$$$$$1 from "./sections/Gallery.tsx";
-import * as $$$$$$$$2 from "./sections/Head.tsx";
-import * as $$$$$$$$3 from "./sections/Home.tsx";
-import * as $$$$$$$$4 from "./sections/Main.tsx";
-import * as $$$$$$$$5 from "./sections/Nav.tsx";
-import * as $$$$$$$$6 from "./sections/Theme.tsx";
-import * as $$$$$$$$7 from "./sections/Works.tsx";
+import * as $$$$$1 from "./islands/Nav-v2.tsx";
+import * as $$$$$2 from "./islands/Nav.tsx";
+import * as $$$$$$$$0 from "./sections/Banner.tsx";
+import * as $$$$$$$$1 from "./sections/Footer.tsx";
+import * as $$$$$$$$2 from "./sections/Gallery.tsx";
+import * as $$$$$$$$3 from "./sections/Head.tsx";
+import * as $$$$$$$$4 from "./sections/Home.tsx";
+import * as $$$$$$$$5 from "./sections/Main.tsx";
+import * as $$$$$$$$6 from "./sections/Nav-v2.tsx";
+import * as $$$$$$$$7 from "./sections/Nav.tsx";
+import * as $$$$$$$$8 from "./sections/Theme.tsx";
+import * as $$$$$$$$9 from "./sections/Works.tsx";
 import * as $live_workflows from "$live/routes/live/workflows/run.ts";
 import * as $live_middleware from "$live/routes/_middleware.ts";
 import * as $live_workbench from "$live/routes/live/workbench.ts";
@@ -214,7 +217,8 @@ const manifest = {
   },
   "islands": {
     "./islands/Main.tsx": $$$$$0,
-    "./islands/Nav.tsx": $$$$$1,
+    "./islands/Nav-v2.tsx": $$$$$1,
+    "./islands/Nav.tsx": $$$$$2,
   },
   "sections": {
     "$live/sections/Conditional_Beta.tsx": i2$$$$$0,
@@ -234,14 +238,16 @@ const manifest = {
     "deco-sites/std/sections/SEOPDP.tsx": i2$$$$$14,
     "deco-sites/std/sections/SEOPLP.tsx": i2$$$$$15,
     "deco-sites/std/sections/VTEXPortalDataLayerCompatibility.tsx": i2$$$$$16,
-    "deco-sites/web/sections/Footer.tsx": $$$$$$$$0,
-    "deco-sites/web/sections/Gallery.tsx": $$$$$$$$1,
-    "deco-sites/web/sections/Head.tsx": $$$$$$$$2,
-    "deco-sites/web/sections/Home.tsx": $$$$$$$$3,
-    "deco-sites/web/sections/Main.tsx": $$$$$$$$4,
-    "deco-sites/web/sections/Nav.tsx": $$$$$$$$5,
-    "deco-sites/web/sections/Theme.tsx": $$$$$$$$6,
-    "deco-sites/web/sections/Works.tsx": $$$$$$$$7,
+    "deco-sites/web/sections/Banner.tsx": $$$$$$$$0,
+    "deco-sites/web/sections/Footer.tsx": $$$$$$$$1,
+    "deco-sites/web/sections/Gallery.tsx": $$$$$$$$2,
+    "deco-sites/web/sections/Head.tsx": $$$$$$$$3,
+    "deco-sites/web/sections/Home.tsx": $$$$$$$$4,
+    "deco-sites/web/sections/Main.tsx": $$$$$$$$5,
+    "deco-sites/web/sections/Nav-v2.tsx": $$$$$$$$6,
+    "deco-sites/web/sections/Nav.tsx": $$$$$$$$7,
+    "deco-sites/web/sections/Theme.tsx": $$$$$$$$8,
+    "deco-sites/web/sections/Works.tsx": $$$$$$$$9,
   },
   "loaders": {
     "$live/loaders/secret.ts": i2$$$0,
