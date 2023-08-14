@@ -200,10 +200,10 @@ export default function Nav(props: Props) {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-
+ 
   return (
     <header>
-      <nav class="grid grid-cols-3 grid-flow-row auto-rows-fr items-center top-0 fixed w-full bg-[#d0ffd5] py-2 px-8 shadow-[3px_1px_19px_9px_#11cd0473] z-10">
+      <nav class="grid grid-cols-3 grid-flow-row auto-rows-fr items-center top-0 fixed w-full bg-[#d0ffd5] py-2 px-8 shadow-[3px_1px_1px_3px_#8ee188] z-10">
         <div class={`col-span-1 flex`} style={leftDivStyle}>
           <a href={links[0]?.url}>
             <figure>

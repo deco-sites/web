@@ -6,7 +6,7 @@ interface Props {
 
 const SearchInput = (props: Props) => {
   return (
-    <div className="flex items-center w-full lg:pb-0 pb-[70px]">
+    <li className="flex items-center w-full lg:pb-0 pb-[70px]">
       <input
         type="search"
         name="search"
@@ -19,7 +19,7 @@ const SearchInput = (props: Props) => {
         strokeWidth={0.01}
         className="absolute ml-[16px] w-5 h-5 p-[1.67px] fill-current text-[#424242] focus:outline-none"
       />
-    </div>
+    </li>
   );
 };
 
