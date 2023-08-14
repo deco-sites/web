@@ -207,7 +207,6 @@ export default function Main(props: Props) {
     // backgroundSize: "30px 30px",
   };
 
-
   const paragraphyStyle = {
     paragraph: props.paragraph?.paragraph || "",
     color: props.paragraph?.color || color || "#000000",
