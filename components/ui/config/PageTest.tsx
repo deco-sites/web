@@ -1,4 +1,4 @@
-import { useState,useEffect  } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import Page1 from "deco-sites/web/components/ui/config/page1.tsx";
 import Page2 from "deco-sites/web/components/ui/config/page2.tsx";
 import Page3 from "deco-sites/web/components/ui/config/page3.tsx";
@@ -12,52 +12,34 @@ export default function PageTest(props: Props) {
 
   const navigateToPage = (page: string) => {
     setCurrentPage(page);
-    window.history.pushState(null, '', `/test/${page}`);
+    window.history.pushState(null, "", `/test/${page}`);
+    renderPage(page);
   };
 
   useEffect(() => {
     const handlePopstate = () => {
       const path = window.location.pathname;
-      const slug = path.split('/').pop();
-      if (slug && slug !== 'test') {
+      const slug = path.split("/").pop();
+      if (slug && slug !== "") {
         setCurrentPage(slug);
       }
     };
 
-    addEventListener('popstate', handlePopstate);
+    addEventListener("popstate", handlePopstate);
+
+    const path = window.location.pathname;
+    const slug = path.split("/").pop();
+    if (slug && slug !== "") {
+      setCurrentPage(slug);
+    }
 
     return () => {
-      removeEventListener('popstate', handlePopstate);
+      removeEventListener("popstate", handlePopstate);
     };
-  }, [])
+  }, []);
 
-
-  const renderButtons = () => {
-    switch (currentPage) {
-      case "page1":
-        return <button onClick={() => navigateToPage("page3")}>Página 3
-        </button>;
-      case "page2":
-        return (
-          <div>
-            <button onClick={() => navigateToPage("page1")}>Página 1</button>
-            <button onClick={() => navigateToPage("page3")}>Página 3</button>
-          </div>
-        );
-      case "page3":
-        return (
-          <div>
-            <button onClick={() => navigateToPage("page1")}>Página 1</button>
-            <button onClick={() => navigateToPage("page2")}>Página 2</button>
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
-
-  const renderPage = () => {
-    switch (currentPage) {
+  const renderPage = (page: string) => {
+    switch (page) {
       case "page1":
         return <Page1 />;
       case "page2":
@@ -72,8 +54,14 @@ export default function PageTest(props: Props) {
   return (
     <div>
       <h1>{props.title}</h1>
-      {renderButtons()}
-      <div>{renderPage()}</div>
+      <div>
+        <button onClick={() => navigateToPage("page1")}>Página 1</button>
+        <button onClick={() => navigateToPage("page2")}>Página 2</button>
+        <button onClick={() => navigateToPage("page3")}>Página 3</button>
+      </div>
+      <div class="w-[300px] h-full bg-[#e1f1b6]">
+        {renderPage(currentPage)}
+      </div>
     </div>
   );
 }
