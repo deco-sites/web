@@ -8,6 +8,7 @@ import * as $$$$1 from "./routes/_app.tsx";
 import * as $$$$$0 from "./islands/Main.tsx";
 import * as $$$$$1 from "./islands/Nav-v2.tsx";
 import * as $$$$$2 from "./islands/Nav.tsx";
+import * as $$$$$3 from "./islands/PageTest.tsx";
 import * as $$$$$$$$0 from "./sections/Banner.tsx";
 import * as $$$$$$$$1 from "./sections/Footer.tsx";
 import * as $$$$$$$$2 from "./sections/Gallery.tsx";
@@ -16,8 +17,9 @@ import * as $$$$$$$$4 from "./sections/Home.tsx";
 import * as $$$$$$$$5 from "./sections/Main.tsx";
 import * as $$$$$$$$6 from "./sections/Nav-v2.tsx";
 import * as $$$$$$$$7 from "./sections/Nav.tsx";
-import * as $$$$$$$$8 from "./sections/Theme.tsx";
-import * as $$$$$$$$9 from "./sections/Works.tsx";
+import * as $$$$$$$$8 from "./sections/PageTest.tsx";
+import * as $$$$$$$$9 from "./sections/Theme.tsx";
+import * as $$$$$$$$10 from "./sections/Works.tsx";
 import * as $live_workflows from "$live/routes/live/workflows/run.ts";
 import * as $live_middleware from "$live/routes/_middleware.ts";
 import * as $live_workbench from "$live/routes/live/workbench.ts";
@@ -81,19 +83,18 @@ import * as i2$10 from "deco-sites/std/functions/requestToParam.ts";
 import * as i2$11 from "deco-sites/std/functions/shopifyProductDetailsPage.ts";
 import * as i2$12 from "deco-sites/std/functions/shopifyProductList.ts";
 import * as i2$13 from "deco-sites/std/functions/shopifyProductListingPage.ts";
-import * as i2$14 from "deco-sites/std/functions/vndaProductDetailsPage.ts";
-import * as i2$15 from "deco-sites/std/functions/vndaProductList.ts";
-import * as i2$16 from "deco-sites/std/functions/vndaProductListingPage.ts";
-import * as i2$17 from "deco-sites/std/functions/vtexLegacyProductDetailsPage.ts";
-import * as i2$18 from "deco-sites/std/functions/vtexLegacyProductList.ts";
-import * as i2$19 from "deco-sites/std/functions/vtexLegacyProductListingPage.ts";
-import * as i2$20 from "deco-sites/std/functions/vtexLegacyRelatedProductsLoader.ts";
-import * as i2$21 from "deco-sites/std/functions/vtexNavbar.ts";
-import * as i2$22 from "deco-sites/std/functions/vtexProductDetailsPage.ts";
-import * as i2$23 from "deco-sites/std/functions/vtexProductList.ts";
-import * as i2$24 from "deco-sites/std/functions/vtexProductListingPage.ts";
-import * as i2$25 from "deco-sites/std/functions/vtexSuggestions.ts";
-import * as i2$26 from "deco-sites/std/functions/vtexWishlist.ts";
+import * as i2$14 from "deco-sites/std/functions/vndaProductList.ts";
+import * as i2$15 from "deco-sites/std/functions/vndaProductListingPage.ts";
+import * as i2$16 from "deco-sites/std/functions/vtexLegacyProductDetailsPage.ts";
+import * as i2$17 from "deco-sites/std/functions/vtexLegacyProductList.ts";
+import * as i2$18 from "deco-sites/std/functions/vtexLegacyProductListingPage.ts";
+import * as i2$19 from "deco-sites/std/functions/vtexLegacyRelatedProductsLoader.ts";
+import * as i2$20 from "deco-sites/std/functions/vtexNavbar.ts";
+import * as i2$21 from "deco-sites/std/functions/vtexProductDetailsPage.ts";
+import * as i2$22 from "deco-sites/std/functions/vtexProductList.ts";
+import * as i2$23 from "deco-sites/std/functions/vtexProductListingPage.ts";
+import * as i2$24 from "deco-sites/std/functions/vtexSuggestions.ts";
+import * as i2$25 from "deco-sites/std/functions/vtexWishlist.ts";
 import * as i2$$0 from "deco-sites/std/accounts/butterCMS.ts";
 import * as i2$$1 from "deco-sites/std/accounts/linxImpulse.ts";
 import * as i2$$2 from "deco-sites/std/accounts/nuvemShop.ts";
@@ -130,7 +131,8 @@ import * as i2$$$28 from "deco-sites/std/loaders/vtex/user.ts";
 import * as i2$$$29 from "deco-sites/std/loaders/vtex/wishlist.ts";
 import * as i2$$$30 from "deco-sites/std/loaders/x/font.ts";
 import * as i2$$$31 from "deco-sites/std/loaders/x/image.ts";
-import * as i2$$$32 from "deco-sites/std/loaders/x/redirectsFromCsv.ts";
+import * as i2$$$32 from "deco-sites/std/loaders/x/redirects.ts";
+import * as i2$$$33 from "deco-sites/std/loaders/x/redirectsFromCsv.ts";
 import * as i2$$$$7 from "deco-sites/std/handlers/sitemap.ts";
 import * as i2$$$$8 from "deco-sites/std/handlers/vtex/sitemap.ts";
 import * as i2$$$$$5 from "deco-sites/std/sections/Analytics.tsx";
@@ -183,19 +185,18 @@ const manifest = {
     "deco-sites/std/functions/shopifyProductDetailsPage.ts": i2$11,
     "deco-sites/std/functions/shopifyProductList.ts": i2$12,
     "deco-sites/std/functions/shopifyProductListingPage.ts": i2$13,
-    "deco-sites/std/functions/vndaProductDetailsPage.ts": i2$14,
-    "deco-sites/std/functions/vndaProductList.ts": i2$15,
-    "deco-sites/std/functions/vndaProductListingPage.ts": i2$16,
-    "deco-sites/std/functions/vtexLegacyProductDetailsPage.ts": i2$17,
-    "deco-sites/std/functions/vtexLegacyProductList.ts": i2$18,
-    "deco-sites/std/functions/vtexLegacyProductListingPage.ts": i2$19,
-    "deco-sites/std/functions/vtexLegacyRelatedProductsLoader.ts": i2$20,
-    "deco-sites/std/functions/vtexNavbar.ts": i2$21,
-    "deco-sites/std/functions/vtexProductDetailsPage.ts": i2$22,
-    "deco-sites/std/functions/vtexProductList.ts": i2$23,
-    "deco-sites/std/functions/vtexProductListingPage.ts": i2$24,
-    "deco-sites/std/functions/vtexSuggestions.ts": i2$25,
-    "deco-sites/std/functions/vtexWishlist.ts": i2$26,
+    "deco-sites/std/functions/vndaProductList.ts": i2$14,
+    "deco-sites/std/functions/vndaProductListingPage.ts": i2$15,
+    "deco-sites/std/functions/vtexLegacyProductDetailsPage.ts": i2$16,
+    "deco-sites/std/functions/vtexLegacyProductList.ts": i2$17,
+    "deco-sites/std/functions/vtexLegacyProductListingPage.ts": i2$18,
+    "deco-sites/std/functions/vtexLegacyRelatedProductsLoader.ts": i2$19,
+    "deco-sites/std/functions/vtexNavbar.ts": i2$20,
+    "deco-sites/std/functions/vtexProductDetailsPage.ts": i2$21,
+    "deco-sites/std/functions/vtexProductList.ts": i2$22,
+    "deco-sites/std/functions/vtexProductListingPage.ts": i2$23,
+    "deco-sites/std/functions/vtexSuggestions.ts": i2$24,
+    "deco-sites/std/functions/vtexWishlist.ts": i2$25,
     "deco-sites/web/functions/LoadGitHubRaw.ts": $0,
   },
   "routes": {
@@ -219,6 +220,7 @@ const manifest = {
     "./islands/Main.tsx": $$$$$0,
     "./islands/Nav-v2.tsx": $$$$$1,
     "./islands/Nav.tsx": $$$$$2,
+    "./islands/PageTest.tsx": $$$$$3,
   },
   "sections": {
     "$live/sections/Conditional_Beta.tsx": i2$$$$$0,
@@ -246,8 +248,9 @@ const manifest = {
     "deco-sites/web/sections/Main.tsx": $$$$$$$$5,
     "deco-sites/web/sections/Nav-v2.tsx": $$$$$$$$6,
     "deco-sites/web/sections/Nav.tsx": $$$$$$$$7,
-    "deco-sites/web/sections/Theme.tsx": $$$$$$$$8,
-    "deco-sites/web/sections/Works.tsx": $$$$$$$$9,
+    "deco-sites/web/sections/PageTest.tsx": $$$$$$$$8,
+    "deco-sites/web/sections/Theme.tsx": $$$$$$$$9,
+    "deco-sites/web/sections/Works.tsx": $$$$$$$$10,
   },
   "loaders": {
     "$live/loaders/secret.ts": i2$$$0,
@@ -284,7 +287,8 @@ const manifest = {
     "deco-sites/std/loaders/vtex/wishlist.ts": i2$$$29,
     "deco-sites/std/loaders/x/font.ts": i2$$$30,
     "deco-sites/std/loaders/x/image.ts": i2$$$31,
-    "deco-sites/std/loaders/x/redirectsFromCsv.ts": i2$$$32,
+    "deco-sites/std/loaders/x/redirects.ts": i2$$$32,
+    "deco-sites/std/loaders/x/redirectsFromCsv.ts": i2$$$33,
   },
   "handlers": {
     "$live/handlers/devPage.ts": i2$$$$0,
