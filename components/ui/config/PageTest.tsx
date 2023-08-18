@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useState,useEffect  } from "preact/hooks";
 import Page1 from "deco-sites/web/components/ui/config/page1.tsx";
 import Page2 from "deco-sites/web/components/ui/config/page2.tsx";
 import Page3 from "deco-sites/web/components/ui/config/page3.tsx";
@@ -12,8 +12,25 @@ export default function PageTest(props: Props) {
 
   const navigateToPage = (page: string) => {
     setCurrentPage(page);
-    window.history.pushState(null, "", `/${page}`);
+    window.history.pushState(null, '', `/test/${page}`);
   };
+
+  useEffect(() => {
+    const handlePopstate = () => {
+      const path = window.location.pathname;
+      const slug = path.split('/').pop();
+      if (slug && slug !== 'test') {
+        setCurrentPage(slug);
+      }
+    };
+
+    addEventListener('popstate', handlePopstate);
+
+    return () => {
+      removeEventListener('popstate', handlePopstate);
+    };
+  }, [])
+
 
   const renderButtons = () => {
     switch (currentPage) {
