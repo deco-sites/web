@@ -30,24 +30,13 @@ export default function Sidebar({
   LinkSubtitle,
   Topics,
 }: SidebarContent) {
-  const [openDropdownIndex, setOpenDropdownIndex] = useState<number | null>(
-    null,
-  );
-
-  const toggleDropdown = (index: number) => {
-    setOpenDropdownIndex(openDropdownIndex === index ? null : index);
-  };
+  const [currentSlug, setCurrentSlug] = useState<string | null>(null);
 
   useEffect(() => {
     const currentPath = window.location.pathname;
-
-    Topics?.forEach((topic, index) => {
-      topic.SubTopics.forEach((subTopic) => {
-        if (currentPath.includes(subTopic.SidebarLink)) {
-          setOpenDropdownIndex(index);
-        }
-      });
-    });
+    const pathParts = currentPath.split("/");
+    const slug = pathParts[pathParts.length - 1].toLowerCase();
+    setCurrentSlug(slug);
   }, []);
 
   return (
@@ -72,43 +61,62 @@ export default function Sidebar({
           </a>
         )}
         {Topics &&
-          Topics.map((topic, index) => (
-            <ul key={index} class="mt-2 mb-3 flex flex-col">
-              <li class="flex items-center mb-2">
-                <a
-                  href={topic?.LinkSidebarLabel}
-                  class="text-zinc-900 text-[15px] font-semibold leading-tight cursor-pointer mr-[7px]"
-                  onClick={() =>
-                    toggleDropdown(index)}
-                >
-                  {topic.SidebarLabel}
-                </a>
-                {topic.SubTopics && topic.SubTopics.length > 0 && (
-                  <span class="w-5 h-5 p-1 bg-[#C9CECE] rounded-full text-white text-[13px] font-semibold leading-tight flex items-center justify-center">
-                    {topic.SubTopics.length}
-                  </span>
+          Topics.map((topic, index) => {
+            const linkSlug = topic.LinkSidebarLabel?.split("/").pop()
+              ?.toLowerCase();
+            const isActiveTopic = currentSlug === linkSlug ||
+              topic.SubTopics.some((subTopic) =>
+                subTopic.SidebarLink?.split("/").pop()?.toLowerCase() ===
+                  currentSlug
+              );
+            return (
+              <ul key={index} class="mt-2 mb-3 flex flex-col">
+                <li class="flex items-center mb-2">
+                  <a
+                    href={topic?.LinkSidebarLabel}
+                    class={`text-zinc-900 text-[15px] font-semibold leading-tight cursor-pointer mr-[7px]`}
+                  >
+                    {topic.SidebarLabel}
+                  </a>
+                  {topic.SubTopics && topic.SubTopics.length > 0 && (
+                    <span class="w-5 h-5 p-1 bg-[#C9CECE] rounded-full text-white text-[13px] font-semibold leading-tight flex items-center justify-center">
+                      {topic.SubTopics.length}
+                    </span>
+                  )}
+                </li>
+                {topic.SubTopics &&
+                  topic.SubTopics.length > 0 && (
+                  <ol
+                    class={`list-decimal font-semibold flex flex-col ${
+                      isActiveTopic ? "block" : "hidden"
+                    }`}
+                    style={{ paddingLeft: "25px" }}
+                  >
+                    {topic.SubTopics.map((subTopic, subIndex) => {
+                      const subTopicSlug = subTopic.SidebarLink?.split("/")
+                        .pop()?.toLowerCase();
+                      const isActiveSubTopic = currentSlug === subTopicSlug;
+
+                      return (
+                        <li key={subIndex} class="py-2">
+                          <a
+                            href={subTopic.SidebarLink}
+                            class={`cursor-pointer flex flex-1 text-[15px] font-normal leading-tight ${
+                              isActiveSubTopic
+                                ? "text-[#2E6ED9]"
+                                : "text-zinc-900"
+                            }`}
+                          >
+                            {subTopic.Label}
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ol>
                 )}
-              </li>
-              {openDropdownIndex === index && topic.SubTopics &&
-                topic.SubTopics.length > 0 && (
-                <ol
-                  class="list-decimal font-semibold flex flex-col"
-                  style={{ paddingLeft: "25px" }}
-                >
-                  {topic.SubTopics.map((subTopic, subIndex) => (
-                    <li key={subIndex} class="py-2">
-                      <a
-                        href={subTopic.SidebarLink}
-                        class="cursor-pointer flex flex-1 text-zinc-900 text-[15px] font-normal leading-tight"
-                      >
-                        {subTopic.Label}
-                      </a>
-                    </li>
-                  ))}
-                </ol>
-              )}
-            </ul>
-          ))}
+              </ul>
+            );
+          })}
       </ul>
     </aside>
   );
