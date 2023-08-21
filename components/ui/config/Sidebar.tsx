@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "preact/hooks";
 import { Image as LiveImage } from "deco-sites/std/components/types.ts";
 import Image from "deco-sites/std/components/Image.tsx";
@@ -67,6 +66,8 @@ export default function Sidebar({
     setCurrentSlug(slug);
   }, []);
 
+  const subtitleSlug = LinkSubtitle?.split("/").pop()?.toLowerCase();
+
   const toggleTopicMenu = (index: number) => {
     if (openTopicIndex === index) {
       setOpenTopicIndex(null);
@@ -92,13 +93,12 @@ export default function Sidebar({
           <a
             href={LinkSubtitle}
             class={`${
-              currentSlug === LinkSubtitle ? "text-blue-600" : "text-zinc-900"
+              currentSlug === subtitleSlug ? "text-blue-600" : "text-zinc-900"
             } text-[15px] font-semibold leading-tight my-[8px]`}
           >
             {Subtitle}
           </a>
         )}
-
         {Topics &&
           Topics.map((topic, index) => {
             const isActive = isTopicActive(
@@ -108,7 +108,7 @@ export default function Sidebar({
               index,
             );
             return (
-              <ul key={index} class="mt-2 mb-3 flex flex-col">
+              <ul key={index} class="mt-2 mb-3 flex flex-col pr-[40px]">
                 <li
                   class="flex items-center mb-2 cursor-pointer"
                   onClick={() => toggleTopicMenu(index)}
@@ -128,7 +128,7 @@ export default function Sidebar({
                 {topic.SubTopics &&
                   topic.SubTopics.length > 0 && (
                   <ol
-                    class={`list-decimal font-semibold flex flex-col ${
+                    class={`font-semibold flex flex-col ${
                       isActive ? "block" : "hidden"
                     }`}
                     style={{ paddingLeft: "25px" }}
@@ -140,14 +140,17 @@ export default function Sidebar({
                       );
 
                       return (
-                        <li key={subIndex} class="py-2">
+                        <li
+                          key={subIndex}
+                          class={`py-2 list-decimal cursor-pointer ${
+                            isActiveSubTopic
+                              ? "text-[#2E6ED9]"
+                              : "text-zinc-900 relative w-min-content before:h-full before:absolute before:bottom-0 hover:before:w-full hover:before:left-0   hover:before:bg-[#F8F9F5] z-10 before:-z-10"
+                          }`}
+                        >
                           <a
                             href={subTopic.SidebarLink}
-                            class={`cursor-pointer flex flex-1 text-[15px] font-normal leading-tight ${
-                              isActiveSubTopic
-                                ? "text-[#2E6ED9]"
-                                : "text-zinc-900"
-                            }`}
+                            class={`flex flex-1 text-[15px] font-normal leading-tight `}
                           >
                             {subTopic.Label}
                           </a>
