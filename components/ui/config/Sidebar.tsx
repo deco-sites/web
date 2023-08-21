@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "preact/hooks";
 import { Image as LiveImage } from "deco-sites/std/components/types.ts";
 import Image from "deco-sites/std/components/Image.tsx";
@@ -22,6 +23,32 @@ export interface SubTopic {
   SidebarLink: string;
 }
 
+const isTopicActive = (
+  currentSlug: string | null,
+  topic: Topic,
+  openTopicIndex: number | null,
+  index: number,
+): boolean => {
+  const linkSlug = topic.LinkSidebarLabel?.split("/").pop()?.toLowerCase();
+  const isActiveTopic = currentSlug === linkSlug ||
+    topic.SubTopics.some(
+      (subTopic) =>
+        subTopic.SidebarLink?.split("/").pop()?.toLowerCase() === currentSlug,
+    );
+  const isOpen = openTopicIndex === index || isActiveTopic;
+
+  return isOpen;
+};
+
+const isSubTopicActive = (
+  currentSlug: string | null,
+  subTopic: SubTopic,
+): boolean => {
+  const subTopicSlug = subTopic.SidebarLink?.split("/").pop()?.toLowerCase();
+  const isActiveSubTopic = currentSlug === subTopicSlug;
+  return isActiveSubTopic;
+};
+
 export default function Sidebar({
   SidebarTitle,
   Icon,
@@ -31,6 +58,7 @@ export default function Sidebar({
   Topics,
 }: SidebarContent) {
   const [currentSlug, setCurrentSlug] = useState<string | null>(null);
+  const [openTopicIndex, setOpenTopicIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const currentPath = window.location.pathname;
@@ -38,6 +66,14 @@ export default function Sidebar({
     const slug = pathParts[pathParts.length - 1].toLowerCase();
     setCurrentSlug(slug);
   }, []);
+
+  const toggleTopicMenu = (index: number) => {
+    if (openTopicIndex === index) {
+      setOpenTopicIndex(null);
+    } else {
+      setOpenTopicIndex(index);
+    }
+  };
 
   return (
     <aside class="max-w-[284px] w-full border-r-2 border-[#D4DBD7]">
@@ -55,26 +91,31 @@ export default function Sidebar({
         {Subtitle && Subtitle.length > 0 && (
           <a
             href={LinkSubtitle}
-            class="text-blue-600 text-[15px] font-semibold leading-tight my-[8px]"
+            class={`${
+              currentSlug === LinkSubtitle ? "text-blue-600" : "text-zinc-900"
+            } text-[15px] font-semibold leading-tight my-[8px]`}
           >
             {Subtitle}
           </a>
         )}
+
         {Topics &&
           Topics.map((topic, index) => {
-            const linkSlug = topic.LinkSidebarLabel?.split("/").pop()
-              ?.toLowerCase();
-            const isActiveTopic = currentSlug === linkSlug ||
-              topic.SubTopics.some((subTopic) =>
-                subTopic.SidebarLink?.split("/").pop()?.toLowerCase() ===
-                  currentSlug
-              );
+            const isActive = isTopicActive(
+              currentSlug,
+              topic,
+              openTopicIndex,
+              index,
+            );
             return (
               <ul key={index} class="mt-2 mb-3 flex flex-col">
-                <li class="flex items-center mb-2">
+                <li
+                  class="flex items-center mb-2 cursor-pointer"
+                  onClick={() => toggleTopicMenu(index)}
+                >
                   <a
                     href={topic?.LinkSidebarLabel}
-                    class={`text-zinc-900 text-[15px] font-semibold leading-tight cursor-pointer mr-[7px]`}
+                    class="text-zinc-900 text-[15px] font-semibold leading-tight cursor-pointer mr-[7px]"
                   >
                     {topic.SidebarLabel}
                   </a>
@@ -88,14 +129,15 @@ export default function Sidebar({
                   topic.SubTopics.length > 0 && (
                   <ol
                     class={`list-decimal font-semibold flex flex-col ${
-                      isActiveTopic ? "block" : "hidden"
+                      isActive ? "block" : "hidden"
                     }`}
                     style={{ paddingLeft: "25px" }}
                   >
                     {topic.SubTopics.map((subTopic, subIndex) => {
-                      const subTopicSlug = subTopic.SidebarLink?.split("/")
-                        .pop()?.toLowerCase();
-                      const isActiveSubTopic = currentSlug === subTopicSlug;
+                      const isActiveSubTopic = isSubTopicActive(
+                        currentSlug,
+                        subTopic,
+                      );
 
                       return (
                         <li key={subIndex} class="py-2">
