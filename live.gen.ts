@@ -8,8 +8,6 @@ import * as $$$$1 from "./routes/_app.tsx";
 import * as $$$$$0 from "./islands/Main.tsx";
 import * as $$$$$1 from "./islands/Nav-v2.tsx";
 import * as $$$$$2 from "./islands/Nav.tsx";
-import * as $$$$$3 from "./islands/PageTest.tsx";
-import * as $$$$$4 from "./islands/Sidebar.tsx";
 import * as $$$$$$$$0 from "./sections/Banner.tsx";
 import * as $$$$$$$$1 from "./sections/Footer.tsx";
 import * as $$$$$$$$2 from "./sections/Gallery.tsx";
@@ -18,10 +16,8 @@ import * as $$$$$$$$4 from "./sections/Home.tsx";
 import * as $$$$$$$$5 from "./sections/Main.tsx";
 import * as $$$$$$$$6 from "./sections/Nav-v2.tsx";
 import * as $$$$$$$$7 from "./sections/Nav.tsx";
-import * as $$$$$$$$8 from "./sections/PageTest.tsx";
-import * as $$$$$$$$9 from "./sections/Sidebar.tsx";
-import * as $$$$$$$$10 from "./sections/Theme.tsx";
-import * as $$$$$$$$11 from "./sections/Works.tsx";
+import * as $$$$$$$$8 from "./sections/Theme.tsx";
+import * as $$$$$$$$9 from "./sections/Works.tsx";
 import * as $live_workflows from "$live/routes/live/workflows/run.ts";
 import * as $live_middleware from "$live/routes/_middleware.ts";
 import * as $live_workbench from "$live/routes/live/workbench.ts";
@@ -222,8 +218,6 @@ const manifest = {
     "./islands/Main.tsx": $$$$$0,
     "./islands/Nav-v2.tsx": $$$$$1,
     "./islands/Nav.tsx": $$$$$2,
-    "./islands/PageTest.tsx": $$$$$3,
-    "./islands/Sidebar.tsx": $$$$$4,
   },
   "sections": {
     "$live/sections/Conditional_Beta.tsx": i1$$$$0,
@@ -251,10 +245,8 @@ const manifest = {
     "deco-sites/web/sections/Main.tsx": $$$$$$$$5,
     "deco-sites/web/sections/Nav-v2.tsx": $$$$$$$$6,
     "deco-sites/web/sections/Nav.tsx": $$$$$$$$7,
-    "deco-sites/web/sections/PageTest.tsx": $$$$$$$$8,
-    "deco-sites/web/sections/Sidebar.tsx": $$$$$$$$9,
-    "deco-sites/web/sections/Theme.tsx": $$$$$$$$10,
-    "deco-sites/web/sections/Works.tsx": $$$$$$$$11,
+    "deco-sites/web/sections/Theme.tsx": $$$$$$$$8,
+    "deco-sites/web/sections/Works.tsx": $$$$$$$$9,
   },
   "name": "deco-sites/web",
   "loaders": {
