@@ -76,7 +76,7 @@ export default function Gallery(props: Props) {
   ));
 
   return (
-    <div class="w-full lg:p-[30px] flex items-center justify-center bg-gradient-double-green">
+    <div class="w-full lg:p-[30px] flex items-center justify-center bg-gradient-double-green min-h-[500px]">
       <div class="relative lg:my-0 m-[5%] w-full h-full">
         <div class="max-w-[1280px] mx-auto w-full h-full md:min-h-0 min-h-[400px] p-[20px] rounded-md bg-white shadow-[3px_1px_19px_9px_#00000024]">
           <div class="flex md:flex-row flex-col md:justify-between justify-center items-center md:gap-[40px] gap-[20px] w-full h-full">
