@@ -1,62 +1,3 @@
-// import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
-// import Image from "deco-sites/std/components/Image.tsx";
-// import Icon from "deco-sites/web/components/ui/Icon.tsx";
-
-// export interface Link {
-//   label?: string;
-//   href?: string;
-// }
-
-// export interface Props {
-//   logo?: LiveImage;
-//   alt?: string;
-//   links: Array<Link>;
-// }
-
-// export default function Nav(props: Props) {
-//   return (
-//     <header class="max-w-8xl mx-auto">
-//       <nav class="grid grid-cols-3 grid-flow-row auto-rows-fr items-center top-0 fixed w-full h-[60px] bg-[#d0ffd5] py-2 px-8 shadow-[3px_1px_19px_9px_#11cd0473] z-10">
-//         {props.logo && (
-//           <figure>
-//             <Image src={props.logo} alt={props.alt} width={40} height={40} />
-//           </figure>
-//         )}
-//         <div class="flex items-center">
-//           <input
-//             type="search"
-//             name="search"
-//             placeholder="Search"
-//             class="w-full py-[8px] pr-[16px] pl-[48px] rounded-[52px] border border-[#bababa] placeholder-[#5a5f5d] text-[15px] relative focus:outline-none focus:border-[#64EF74]"
-//           />
-//           <Icon
-//             id="MagnifyingGlass"
-//             size={20}
-//             strokeWidth={0.01}
-//             class="absolute ml-[16px] w-5 h-5 p-[1.67px] fill-current text-[#424242] focus:outline-none"
-//           />
-//         </div>
-//         {!!props.links?.length && (
-//           <ul class="flex flex-col md:flex-row justify-end gap-2 md:gap-4">
-//             {props.links.map(({ href, label }) => (
-//               <li>
-//                 <a
-//                   target="_blank"
-//                   href={href}
-//                   aria-label={label}
-//                   class="no-underline font-medium text-[#424242]"
-//                 >
-//                   {label}
-//                 </a>
-//               </li>
-//             ))}
-//           </ul>
-//         )}
-//       </nav>
-//     </header>
-//   );
-// }
-
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 import Image from "deco-sites/std/components/Image.tsx";
 import { useEffect, useState } from "preact/hooks";
@@ -203,7 +144,7 @@ export default function Nav(props: Props) {
 
   return (
     <header>
-      <nav class="grid grid-cols-3 grid-flow-row auto-rows-fr items-center top-0 fixed w-full bg-[#d0ffd5] py-2 px-8 shadow-[3px_1px_1px_3px_#8ee188] z-10">
+      <nav class="grid grid-cols-3 grid-flow-row auto-rows-fr items-center top-0 fixed w-full bg-[#d0ffd5] py-2.5 px-8 shadow-[3px_1px_1px_3px_#8ee188] z-10">
         <div class={`col-span-1 flex`} style={leftDivStyle}>
           <a href={links[0]?.url}>
             <figure>
