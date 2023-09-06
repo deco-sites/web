@@ -4,7 +4,7 @@
 /// <reference lib="esnext" />
 
 import { start } from "$fresh/server.ts";
-import { $live } from "$live/mod.ts";
+import { $live } from "deco/mod.ts";
 import { plugin as tailwindPlugin } from "deco-sites/std/plugins/tailwind/mod.ts";
 import partytownPlugin from "partytown/mod.ts";
 import manifest from "./live.gen.ts";
