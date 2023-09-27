@@ -77,10 +77,10 @@ export default function Search(props: SearchProps) {
         {createLinksStructure()}
         <ul class="bg-[#053535] flex flex-col flex-wrap gap-x-[40px] gap-y-[10px] items-center relative">
           {links && links.length > 3 && (
-            <div class="flex items-center justify-center lg:justify-start my-[5px] w-full">
-              <div class="hidden lg:block w-2/5">
+            <li class="flex items-center justify-center lg:justify-start my-[5px] w-full">
+              <span class="hidden lg:block w-2/5">
                 <hr class="border-[#00ff80] h-full relative" />
-              </div>
+              </span>
               <div class="bg-[#00ff80] lg:w-1/5 rounded-[30px]">
                 <button
                   class="bg-[#053535] flex font-semibold gap-[10px] items-center m-[5px] px-[10px] py-[5px] rounded-[30px] text-[1em] text-white"
@@ -91,11 +91,11 @@ export default function Search(props: SearchProps) {
                     src={props.buttonIcon || ""}
                     width={20}
                     height={20}
-                    alt={props.button}
+                    alt={`${props.button} Button Icon`}
                   />
                 </button>
               </div>
-            </div>
+            </li>
           )}
           {showMenu && (
             <ul class="absolute bg-[#00ff80] flex flex-col gap-y-[10px] items-center justify-center lg:max-w-[300px] lg:top-[54px] min-w-[200px] p-[10px] rounded-b-[20px] shadow-box-shadow-2 top-[45px] w-full z-20">
