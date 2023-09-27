@@ -27,7 +27,7 @@ export default function Banner(props: BannerProps) {
               src={image}
               width={100}
               height={100}
-              class="absolute w-full h-full object-cover sm:bottom-unset bottom-0 max-h-[300px]"
+              class="absolute w-full h-full object-cover lg:bottom-unset bottom-0 max-h-[300px]"
               alt="banner"
             />
           )

@@ -124,6 +124,15 @@
   .bottom-unset {
     bottom: unset;
   }
+
+
+  @media screen and (max-width: 768px) {
+    .w-100-full {
+      width: 100%;
+    }
+  }
+
+
 }
 
 @layer components {

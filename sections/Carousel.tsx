@@ -112,7 +112,7 @@
 //             <a href={slide.link} key={index}>
 //               <Image
 //                 src={slide.logo || ""}
-//                 class="w-full h-full object-contain"
+//                 class="h-full object-contain w-full"
 //                 width={200}
 //                 height={200}
 //                 alt={slide.alt || ""}
@@ -122,7 +122,7 @@
 //           : <p>No slides to display</p>}
 //       </div>
 //       {props.arrowLeft && props.arrowRight && (
-//         <div class="absolute inset-y-0 w-full flex justify-between items-center pr-6">
+//         <div class="absolute flex inset-y-0 items-center justify-between pr-6 w-full">
 //           <ArrowLeft
 //             src={props.arrowLeft}
 //             onClick={() => moveSlide("left")}
@@ -149,6 +149,11 @@ export interface Props {
   tabletColumns?: 1 | 2 | 3 | 4;
   /** @description Number of columns to display on mobile screens. */
   mobileColumns?: 1 | 2;
+  message?: string;
+  logoLeft?: LiveImage;
+  altLeft?: string;
+  logoRight?: LiveImage;
+  altRight?: string;
   slides?: Slide[];
   arrowLeft?: LiveImage;
   arrowRight?: LiveImage;
@@ -236,7 +241,7 @@ export default function Carousel(props: Props) {
   const ArrowLeft = ({ src, onClick, isLimited, currentSlide }: ArrowProps) => (
     <button
       onClick={onClick}
-      className={`${
+      class={`${
         isLimited && currentSlide === 0 ? "opacity-50 cursor-not-allowed" : ""
       } `}
       disabled={isLimited && currentSlide === 0}
@@ -253,7 +258,7 @@ export default function Carousel(props: Props) {
   }: ArrowProps) => (
     <button
       onClick={onClick}
-      className={`${
+      class={`${
         isLimited && isLastSlideVisible ? "opacity-50 cursor-not-allowed" : ""
       } `}
       disabled={isLimited && isLastSlideVisible}
@@ -264,10 +269,33 @@ export default function Carousel(props: Props) {
 
   return (
     <div class="bg-gray-100 py-[70px]">
-      <div class="xl:max-w-[1440px] lg:max-w-[960px] md:max-w-[720px] sm:max-w-[540px] w-full mx-auto flex lg:justify-start justify-center border  border-t-zinc-500 border-x-transparent border-b-transparent">
-        <h2 class="text-2xl font-bold px-[10px] pb-[40px] pt-[11px]">
-          <span class="border-4 border-green-400 rounded-full bg-green-200 p-2">
-            Recent Bounty Finalized
+      <div class="border border-b-transparent border-t-zinc-500 border-x-transparent flex flex-col items-center justify-center lg:max-w-[960px] md:max-w-[720px] mx-auto px-[10px] sm:flex-row-reverse sm:justify-between sm:max-w-[540px] w-full xl:max-w-[1440px]">
+        <div class="flex gap-[10px] items-center py-[10px] sm:py-0">
+          {props.logoLeft
+            ? (
+              <Image
+                src={props.logoLeft}
+                width={80}
+                height={40}
+                alt={props.altLeft}
+              />
+            )
+            : null}
+          <span class="font-bold text-2xl">&</span>
+          {props.logoRight
+            ? (
+              <Image
+                src={props.logoRight}
+                width={80}
+                height={40}
+                alt={props.altRight}
+              />
+            )
+            : null}
+        </div>
+        <h2 class="font-bold pb-[40px] pt-[26px] px-[10px] text-2xl">
+          <span class="bg-green-200 border-4 border-green-400 p-2 rounded-full">
+            {props.message}
           </span>
         </h2>
       </div>
@@ -284,17 +312,17 @@ export default function Carousel(props: Props) {
             transform: `translateX(-${
               currentSlide * (100 / clonedSlides.length)
             }%)`,
-            transition: "transform 0.6s ease-in-out",
+            transition: "transform 0.3s ease-in-out",
             display: "grid",
             gridTemplateColumns: `repeat(${clonedSlides.length}, 1fr)`,
           }}
         >
           {props.slides && props.slides.length > 0
             ? clonedSlides.map((slide: Slide, index: number) => (
-              <a href={slide.link} key={index} className="px-[10px]">
+              <a href={slide.link} key={index} class="md:pr-[10px] px-[10px]">
                 <Image
                   src={slide.image || ""}
-                  className="w-full object-contain"
+                  className="max-w-none w-100-full object-contain rounded-md border border-slate-500"
                   width={slide.width || 200}
                   height={slide.height || 200}
                   alt={slide.label || ""}
@@ -304,7 +332,7 @@ export default function Carousel(props: Props) {
             : <p>No slides to display</p>}
         </div>
         {props.arrowLeft && props.arrowRight && (
-          <div className="absolute inset-y-0 w-full flex justify-between items-center lg:px-0 px-[20px]">
+          <div class="absolute flex inset-y-0 items-center justify-between lg:px-0 px-[20px] w-full">
             <ArrowLeft
               src={props.arrowLeft}
               onClick={() => moveSlide("left")}
