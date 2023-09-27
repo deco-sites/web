@@ -178,6 +178,8 @@ interface ArrowProps {
 export default function Carousel(props: Props) {
   const slides = props.slides || [];
   const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [totalSlides, setTotalSlides] = useState<number>(slides.length);
+
   const [columns, setColumns] = useState<number>(
     window.innerWidth >= 1200
       ? props.desktopColumns || 1
@@ -190,8 +192,8 @@ export default function Carousel(props: Props) {
     ? true
     : props.limitedCarousel;
 
-  const isLastSlideVisible =
-    (currentSlide + columns >= slides.length && currentSlide < slides.length) ||
+  const isLastSlideVisible = (currentSlide + columns >= slides.length &&
+    currentSlide < slides.length) ||
     (currentSlide + columns >= slides.length && slides.length <= columns);
 
   const moveSlide = (direction: "left" | "right") => {
@@ -215,6 +217,7 @@ export default function Carousel(props: Props) {
       }
     }
     setCurrentSlide(newSlide);
+    setTotalSlides(slides.length);
   };
 
   useEffect(() => {
@@ -245,8 +248,9 @@ export default function Carousel(props: Props) {
         isLimited && currentSlide === 0 ? "opacity-50 cursor-not-allowed" : ""
       } `}
       disabled={isLimited && currentSlide === 0}
+      aria-label={`Slide ${currentSlide + 1}/${totalSlides} to the left`}
     >
-      <Image src={src} width={60} height={60} />
+      <Image src={src} width={60} height={60} alt="icon arrow left" />
     </button>
   );
 
@@ -255,6 +259,7 @@ export default function Carousel(props: Props) {
     onClick,
     isLimited,
     isLastSlideVisible,
+    currentSlide,
   }: ArrowProps) => (
     <button
       onClick={onClick}
@@ -262,8 +267,9 @@ export default function Carousel(props: Props) {
         isLimited && isLastSlideVisible ? "opacity-50 cursor-not-allowed" : ""
       } `}
       disabled={isLimited && isLastSlideVisible}
+      aria-label={`Slide ${currentSlide + 1}/${totalSlides} to the right`} 
     >
-      <Image src={src} width={60} height={60} />
+      <Image src={src} width={60} height={60} alt="icon arrow right" />
     </button>
   );
 
@@ -318,17 +324,23 @@ export default function Carousel(props: Props) {
           }}
         >
           {props.slides && props.slides.length > 0
-            ? clonedSlides.map((slide: Slide, index: number) => (
-              <a href={slide.link} key={index} class="md:pr-[10px] px-[10px]">
-                <Image
-                  src={slide.image || ""}
-                  className="max-w-none w-100-full object-contain rounded-md border border-slate-500"
-                  width={slide.width || 200}
-                  height={slide.height || 200}
-                  alt={slide.label || ""}
-                />
-              </a>
-            ))
+            ? (
+              clonedSlides.map((slide: Slide, index: number) => (
+                <a
+                  href={slide.link}
+                  key={index}
+                  class="md:pr-[10px] px-[10px]"
+                >
+                  <Image
+                    src={slide.image || ""}
+                    class="max-w-none w-100-full object-contain rounded-md border border-slate-500"
+                    width={slide.width || 200}
+                    height={slide.height || 200}
+                    alt={slide.label || ""}
+                  />
+                </a>
+              ))
+            )
             : <p>No slides to display</p>}
         </div>
         {props.arrowLeft && props.arrowRight && (
