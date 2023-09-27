@@ -67,7 +67,8 @@ export default {
       },
       boxShadow: {
         "box-shadow-1":
-          "inset 1px 3px 12px #0000004a, inset 1px -3px 12px #066e38ab",
+          "inset 1px 2.5px 1px #0000004a,inset 1px 2.5px 0px #066e38ab",
+        "box-shadow-2": "0px 4px 8px 3px rgba(0,0,0,0.1)",
       },
     },
   },

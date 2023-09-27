@@ -5,19 +5,16 @@
 import * as $0 from "./functions/LoadGitHubRaw.ts";
 import * as $$$$0 from "./routes/styles.css.ts";
 import * as $$$$1 from "./routes/_app.tsx";
-import * as $$$$$0 from "./islands/Main.tsx";
-import * as $$$$$1 from "./islands/Nav-v2.tsx";
-import * as $$$$$2 from "./islands/Nav.tsx";
+import * as $$$$$0 from "./islands/Carousel.tsx";
+import * as $$$$$1 from "./islands/Header.tsx";
+import * as $$$$$2 from "./islands/Search.tsx";
 import * as $$$$$$$$0 from "./sections/Banner.tsx";
-import * as $$$$$$$$1 from "./sections/Footer.tsx";
-import * as $$$$$$$$2 from "./sections/Gallery.tsx";
+import * as $$$$$$$$1 from "./sections/Carousel.tsx";
+import * as $$$$$$$$2 from "./sections/CircleText.tsx";
 import * as $$$$$$$$3 from "./sections/Head.tsx";
-import * as $$$$$$$$4 from "./sections/Home.tsx";
-import * as $$$$$$$$5 from "./sections/Main.tsx";
-import * as $$$$$$$$6 from "./sections/Nav-v2.tsx";
-import * as $$$$$$$$7 from "./sections/Nav.tsx";
-import * as $$$$$$$$8 from "./sections/Theme.tsx";
-import * as $$$$$$$$9 from "./sections/Works.tsx";
+import * as $$$$$$$$4 from "./sections/Header.tsx";
+import * as $$$$$$$$5 from "./sections/Search.tsx";
+import * as $$$$$$$$6 from "./sections/Theme.tsx";
 import * as $live_workflows from "$live/routes/live/workflows/run.ts";
 import * as $live_middleware from "$live/routes/_middleware.ts";
 import * as $live_workbench from "$live/routes/live/workbench.ts";
@@ -48,16 +45,18 @@ import * as i1$$$$2 from "$live/sections/PageInclude.tsx";
 import * as i1$$$$3 from "$live/sections/Slot.tsx";
 import * as i1$$$$4 from "$live/sections/UseSlot.tsx";
 import * as i1$$$$$0 from "$live/matchers/MatchAlways.ts";
-import * as i1$$$$$1 from "$live/matchers/MatchCron.ts";
-import * as i1$$$$$2 from "$live/matchers/MatchDate.ts";
-import * as i1$$$$$3 from "$live/matchers/MatchDevice.ts";
-import * as i1$$$$$4 from "$live/matchers/MatchEnvironment.ts";
-import * as i1$$$$$5 from "$live/matchers/MatchHost.ts";
-import * as i1$$$$$6 from "$live/matchers/MatchLocation.ts";
-import * as i1$$$$$7 from "$live/matchers/MatchMulti.ts";
-import * as i1$$$$$8 from "$live/matchers/MatchRandom.ts";
-import * as i1$$$$$9 from "$live/matchers/MatchSite.ts";
-import * as i1$$$$$10 from "$live/matchers/MatchUserAgent.ts";
+import * as i1$$$$$1 from "$live/matchers/MatchCookies.ts";
+import * as i1$$$$$2 from "$live/matchers/MatchCron.ts";
+import * as i1$$$$$3 from "$live/matchers/MatchDate.ts";
+import * as i1$$$$$4 from "$live/matchers/MatchDevice.ts";
+import * as i1$$$$$5 from "$live/matchers/MatchEnvironment.ts";
+import * as i1$$$$$6 from "$live/matchers/MatchHost.ts";
+import * as i1$$$$$7 from "$live/matchers/MatchLocation.ts";
+import * as i1$$$$$8 from "$live/matchers/MatchMulti.ts";
+import * as i1$$$$$9 from "$live/matchers/MatchNegate.ts";
+import * as i1$$$$$10 from "$live/matchers/MatchRandom.ts";
+import * as i1$$$$$11 from "$live/matchers/MatchSite.ts";
+import * as i1$$$$$12 from "$live/matchers/MatchUserAgent.ts";
 import * as i1$$$$$$0 from "$live/flags/audience.ts";
 import * as i1$$$$$$1 from "$live/flags/everyone.ts";
 import * as i1$$$$$$2 from "$live/flags/flag.ts";
@@ -215,9 +214,9 @@ const manifest = {
     "./routes/styles.css.ts": $$$$0,
   },
   "islands": {
-    "./islands/Main.tsx": $$$$$0,
-    "./islands/Nav-v2.tsx": $$$$$1,
-    "./islands/Nav.tsx": $$$$$2,
+    "./islands/Carousel.tsx": $$$$$0,
+    "./islands/Header.tsx": $$$$$1,
+    "./islands/Search.tsx": $$$$$2,
   },
   "sections": {
     "$live/sections/Conditional_Beta.tsx": i1$$$$0,
@@ -238,15 +237,12 @@ const manifest = {
     "deco-sites/std/sections/SEOPLP.tsx": i2$$$$$10,
     "deco-sites/std/sections/VTEXPortalDataLayerCompatibility.tsx": i2$$$$$11,
     "deco-sites/web/sections/Banner.tsx": $$$$$$$$0,
-    "deco-sites/web/sections/Footer.tsx": $$$$$$$$1,
-    "deco-sites/web/sections/Gallery.tsx": $$$$$$$$2,
+    "deco-sites/web/sections/Carousel.tsx": $$$$$$$$1,
+    "deco-sites/web/sections/CircleText.tsx": $$$$$$$$2,
     "deco-sites/web/sections/Head.tsx": $$$$$$$$3,
-    "deco-sites/web/sections/Home.tsx": $$$$$$$$4,
-    "deco-sites/web/sections/Main.tsx": $$$$$$$$5,
-    "deco-sites/web/sections/Nav-v2.tsx": $$$$$$$$6,
-    "deco-sites/web/sections/Nav.tsx": $$$$$$$$7,
-    "deco-sites/web/sections/Theme.tsx": $$$$$$$$8,
-    "deco-sites/web/sections/Works.tsx": $$$$$$$$9,
+    "deco-sites/web/sections/Header.tsx": $$$$$$$$4,
+    "deco-sites/web/sections/Search.tsx": $$$$$$$$5,
+    "deco-sites/web/sections/Theme.tsx": $$$$$$$$6,
   },
   "name": "deco-sites/web",
   "loaders": {
@@ -304,16 +300,18 @@ const manifest = {
   },
   "matchers": {
     "$live/matchers/MatchAlways.ts": i1$$$$$0,
-    "$live/matchers/MatchCron.ts": i1$$$$$1,
-    "$live/matchers/MatchDate.ts": i1$$$$$2,
-    "$live/matchers/MatchDevice.ts": i1$$$$$3,
-    "$live/matchers/MatchEnvironment.ts": i1$$$$$4,
-    "$live/matchers/MatchHost.ts": i1$$$$$5,
-    "$live/matchers/MatchLocation.ts": i1$$$$$6,
-    "$live/matchers/MatchMulti.ts": i1$$$$$7,
-    "$live/matchers/MatchRandom.ts": i1$$$$$8,
-    "$live/matchers/MatchSite.ts": i1$$$$$9,
-    "$live/matchers/MatchUserAgent.ts": i1$$$$$10,
+    "$live/matchers/MatchCookies.ts": i1$$$$$1,
+    "$live/matchers/MatchCron.ts": i1$$$$$2,
+    "$live/matchers/MatchDate.ts": i1$$$$$3,
+    "$live/matchers/MatchDevice.ts": i1$$$$$4,
+    "$live/matchers/MatchEnvironment.ts": i1$$$$$5,
+    "$live/matchers/MatchHost.ts": i1$$$$$6,
+    "$live/matchers/MatchLocation.ts": i1$$$$$7,
+    "$live/matchers/MatchMulti.ts": i1$$$$$8,
+    "$live/matchers/MatchNegate.ts": i1$$$$$9,
+    "$live/matchers/MatchRandom.ts": i1$$$$$10,
+    "$live/matchers/MatchSite.ts": i1$$$$$11,
+    "$live/matchers/MatchUserAgent.ts": i1$$$$$12,
   },
   "flags": {
     "$live/flags/audience.ts": i1$$$$$$0,
