@@ -7,14 +7,16 @@ import * as $$$$0 from "./routes/styles.css.ts";
 import * as $$$$1 from "./routes/_app.tsx";
 import * as $$$$$0 from "./islands/Carousel.tsx";
 import * as $$$$$1 from "./islands/Header.tsx";
-import * as $$$$$2 from "./islands/Search.tsx";
+import * as $$$$$2 from "./islands/Loading.tsx";
+import * as $$$$$3 from "./islands/Search.tsx";
 import * as $$$$$$$$0 from "./sections/Banner.tsx";
 import * as $$$$$$$$1 from "./sections/Carousel.tsx";
 import * as $$$$$$$$2 from "./sections/CircleText.tsx";
 import * as $$$$$$$$3 from "./sections/Head.tsx";
 import * as $$$$$$$$4 from "./sections/Header.tsx";
-import * as $$$$$$$$5 from "./sections/Search.tsx";
-import * as $$$$$$$$6 from "./sections/Theme.tsx";
+import * as $$$$$$$$5 from "./sections/Loading.tsx";
+import * as $$$$$$$$6 from "./sections/Search.tsx";
+import * as $$$$$$$$7 from "./sections/Theme.tsx";
 import * as $live_workflows from "$live/routes/live/workflows/run.ts";
 import * as $live_middleware from "$live/routes/_middleware.ts";
 import * as $live_workbench from "$live/routes/live/workbench.ts";
@@ -216,7 +218,8 @@ const manifest = {
   "islands": {
     "./islands/Carousel.tsx": $$$$$0,
     "./islands/Header.tsx": $$$$$1,
-    "./islands/Search.tsx": $$$$$2,
+    "./islands/Loading.tsx": $$$$$2,
+    "./islands/Search.tsx": $$$$$3,
   },
   "sections": {
     "$live/sections/Conditional_Beta.tsx": i1$$$$0,
@@ -241,8 +244,9 @@ const manifest = {
     "deco-sites/web/sections/CircleText.tsx": $$$$$$$$2,
     "deco-sites/web/sections/Head.tsx": $$$$$$$$3,
     "deco-sites/web/sections/Header.tsx": $$$$$$$$4,
-    "deco-sites/web/sections/Search.tsx": $$$$$$$$5,
-    "deco-sites/web/sections/Theme.tsx": $$$$$$$$6,
+    "deco-sites/web/sections/Loading.tsx": $$$$$$$$5,
+    "deco-sites/web/sections/Search.tsx": $$$$$$$$6,
+    "deco-sites/web/sections/Theme.tsx": $$$$$$$$7,
   },
   "name": "deco-sites/web",
   "loaders": {

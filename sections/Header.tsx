@@ -36,7 +36,10 @@ export default function Header(props: HeaderProps) {
     <ul class="bg-[#70ffb9] flex flex-wrap gap-x-[40px] gap-y-[10px] items-center justify-center py-[5px]">
       {links?.map((link) => (
         <li class="duration-300 ease-in flex gap-x-[5px] hover:scale-110 items-baseline">
-          <a href={link.url} class="font-semibold md:text-[1em] text-[#333] text-[1.2em]">
+          <a
+            href={link.url}
+            class="font-semibold md:text-[1em] text-[#333] text-[1.2em]"
+          >
             {link.label}
           </a>
           {link.icon
@@ -74,7 +77,9 @@ export default function Header(props: HeaderProps) {
         </p>
         {links && !isMobile ? <Ul links={links} /> : null}
         <div class="bg-[#053535] flex gap-x-[10px] items-center justify-center px-[5px] py-[10px] rounded-tl-full">
-          <p class="font-semibold md:text-[1em] text-[1.2em] text-white">{formatDate()}</p>
+          <p class="font-semibold md:text-[1em] text-[1.2em] text-white">
+            {formatDate()}
+          </p>
           <p class="flex gap-x-[10px] items-center">
             {icon
               ? (
