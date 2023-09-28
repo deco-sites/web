@@ -67,11 +67,11 @@ export default function Search(props: SearchProps) {
             {links?.slice(0, 3).map((link, index) => (
               <li
                 key={index}
-                class="border-[#053535] border-b flex justify-center md:border-0 md:justify-start md:w-auto w-full"
+                class="border-[#053535] border-b flex justify-center md:border-0 md:justify-start md:w-auto w-full py-[10px] "
               >
                 <a
                   href={link.url}
-                  class="duration-300 ease-in font-semibold hover:border-[#053535] md:hover:border-b-4 md:text-[1em] py-[6px] text-[#333] text-[1.2em]"
+                  class="duration-300 ease-in font-semibold hover:border-[#053535] md:hover:border-b-4 md:text-[1em] text-[#333] text-[1.2em]"
                 >
                   {link.label}
                 </a>
@@ -123,7 +123,7 @@ export default function Search(props: SearchProps) {
           )}
           {showMenu && (
             <>
-              <ul class="absolute bg-[#00ff80] flex flex-col md:gap-y-[10px] items-center justify-center lg:max-w-[300px] lg:top-[54px] md:top-[45px] min-w-[200px] p-[10px] md:rounded-b-[20px] shadow-box-shadow-2 top-[52px] w-full z-20">
+              <ul class="absolute bg-[#00ff80] flex flex-col items-center justify-center lg:max-w-[300px] lg:top-[54px] min-w-[200px] px-[10px] lg:rounded-b-[20px] shadow-box-shadow-2 top-[52px] w-full z-20">
                 <>
                   {isMobile
                     ? (
@@ -139,10 +139,10 @@ export default function Search(props: SearchProps) {
                     : null}
                 </>
                 {links?.slice(3).map((link) => (
-                  <li class="border-[#053535] border-b flex justify-center w-full">
+                  <li class="border-[#053535] border-b flex justify-center w-full py-[10px]">
                     <a
                       href={link.url}
-                      class="duration-300 ease-in font-semibold md:hover:scale-110 md:text-[1em] text-[#333] text-[1.2em] py-[6px]"
+                      class="duration-300 ease-in font-semibold md:hover:scale-110 md:text-[1em] text-[#333] text-[1.2em]"
                     >
                       {link.label}
                     </a>
