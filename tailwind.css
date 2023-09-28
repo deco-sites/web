@@ -132,7 +132,17 @@
     }
   }
 
+  ul, li {
+    list-style-type: none;
+  }
 
+  .h-auto {
+    height: auto;
+  }
+
+  .w-auto {
+    width: auto;
+  }
 }
 
 @layer components {
