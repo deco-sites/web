@@ -1,142 +1,3 @@
-// import { Image as LiveImage } from "deco-sites/std/components/types.ts";
-// import Image from "deco-sites/std/components/Image.tsx";
-// import { useEffect, useState } from "preact/hooks";
-
-// export interface Props {
-//   desktopColumns?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-//   tabletColumns?: 1 | 2 | 3 | 4;
-//   mobileColumns?: 1 | 2;
-//   slides?: Slide[];
-//   arrowLeft?: LiveImage;
-//   arrowRight?: LiveImage;
-// }
-
-// export interface Slide {
-//   logo?: LiveImage;
-//   alt?: string;
-//   link?: string;
-// }
-
-// interface ArrowProps {
-//   src: LiveImage;
-//   className?: string;
-//   onClick: () => void;
-// }
-
-// export default function Carousel(props: Props) {
-//   const [columns, setColumns] = useState(
-//     window.innerWidth >= 1200
-//       ? props.desktopColumns || 1
-//       : window.innerWidth >= 768
-//       ? props.tabletColumns || 1
-//       : props.mobileColumns || 1,
-//   );
-
-//   const slides = props.slides || [];
-//   const [currentSlide, setCurrentSlide] = useState(0);
-
-//   const shouldHideOverflow = slides.length > columns;
-//   const slideWidth = 100 / columns;
-
-//   const moveSlide = (direction: "left" | "right") => {
-//     if (direction === "left" && currentSlide > 0) {
-//       setCurrentSlide((prevSlide) => prevSlide - 1);
-//     } else if (direction === "right" && currentSlide < slides.length - 1) {
-//       setCurrentSlide((prevSlide) => prevSlide + 1);
-//     }
-//   };
-
-//   useEffect(() => {
-//     const updateColumns = () => {
-//       const newColumns = window.innerWidth >= 1200
-//         ? props.desktopColumns || 1
-//         : window.innerWidth >= 768
-//         ? props.tabletColumns || 1
-//         : props.mobileColumns || 1;
-//       setColumns(newColumns);
-//     };
-
-//     addEventListener("resize", updateColumns);
-
-//     return () => {
-//       removeEventListener("resize", updateColumns);
-//     };
-//   }, [props.desktopColumns, props.tabletColumns, props.mobileColumns]);
-
-//   const totalCarouselWidth = slides.length * slideWidth;
-
-//   const isLastSlideVisible =
-//     (currentSlide + columns >= slides.length && currentSlide < slides.length) ||
-//     (currentSlide + columns >= slides.length && slides.length <= columns);
-
-//   const ArrowLeft = ({ src, onClick }: ArrowProps) => (
-//     <button
-//       onClick={onClick}
-//       className={`${
-//         currentSlide === 0 ? "opacity-50 cursor-not-allowed" : ""
-//       } `}
-//       disabled={currentSlide === 0}
-//     >
-//       <Image src={src} width={50} height={50} />
-//     </button>
-//   );
-
-//   const ArrowRight = ({ src, onClick }: ArrowProps) => (
-//     <button
-//       onClick={onClick}
-//       className={`${
-//         isLastSlideVisible ? "opacity-50 cursor-not-allowed" : ""
-//       } `}
-//       disabled={isLastSlideVisible}
-//     >
-//       <Image src={src} width={50} height={50} />
-//     </button>
-//   );
-
-//   return (
-//     <div
-//       class={`relative xl:max-w-[1320px] lg:max-w-[960px] md:max-w-[720px] sm:max-w-[540px] w-full mx-auto px-3 flex flex-col ${
-//         shouldHideOverflow ? "overflow-hidden" : ""
-//       }`}
-//     >
-//       <div
-//         class="flex gap-[2%] px-[10px] py-[70px]"
-//         style={{
-//           width: `${totalCarouselWidth}%`,
-//           transform: `translateX(-${currentSlide * (100 / slides.length)}%)`,
-//           transition: "transform 0.3s ease-in-out",
-//         }}
-//       >
-//         {props.slides && props.slides.length > 0
-//           ? slides.map((slide: Slide, index: number) => (
-//             <a href={slide.link} key={index}>
-//               <Image
-//                 src={slide.logo || ""}
-//                 class="h-full object-contain w-full"
-//                 width={200}
-//                 height={200}
-//                 alt={slide.alt || ""}
-//               />
-//             </a>
-//           ))
-//           : <p>No slides to display</p>}
-//       </div>
-//       {props.arrowLeft && props.arrowRight && (
-//         <div class="absolute flex inset-y-0 items-center justify-between pr-6 w-full">
-//           <ArrowLeft
-//             src={props.arrowLeft}
-//             onClick={() => moveSlide("left")}
-//           />
-//           <ArrowRight
-//             src={props.arrowRight}
-//             onClick={() => moveSlide("right")}
-//           />
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
-
 import { Image as LiveImage } from "deco-sites/std/components/types.ts";
 import Image from "deco-sites/std/components/Image.tsx";
 import { useEffect, useState } from "preact/hooks";
@@ -267,7 +128,7 @@ export default function Carousel(props: Props) {
         isLimited && isLastSlideVisible ? "opacity-50 cursor-not-allowed" : ""
       } `}
       disabled={isLimited && isLastSlideVisible}
-      aria-label={`Slide ${currentSlide + 1}/${totalSlides} to the right`} 
+      aria-label={`Slide ${currentSlide + 1}/${totalSlides} to the right`}
     >
       <Image src={src} width={60} height={60} alt="icon arrow right" />
     </button>
@@ -300,7 +161,7 @@ export default function Carousel(props: Props) {
             : null}
         </div>
         <h2 class="font-bold pb-[40px] pt-[26px] px-[10px] text-2xl">
-          <span class="bg-green-200 border-4 border-green-400 p-2 rounded-full">
+          <span class="bg-green-200 border-4 border-green-400 flex p-2 rounded-full text-center w-full">
             {props.message}
           </span>
         </h2>
@@ -333,7 +194,7 @@ export default function Carousel(props: Props) {
                 >
                   <Image
                     src={slide.image || ""}
-                    class="max-w-none w-100-full object-contain rounded-md border border-slate-500"
+                    class="border border-slate-500 max-w-none object-contain rounded-md w-100-full"
                     width={slide.width || 200}
                     height={slide.height || 200}
                     alt={slide.label || ""}

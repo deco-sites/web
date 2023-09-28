@@ -14,11 +14,11 @@ export default function Banner(props: BannerProps) {
 
   return (
     <div class="bg-[#22c489]">
-      <div class=" flex justify-between lg:p-[10px] max-w-[1440px] mx-auto lg:min-h-[300px] min-h-[400px] relative overflow-hidden">
-        <h1 class="font-semibold text-white flex items-center justify-center text-[1.5em] bg-black transform origin-top-left rotate-[-90deg] min-h-[50px] min-w-[170px] absolute top-[100%] z-10">
+      <div class="flex justify-between lg:min-h-[300px] lg:p-[10px] max-w-[1440px] min-h-[400px] mx-auto overflow-hidden relative">
+        <h1 class="absolute bg-black flex font-semibold items-center justify-center min-h-[50px] min-w-[170px] origin-top-left rotate-[-90deg] text-[1.5em] text-white top-[100%] transform z-10">
           {title}
         </h1>
-        <p class="font-bold text-white text-[2em] relative z-10 lg:flex-row flex-col lg:text-left text-center w-full lg:pt-[10px] pt-[40px]">
+        <p class=" bg-[#053535] border-4 border-[#00ff80] flex-col font-bold h-fit lg:flex-row lg:text-left md:mt-[10px] md:mx-0 mt-[40px] mx-auto px-[10px] relative rounded-full text-[1.7em] text-center text-white w-fit z-10">
           {text}
         </p>
         {image
@@ -27,7 +27,7 @@ export default function Banner(props: BannerProps) {
               src={image}
               width={100}
               height={100}
-              class="absolute w-full h-full object-cover lg:bottom-unset bottom-0 max-h-[300px]"
+              class="absolute bottom-0 h-full lg:bottom-unset max-h-[300px] object-cover w-full"
               alt="banner"
             />
           )

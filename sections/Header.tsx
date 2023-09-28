@@ -36,7 +36,7 @@ export default function Header(props: HeaderProps) {
     <ul class="bg-[#70ffb9] flex flex-wrap gap-x-[40px] gap-y-[10px] items-center justify-center py-[5px]">
       {links?.map((link) => (
         <li class="duration-300 ease-in flex gap-x-[5px] hover:scale-110 items-baseline">
-          <a href={link.url} class="font-semibold text-[#333] text-[1em]">
+          <a href={link.url} class="font-semibold md:text-[1em] text-[#333] text-[1.2em]">
             {link.label}
           </a>
           {link.icon
@@ -69,20 +69,21 @@ export default function Header(props: HeaderProps) {
   return (
     <header class="bg-[#053535]">
       <nav class="bg-[#053535] grid grid-cols-1 lg:bg-[#70ffb9] lg:grid-cols-3 max-w-[1440px] md:grid-cols-2 mx-auto">
-        <p class="bg-[#053535] flex font-bold items-center justify-center p-[5px] rounded-tr-full text-white text-[1.5em]">
+        <p class="bg-[#053535] flex font-bold items-center justify-center md:text-[1.5em] p-[5px] rounded-tr-full text-[1.6em] text-white">
           {title}
         </p>
         {links && !isMobile ? <Ul links={links} /> : null}
         <div class="bg-[#053535] flex gap-x-[10px] items-center justify-center px-[5px] py-[10px] rounded-tl-full">
-          <p class="font-semibold text-[1em] text-white">{formatDate()}</p>
-          <p class="flex gap-x-[10px] items-center text-[1em] text-white">
+          <p class="font-semibold md:text-[1em] text-[1.2em] text-white">{formatDate()}</p>
+          <p class="flex gap-x-[10px] items-center">
             {icon
               ? (
-                <span class="bg-[#70ffb9] flex h-[30px] items-center justify-center rounded-full w-[30px]">
+                <span class="bg-[#70ffb9] flex h-[30px] h-[40px] items-center justify-center md:h-[30px] md:w-[30px] rounded-full w-[40px]">
                   <Image
                     src={props?.icon || ""}
                     width={20}
                     height={20}
+                    class="h-[30px] md:h-[20px] md:w-[20px] w-[30px]"
                     alt="icon"
                   />
                 </span>
