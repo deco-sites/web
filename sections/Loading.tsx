@@ -53,7 +53,7 @@ export default function Loading(props: Props) {
             alt={props.alt}
           />
         </figure>
-        <div class="loading lg:w-2/5 w-1/2 relative overflow-hidden h-[4px] bg-white rounded-full border border-[#70ffb9]">
+        <div class="lg:w-2/5 w-1/2 relative overflow-hidden h-[4px] bg-white rounded-full border border-[#70ffb9]">
           <div class="absolute top-0 h-full left-0" style={progressBarStyle}>
           </div>
         </div>
