@@ -63,15 +63,15 @@ export default function Search(props: SearchProps) {
           <hr class="border-[#00ff80] h-full relative" />
         </span>
         <li class="md:w-4/5 w-full">
-          <ul class="bg-[#00ff80] flex flex-col flex-wrap gap-x-[40px] md:gap-y-[10px] h-auto items-center justify-center md:flex-row md:h-[40px] md:shadow-box-shadow-1 relative rounded-[30px]">
+          <ul class="bg-[#00ff80] flex flex-col flex-wrap gap-x-[40px] h-auto items-center justify-center md:flex-row md:h-[40px] md:shadow-box-shadow-1 relative rounded-[30px]">
             {links?.slice(0, 3).map((link, index) => (
               <li
                 key={index}
-                class="border-[#053535] border-b flex justify-center md:border-0 md:justify-start md:w-auto w-full py-[10px] "
+                class="flex justify-center md:justify-start md:w-auto w-full"
               >
                 <a
                   href={link.url}
-                  class="duration-300 ease-in font-semibold hover:border-[#053535] md:hover:border-b-4 md:text-[1em] text-[#333] text-[1.2em]"
+                  class="font-semibold md:text-[1em] text-[#333] text-[1.2em] lg:py-0 py-[10px] duration-300 ease-in lg:hover:scale-110"
                 >
                   {link.label}
                 </a>
@@ -142,7 +142,7 @@ export default function Search(props: SearchProps) {
                   <li class="border-[#053535] border-b flex justify-center w-full py-[10px]">
                     <a
                       href={link.url}
-                      class="duration-300 ease-in font-semibold md:hover:scale-110 md:text-[1em] text-[#333] text-[1.2em]"
+                      class="duration-300 ease-in font-semibold lg:hover:scale-110 md:text-[1em] text-[#333] text-[1.2em]"
                     >
                       {link.label}
                     </a>
