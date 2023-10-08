@@ -32,8 +32,8 @@ export default function Portfolio(props: PortfolioProps) {
   return (
     <div class="flex flex-col">
       <div class="bg-gray-100 pt-[70px]">
-        <div class="border border-b-transparent border-t-zinc-500 border-x-transparent flex flex-col items-center justify-center lg:max-w-[960px] md:max-w-[720px] mx-auto px-[10px] sm:flex-row-reverse sm:justify-between sm:max-w-[540px] w-full xl:max-w-[1440px]">
-          <div class="flex gap-[10px] items-center py-[10px] sm:py-0">
+        <div class="border border-b-transparent border-t-zinc-500 border-x-transparent flex flex-col-reverse items-center justify-center lg:max-w-[960px] md:max-w-[720px] mx-auto px-[10px] sm:flex-row-reverse sm:justify-between sm:max-w-[540px] w-full xl:max-w-[1440px]">
+          <div class="flex gap-[10px] items-center pt-[10px] pb-[20px] sm:py-0">
             {props?.logo?.image
               ? (
                 <figure>
