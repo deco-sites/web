@@ -20,8 +20,9 @@ import * as $$$$$$$$6 from "./sections/Footer/Footer.tsx";
 import * as $$$$$$$$7 from "./sections/Head.tsx";
 import * as $$$$$$$$8 from "./sections/Header.tsx";
 import * as $$$$$$$$9 from "./sections/Loading.tsx";
-import * as $$$$$$$$10 from "./sections/Search.tsx";
-import * as $$$$$$$$11 from "./sections/Theme.tsx";
+import * as $$$$$$$$10 from "./sections/Main/Portfolio.tsx";
+import * as $$$$$$$$11 from "./sections/Search.tsx";
+import * as $$$$$$$$12 from "./sections/Theme.tsx";
 import * as $live_workflows from "$live/routes/live/workflows/run.ts";
 import * as $live_middleware from "$live/routes/_middleware.ts";
 import * as $live_workbench from "$live/routes/live/workbench.ts";
@@ -256,8 +257,9 @@ const manifest = {
     "deco-sites/web/sections/Head.tsx": $$$$$$$$7,
     "deco-sites/web/sections/Header.tsx": $$$$$$$$8,
     "deco-sites/web/sections/Loading.tsx": $$$$$$$$9,
-    "deco-sites/web/sections/Search.tsx": $$$$$$$$10,
-    "deco-sites/web/sections/Theme.tsx": $$$$$$$$11,
+    "deco-sites/web/sections/Main/Portfolio.tsx": $$$$$$$$10,
+    "deco-sites/web/sections/Search.tsx": $$$$$$$$11,
+    "deco-sites/web/sections/Theme.tsx": $$$$$$$$12,
   },
   "name": "deco-sites/web",
   "loaders": {
