@@ -55,8 +55,8 @@ export default function Portfolio(props: PortfolioProps) {
         </div>
       </div>
       <div class="bg-gradient-green py-[40px] mb-[70px]">
-        <div class="flex flex-col items-center justify-center lg:max-w-[960px] md:max-w-[720px] mx-auto px-[10px] sm:flex-row sm:justify-between sm:max-w-[540px] w-full xl:max-w-[1440px]">
-          <div class="flex flex-col items-center justify-center px-[10px] sm:px-0 sm:w-1/4 sm:pl-[15px]">
+        <div class="flex flex-col items-center justify-center sm:max-w-[960px] mx-auto px-[10px] sm:flex-row sm:justify-between w-full xl:max-w-[1440px] gap-[15px]">
+          <div class="flex flex-col items-center justify-center px-[10px] sm:px-0 md:w-1/4 sm:w:1/2 sm:pl-[15px]">
             <figure class="sm:pb-0 pb-[40px]">
               <Image
                 src={props.page?.image || ""}
@@ -67,7 +67,7 @@ export default function Portfolio(props: PortfolioProps) {
               />
             </figure>
           </div>
-          <div class="flex flex-col sm:items-start items-center justify-center px-[10px] sm:px-0 sm:w-3/4 gap-[30px]">
+          <div class="flex flex-col sm:items-start items-center justify-center px-[10px] sm:px-0 md:w-3/4 sm:w:1/2 gap-[30px]">
             <div class="sm:text-left text-center max-w-[80%]">
               <HTMLRenderer
                 html={props?.description || ""}
