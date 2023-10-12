@@ -76,4 +76,5 @@ deno.lock
 .config.json
 
 # organizer
+scripts/
 organizer.js

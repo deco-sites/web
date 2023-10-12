@@ -37,7 +37,7 @@ export default function Social(
                     aria-label={`${item.label} Logo`}
                     class="flex gap-2 items-center"
                   >
-                    <span class="block p-1 border rounded-full">
+                    <span class="block border p-1 rounded-full">
                       <Icon
                         width={20}
                         height={20}
@@ -45,7 +45,7 @@ export default function Social(
                       />
                     </span>
                     {vertical && (
-                      <div class="text-sm hidden lg:block">{item.label}</div>
+                      <div class="hidden lg:block text-sm">{item.label}</div>
                     )}
                   </a>
                 </li>

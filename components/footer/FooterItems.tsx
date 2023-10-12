@@ -32,7 +32,7 @@ export default function FooterItems(
                   <ul class={`flex flex-col gap-2 flex-wrap text-sm`}>
                     {section.items?.map((item) => (
                       <li>
-                        <a href={item.href} class="block py-1 link link-hover">
+                        <a href={item.href} class="block link link-hover py-1">
                           {item.label}
                         </a>
                       </li>
@@ -44,7 +44,7 @@ export default function FooterItems(
           </ul>
 
           {/* Mobile view */}
-          <ul class="flex flex-col md:hidden gap-4">
+          <ul class="flex flex-col gap-4 md:hidden">
             {sections.map((section) => (
               <li>
                 <details>
@@ -56,7 +56,7 @@ export default function FooterItems(
                   >
                     {section.items?.map((item) => (
                       <li>
-                        <a href={item.href} class="block py-1 link link-hover">
+                        <a href={item.href} class="block link link-hover py-1">
                           {item.label}
                         </a>
                       </li>
