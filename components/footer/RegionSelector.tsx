@@ -17,12 +17,12 @@ export default function RegionSelector(
         (content?.language?.length > 0 || content?.currency?.length > 0) && (
         <div class="flex gap-4 text-base-content">
           {content?.currency?.length > 0 && (
-            <select class="select select-bordered select-sm h-10">
+            <select class="h-10 select select-bordered select-sm">
               {content.currency.map((crr) => <option>{crr.label}</option>)}
             </select>
           )}
           {content?.language?.length > 0 && (
-            <select class="select select-bordered select-sm h-10">
+            <select class="h-10 select select-bordered select-sm">
               {content.language.map((lng) => <option>{lng.label}</option>)}
             </select>
           )}

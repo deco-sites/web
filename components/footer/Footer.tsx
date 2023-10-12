@@ -216,25 +216,25 @@ function Footer({
         ColorClasses(layout)
       }`}
     >
-      <div class="lg:container mx-6 lg:mx-auto">
+      <div class="lg:container lg:mx-auto mx-6">
         {(!layout?.variation || layout?.variation == "Variation 1") && (
           <div class="flex flex-col gap-10">
-            <div class="flex flex-col md:flex-row md:justify-between md:flex-wrap lg:flex-nowrap gap-8 lg:gap-12">
+            <div class="flex flex-col gap-8 lg:flex-nowrap lg:gap-12 md:flex-row md:flex-wrap md:justify-between">
               {_logo}
               {_sectionLinks}
               {_newsletter}
             </div>
             <Divider />
-            <div class="flex flex-col md:flex-row gap-10 md:gap-14 md:items-end">
+            <div class="flex flex-col gap-10 md:flex-row md:gap-14 md:items-end">
               {_payments}
               {_social}
-              <div class="flex flex-col lg:flex-row gap-10 lg:gap-14 lg:items-end">
+              <div class="flex flex-col gap-10 lg:flex-row lg:gap-14 lg:items-end">
                 {_apps}
                 {_region}
               </div>
             </div>
             <Divider />
-            <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10">
+            <div class="flex flex-col-reverse gap-10 md:flex-row md:justify-between">
               <PoweredByDeco />
               {_links}
             </div>
@@ -242,7 +242,7 @@ function Footer({
         )}
         {layout?.variation == "Variation 2" && (
           <div class="flex flex-col gap-10">
-            <div class="flex flex-col md:flex-row gap-10">
+            <div class="flex flex-col gap-10 md:flex-row">
               <div class="flex flex-col gap-10 lg:w-1/2">
                 {_logo}
                 {_social}
@@ -250,13 +250,13 @@ function Footer({
                 {_apps}
                 {_region}
               </div>
-              <div class="flex flex-col gap-10 lg:gap-20 lg:w-1/2 lg:pr-10">
+              <div class="flex flex-col gap-10 lg:gap-20 lg:pr-10 lg:w-1/2">
                 {_newsletter}
                 {_sectionLinks}
               </div>
             </div>
             <Divider />
-            <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10">
+            <div class="flex flex-col-reverse gap-10 md:flex-row md:justify-between">
               <PoweredByDeco />
               {_links}
             </div>
@@ -265,16 +265,16 @@ function Footer({
         {layout?.variation == "Variation 3" && (
           <div class="flex flex-col gap-10">
             {_logo}
-            <div class="flex flex-col lg:flex-row gap-14">
-              <div class="flex flex-col md:flex-row lg:flex-col md:justify-between lg:justify-normal gap-10 lg:w-2/5">
+            <div class="flex flex-col gap-14 lg:flex-row">
+              <div class="flex flex-col gap-10 lg:flex-col lg:justify-normal lg:w-2/5 md:flex-row md:justify-between">
                 {_newsletter}
                 <div class="flex flex-col gap-10">
                   {_payments}
                   {_apps}
                 </div>
               </div>
-              <div class="flex flex-col gap-10 lg:gap-20 lg:w-3/5 lg:items-end">
-                <div class="flex flex-col md:flex-row gap-10">
+              <div class="flex flex-col gap-10 lg:gap-20 lg:items-end lg:w-3/5">
+                <div class="flex flex-col gap-10 md:flex-row">
                   {_sectionLinks}
                   {_social}
                 </div>
@@ -282,7 +282,7 @@ function Footer({
               </div>
             </div>
             <Divider />
-            <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10">
+            <div class="flex flex-col-reverse gap-10 md:flex-row md:justify-between">
               <PoweredByDeco />
               {_links}
             </div>
@@ -292,10 +292,10 @@ function Footer({
           <div class="flex flex-col gap-10">
             {_newsletter}
             {layout?.hide?.newsletter ? <></> : <Divider />}
-            <div class="flex flex-col lg:flex-row gap-10 lg:gap-20 lg:justify-between">
+            <div class="flex flex-col gap-10 lg:flex-row lg:gap-20 lg:justify-between">
               {_sectionLinks}
-              <div class="flex flex-col md:flex-row lg:flex-col gap-10 lg:gap-10 lg:w-2/5 lg:pl-10">
-                <div class="flex flex-col md:flex-row gap-10 lg:gap-20">
+              <div class="flex flex-col gap-10 lg:flex-col lg:gap-10 lg:pl-10 lg:w-2/5 md:flex-row">
+                <div class="flex flex-col gap-10 lg:gap-20 md:flex-row">
                   <div class="lg:flex-auto">
                     {_payments}
                   </div>
@@ -310,7 +310,7 @@ function Footer({
               </div>
             </div>
             <Divider />
-            <div class="flex flex-col md:flex-row md:justify-between gap-10 md:items-center">
+            <div class="flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
               {_logo}
               <PoweredByDeco />
             </div>
@@ -321,18 +321,18 @@ function Footer({
             {_newsletter}
             {layout?.hide?.newsletter ? <></> : <Divider />}
             {_logo}
-            <div class="flex flex-col md:flex-row gap-10 lg:gap-20 md:justify-between">
+            <div class="flex flex-col gap-10 lg:gap-20 md:flex-row md:justify-between">
               {_sectionLinks}
-              <div class="flex flex-col gap-10 md:w-2/5 lg:pl-10">
+              <div class="flex flex-col gap-10 lg:pl-10 md:w-2/5">
                 {_payments}
                 {_social}
                 {_apps}
               </div>
             </div>
             <Divider />
-            <div class="flex flex-col-reverse md:flex-row md:justify-between gap-10 md:items-center">
+            <div class="flex flex-col-reverse gap-10 md:flex-row md:items-center md:justify-between">
               <PoweredByDeco />
-              <div class="flex flex-col md:flex-row gap-10 md:items-center">
+              <div class="flex flex-col gap-10 md:flex-row md:items-center">
                 {_links}
                 {_region}
               </div>
