@@ -68,7 +68,7 @@ export default function Benefits(
             fill="currentColor"
           />
         </div>
-        <div class="flex-auto flex flex-col gap-1 lg:gap-2">
+        <div class="flex flex-auto flex-col gap-1 lg:gap-2">
           <div
             class={`text-base lg:text-xl leading-7 ${
               reverse ? "text-base-100" : "text-base-content"
@@ -92,14 +92,14 @@ export default function Benefits(
     <>
       {!layout?.variation || layout?.variation === "Simple"
         ? (
-          <div class="w-full container px-4 py-8 flex flex-col gap-8 lg:gap-10 lg:py-10 lg:px-0">
+          <div class="container flex flex-col gap-8 lg:gap-10 lg:px-0 lg:py-10 px-4 py-8 w-full">
             <Header
               title={title}
               description={description}
               alignment={layout?.headerAlignment || "center"}
             />
-            <div class="w-full flex justify-center">
-              <div class="flex flex-col gap-4 lg:gap-8 w-full lg:grid grid-flow-col auto-cols-fr">
+            <div class="flex justify-center w-full">
+              <div class="auto-cols-fr flex flex-col gap-4 grid-flow-col lg:gap-8 lg:grid w-full">
                 {listOfBenefits}
               </div>
             </div>
@@ -107,28 +107,28 @@ export default function Benefits(
         )
         : ""}
       {layout?.variation === "With border" && (
-        <div class="w-full container flex flex-col px-4 py-8 gap-8 lg:gap-10 lg:py-10 lg:px-0">
+        <div class="container flex flex-col gap-8 lg:gap-10 lg:px-0 lg:py-10 px-4 py-8 w-full">
           <Header
             title={title}
             description={description}
             alignment={layout?.headerAlignment || "center"}
           />
-          <div class="w-full flex justify-center">
-            <div class="grid grid-cols-2 gap-4 w-full py-6 px-4 border border-base-300 lg:gap-8 lg:grid-flow-col lg:auto-cols-fr lg:p-10">
+          <div class="flex justify-center w-full">
+            <div class="border border-base-300 gap-4 grid grid-cols-2 lg:auto-cols-fr lg:gap-8 lg:grid-flow-col lg:p-10 px-4 py-6 w-full">
               {listOfBenefits}
             </div>
           </div>
         </div>
       )}
       {layout?.variation === "Color reverse" && (
-        <div class="w-full container flex flex-col px-4 py-8 gap-8 lg:gap-10 lg:py-10 lg:px-0">
+        <div class="container flex flex-col gap-8 lg:gap-10 lg:px-0 lg:py-10 px-4 py-8 w-full">
           <Header
             title={title}
             description={description}
             alignment={layout?.headerAlignment || "center"}
           />
-          <div class="w-full flex justify-center">
-            <div class="grid grid-cols-2 gap-4 w-full lg:gap-8 lg:grid-flow-col lg:auto-cols-fr">
+          <div class="flex justify-center w-full">
+            <div class="gap-4 grid grid-cols-2 lg:auto-cols-fr lg:gap-8 lg:grid-flow-col w-full">
               {listOfBenefits}
             </div>
           </div>

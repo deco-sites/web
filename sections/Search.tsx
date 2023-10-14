@@ -42,7 +42,7 @@ export default function Search(props: SearchProps) {
         <li class="flex items-center justify-center relative w-[95%]">
           <input
             type="text"
-            class="bg-[#053535] focus:outline-none h-[40px] lg:ml-[20px] md:bg-[#c9f888] md:my-[5px] md:placeholder-[#333] py-[5px] md:text-[#333] mt-[5px] pl-[15px] placeholder-white pr-[40px] pt-[5px] rounded-[30px] shadow-box-shadow-1 text-white w-full"
+            class="bg-[#053535] focus:outline-none h-[40px] lg:ml-[20px] md:bg-[#c9f888] md:my-[5px] md:placeholder-[#333] md:text-[#333] mt-[5px] pl-[15px] placeholder-white pr-[40px] pt-[5px] py-[5px] rounded-[30px] shadow-box-shadow-1 text-white w-full"
             placeholder={placeholder}
           />
           <div class="absolute bg-[#053535] flex h-[30px] items-center justify-center p-[5px] right-[5px] rounded-full w-[30px]">
@@ -71,7 +71,7 @@ export default function Search(props: SearchProps) {
               >
                 <a
                   href={link.url}
-                  class="font-semibold md:text-[1em] text-[#333] text-[1.2em] lg:py-0 py-[10px] duration-300 ease-in lg:hover:scale-110"
+                  class="duration-300 ease-in font-semibold lg:hover:scale-110 lg:py-0 md:text-[1em] py-[10px] text-[#333] text-[1.2em]"
                 >
                   {link.label}
                 </a>
@@ -123,7 +123,7 @@ export default function Search(props: SearchProps) {
           )}
           {showMenu && (
             <>
-              <ul class="absolute bg-[#00ff80] flex flex-col items-center justify-center lg:max-w-[300px] lg:top-[54px] min-w-[200px] px-[10px] lg:rounded-b-[20px] shadow-box-shadow-2 top-[52px] w-full z-20">
+              <ul class="absolute bg-[#00ff80] flex flex-col items-center justify-center lg:max-w-[300px] lg:rounded-b-[20px] lg:top-[54px] min-w-[200px] px-[10px] shadow-box-shadow-2 top-[52px] w-full z-20">
                 <>
                   {isMobile
                     ? (
@@ -139,7 +139,7 @@ export default function Search(props: SearchProps) {
                     : null}
                 </>
                 {links?.slice(3).map((link) => (
-                  <li class="border-[#053535] border-b flex justify-center w-full py-[10px]">
+                  <li class="border-[#053535] border-b flex justify-center py-[10px] w-full">
                     <a
                       href={link.url}
                       class="duration-300 ease-in font-semibold lg:hover:scale-110 md:text-[1em] text-[#333] text-[1.2em]"

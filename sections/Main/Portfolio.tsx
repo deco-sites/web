@@ -33,7 +33,7 @@ export default function Portfolio(props: PortfolioProps) {
     <div class="flex flex-col">
       <div class="bg-gray-100 pt-[70px]">
         <div class="border border-b-transparent border-t-zinc-500 border-x-transparent flex flex-col-reverse items-center justify-center lg:max-w-[960px] md:max-w-[720px] mx-auto px-[10px] sm:flex-row-reverse sm:justify-between sm:max-w-[540px] w-full xl:max-w-[1440px]">
-          <div class="flex gap-[10px] items-center pt-[10px] pb-[20px] sm:py-0">
+          <div class="flex gap-[10px] items-center pb-[20px] pt-[10px] sm:py-0">
             {props?.logo?.image
               ? (
                 <figure>
@@ -47,28 +47,28 @@ export default function Portfolio(props: PortfolioProps) {
               )
               : null}
           </div>
-          <h2 class="font-bold py-[26px] px-[10px] text-2xl">
+          <h2 class="font-bold px-[10px] py-[26px] text-2xl">
             <span class="bg-green-200 border-4 border-green-400 flex p-2 rounded-full text-center w-full">
               {props.phrase}
             </span>
           </h2>
         </div>
       </div>
-      <div class="bg-gradient-green py-[40px] mb-[70px]">
-        <div class="flex flex-col items-center justify-center sm:max-w-[960px] mx-auto px-[10px] sm:flex-row sm:justify-between w-full xl:max-w-[1440px] gap-[15px]">
-          <div class="flex flex-col items-center justify-center px-[10px] sm:px-0 md:w-1/4 sm:w:1/2 sm:pl-[15px]">
-            <figure class="sm:pb-0 pb-[40px]">
+      <div class="bg-gradient-green mb-[70px] py-[40px]">
+        <div class="flex flex-col gap-[15px] items-center justify-center mx-auto px-[10px] sm:flex-row sm:justify-between sm:max-w-[960px] w-full xl:max-w-[1440px]">
+          <div class="flex flex-col items-center justify-center md:w-1/4 px-[10px] sm:pl-[15px] sm:px-0 sm:w:1/2">
+            <figure class="pb-[40px] sm:pb-0">
               <Image
                 src={props.page?.image || ""}
                 width={props.page?.width || 540}
                 height={props.page?.height || 960}
-                class="rounded-[10px] border-[3px] border-[#64EF74]"
+                class="border-[#64EF74] border-[3px] rounded-[10px]"
                 alt={props.page?.alt || ""}
               />
             </figure>
           </div>
-          <div class="flex flex-col sm:items-start items-center justify-center px-[10px] sm:px-0 md:w-3/4 sm:w:1/2 gap-[30px]">
-            <div class="sm:text-left text-center max-w-[80%]">
+          <div class="flex flex-col gap-[30px] items-center justify-center md:w-3/4 px-[10px] sm:items-start sm:px-0 sm:w:1/2">
+            <div class="max-w-[80%] sm:text-left text-center">
               <HTMLRenderer
                 html={props?.description || ""}
               />
