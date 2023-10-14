@@ -74,7 +74,3 @@ deno.lock
 
 # db files
 .config.json
-
-# organizer
-scripts/
-organizer.js
