@@ -54,8 +54,8 @@ const DEFAULT_PROPS = {
 
 function Question({ question, answer }: Question) {
   return (
-    <details class="collapse collapse-arrow join-item border-t border-base-200">
-      <summary class="collapse-title text-lg font-medium">
+    <details class="border-base-200 border-t collapse collapse-arrow join-item">
+      <summary class="collapse-title font-medium text-lg">
         {question}
       </summary>
       <div
@@ -70,10 +70,10 @@ function Contact({ title, description, link }: Contact) {
   return (
     <div class="flex flex-col gap-6 items-center text-center">
       <div class="flex flex-col gap-2">
-        {title && <h2 class="text-xl lg:text-3xl">{title}</h2>}
+        {title && <h2 class="lg:text-3xl text-xl">{title}</h2>}
         {description && (
           <div
-            class="text-lg lg:text-xl"
+            class="lg:text-xl text-lg"
             dangerouslySetInnerHTML={{ __html: description }}
           />
         )}
@@ -96,7 +96,7 @@ export default function FAQ(props: Props) {
   return (
     <>
       {(!layout?.variation || layout?.variation === "Compact") && (
-        <div class="w-full container px-4 py-8 flex flex-col gap-4 lg:gap-8 lg:py-10 lg:px-40">
+        <div class="container flex flex-col gap-4 lg:gap-8 lg:px-40 lg:py-10 px-4 py-8 w-full">
           <div class="flex flex-col gap-8 lg:gap-10">
             <Header
               title={title || ""}
@@ -113,7 +113,7 @@ export default function FAQ(props: Props) {
       )}
 
       {layout?.variation === "Full" && (
-        <div class="w-full container px-4 py-8 flex flex-col gap-4 lg:gap-8 lg:py-10 lg:px-0">
+        <div class="container flex flex-col gap-4 lg:gap-8 lg:px-0 lg:py-10 px-4 py-8 w-full">
           <div class="flex flex-col gap-8 lg:gap-10">
             <Header
               title={title || ""}
@@ -130,20 +130,20 @@ export default function FAQ(props: Props) {
       )}
 
       {layout?.variation === "Side to side" && (
-        <div class="w-full container px-4 py-8 grid gap-8 grid-flow-row grid-cols-1 lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-2 lg:py-10 lg:px-0">
-          <div class="order-1 lg:order-1">
+        <div class="container gap-8 grid grid-cols-1 grid-flow-row lg:grid-cols-2 lg:grid-flow-col lg:grid-rows-2 lg:px-0 lg:py-10 px-4 py-8 w-full">
+          <div class="lg:order-1 order-1">
             <Header
               title={title || ""}
               description={description || ""}
               alignment={layout?.headerAlignment || "center"}
             />
           </div>
-          <div class="order-2 lg:order-3 lg:row-span-2">
+          <div class="lg:order-3 lg:row-span-2 order-2">
             <div class="join join-vertical">
               {questions.map((question) => <Question {...question} />)}
             </div>
           </div>
-          <div class="order-3 lg:order-2">
+          <div class="lg:order-2 order-3">
             <Contact {...contact} />
           </div>
         </div>

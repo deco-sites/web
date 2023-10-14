@@ -18,7 +18,7 @@ export default function Banner(props: BannerProps) {
         <h1 class="absolute bg-black flex font-semibold items-center justify-center min-h-[50px] min-w-[170px] origin-top-left rotate-[-90deg] text-[1.5em] text-white top-[100%] transform z-10">
           {title}
         </h1>
-        <p class=" bg-[#053535] border-4 border-[#00ff80] flex-col font-bold h-fit lg:flex-row lg:text-left lg:mt-[10px] lg:mx-0 mt-[40px] mx-auto px-[10px] relative rounded-r-xl text-[1.7em] text-center text-white w-fit z-10 drop-shadow-lg">
+        <p class=" bg-[#053535] border-4 border-[#00ff80] drop-shadow-lg flex-col font-bold h-fit lg:flex-row lg:mt-[10px] lg:mx-0 lg:text-left mt-[40px] mx-auto px-[10px] relative rounded-r-xl text-[1.7em] text-center text-white w-fit z-10">
           {text}
         </p>
         {image

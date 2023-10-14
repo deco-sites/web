@@ -44,7 +44,7 @@ export default function Loading(props: Props) {
       document.body.style.overflow = "hidden";
     }
     return (
-      <section class="bg-[#053535] w-full h-full fixed top-0 left-0 flex flex-col items-center justify-center z-50 overflow-hidden">
+      <section class="bg-[#053535] fixed flex flex-col h-full items-center justify-center left-0 overflow-hidden top-0 w-full z-50">
         <figure class="-top-[50px] relative">
           <Image
             src={props.preloader || ""}
@@ -53,8 +53,8 @@ export default function Loading(props: Props) {
             alt={props.alt}
           />
         </figure>
-        <div class="lg:w-2/5 w-1/2 relative overflow-hidden h-[4px] bg-white rounded-full border border-[#70ffb9]">
-          <div class="absolute top-0 h-full left-0" style={progressBarStyle}>
+        <div class="bg-white border border-[#70ffb9] h-[4px] lg:w-2/5 overflow-hidden relative rounded-full w-1/2">
+          <div class="absolute h-full left-0 top-0" style={progressBarStyle}>
           </div>
         </div>
       </section>
