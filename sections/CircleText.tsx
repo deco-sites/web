@@ -5,7 +5,7 @@ interface CircleTextProps {
 export default function CircleText({ text }: CircleTextProps) {
   return (
     <div class="m-0">
-      <div class="circle absolute left-[45%] overflow-hidden w-full lg:top-0 top-[60%]">
+      <div class="absolute circle left-[45%] lg:top-0 overflow-hidden top-[60%] w-full">
         <svg
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ export default function CircleText({ text }: CircleTextProps) {
           />
           <g>
             <use xlinkHref="#circlePath" fill="#22c489" />
-            <text fill="#ffffff" class="text-[15px] font-bold">
+            <text fill="#ffffff" class="font-bold text-[15px]">
               <textPath xlinkHref="#circlePath">
                 {text}
               </textPath>
