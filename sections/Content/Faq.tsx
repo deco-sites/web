@@ -54,7 +54,7 @@ const DEFAULT_PROPS = {
 
 function Question({ question, answer }: Question) {
   return (
-    <details class="border-base-200 border-t collapse collapse-arrow join-item">
+    <details class="border-primary border-t collapse collapse-arrow join-item">
       <summary class="collapse-title font-medium text-lg">
         {question}
       </summary>
