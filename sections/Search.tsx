@@ -1,5 +1,5 @@
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
-import Image from "deco-sites/std/components/Image.tsx";
+import Image from "apps/website/components/Image.tsx";
 import { useEffect, useState } from "preact/hooks";
 
 export interface SearchProps {
@@ -42,7 +42,7 @@ export default function Search(props: SearchProps) {
         <li class="flex items-center justify-center relative w-[95%]">
           <input
             type="text"
-            class="bg-[#053535] focus:outline-none h-[40px] lg:ml-[20px] md:bg-[#c9f888] md:my-[5px] md:placeholder-[#333] md:text-[#333] mt-[5px] pl-[15px] placeholder-white pr-[40px] pt-[5px] py-[5px] rounded-[30px] shadow-box-shadow-1 text-white w-full"
+            class="bg-[#053535] focus:outline-none h-[40px] lg:ml-[20px] md:bg-[#c9f888] md:my-[5px] md:placeholder-[#333] md:text-[#333] mt-[5px] pl-[15px] placeholder-white pr-[40px] pt-[5px] py-[5px] rounded-[30px] shadow-box-shadow-1 text-base-200 w-full"
             placeholder={placeholder}
           />
           <div class="absolute bg-[#053535] flex h-[30px] items-center justify-center p-[5px] right-[5px] rounded-full w-[30px]">
@@ -107,7 +107,7 @@ export default function Search(props: SearchProps) {
               </span>
               <div class="bg-[#00ff80] lg:w-1/5 p-[5px] rounded-[30px] w-1/2">
                 <button
-                  class="bg-[#053535] flex font-semibold gap-[10px] items-center justify-center md:text-[1em] px-[10px] py-[5px] rounded-[30px] text-[1.2em] text-white w-full"
+                  class="bg-[#053535] flex font-semibold gap-[10px] items-center justify-center md:text-[1em] px-[10px] py-[5px] rounded-[30px] text-[1.2em] text-base-200 w-full"
                   onClick={toggleMenu}
                 >
                   {props.button}

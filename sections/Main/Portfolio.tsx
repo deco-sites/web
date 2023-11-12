@@ -1,5 +1,5 @@
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
-import Image from "deco-sites/std/components/Image.tsx";
+import Image from "apps/website/components/Image.tsx";
 import HTMLRenderer from "deco-sites/std/components/HTMLRenderer.tsx";
 import type { HTML } from "deco-sites/std/components/HTMLRenderer.tsx";
 
@@ -89,7 +89,9 @@ export default function Portfolio(props: PortfolioProps) {
                       alt={tech.label}
                     />
                   </figure>
-                  <p class="font-bold text-center text-white">{tech.label}</p>
+                  <p class="font-bold text-center text-base-200">
+                    {tech.label}
+                  </p>
                 </div>
               ))}
             </div>

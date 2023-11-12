@@ -1,5 +1,5 @@
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
-import Image from "deco-sites/std/components/Image.tsx";
+import Image from "apps/website/components/Image.tsx";
 import { useEffect, useState } from "preact/hooks";
 
 export interface HeaderProps {
@@ -72,12 +72,12 @@ export default function Header(props: HeaderProps) {
   return (
     <header class="bg-[#053535]">
       <nav class="bg-[#053535] grid grid-cols-1 lg:bg-[#70ffb9] lg:grid-cols-3 max-w-[1440px] md:grid-cols-2 mx-auto">
-        <p class="bg-[#053535] flex font-bold items-center justify-center md:text-[1.5em] p-[5px] rounded-tr-full text-[1.6em] text-white">
+        <p class="bg-[#053535] flex font-bold items-center justify-center md:text-[1.5em] p-[5px] rounded-tr-full text-[1.6em] text-base-200">
           {title}
         </p>
         {links && !isMobile ? <Ul links={links} /> : null}
         <div class="bg-[#053535] flex gap-x-[10px] items-center justify-center px-[5px] py-[10px] rounded-tl-full">
-          <p class="font-semibold md:text-[1em] text-[1.2em] text-white">
+          <p class="font-semibold md:text-[1em] text-[1.2em] text-base-200">
             {formatDate()}
           </p>
           <p class="flex gap-x-[10px] items-center">
