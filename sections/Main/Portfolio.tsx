@@ -89,7 +89,7 @@ export default function Portfolio(props: PortfolioProps) {
                       alt={tech.label}
                     />
                   </figure>
-                  <p class="font-bold text-center text-base-200">
+                  <p class="font-bold text-base-200 text-center">
                     {tech.label}
                   </p>
                 </div>
