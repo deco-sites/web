@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
 
   /* Allow changing font family via CMS */
@@ -144,6 +145,22 @@
     width: auto;
   }
 
+  .font1{
+    font-family: "SF Pro Display Medium";
+  }
+
+  .font2{
+    font-family: 'Crimson Text', serif;
+  }
+
+  .font3{
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+  }
+
+  .font4{
+    font-family: "PP Hatton Medium";
+  }
 }
 
 @layer components {
