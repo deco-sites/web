@@ -1,0 +1,31 @@
+name: Weekly Update
+
+on:
+  schedule:
+    - cron: '0 8 * * 1' 
+
+jobs:
+  update-repo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Run Deno Upgrade
+        run: deno run -A -r https://deco.cx/upgrade
+
+      - name: Run Deno Task Start
+        run: deno task start
+
+      - name: Update Main Branch
+        run: |
+          if [ $? -eq 0 ]; then
+            git add -A ':!manifest.gen.ts' ':!fresh.gen.ts'
+            
+            git commit -m "Atualizar repositório (automático)"
+
+            git push origin main
+          else
+            echo "Erro encontrado. Não atualizando a branch principal."
+          fi
